@@ -73,7 +73,7 @@
     </h2>
   </header>
   {{- if (.Param "featuredImage") }}
-  <img class="entry-featuredImage" loading="lazy" src="{{ .Permalink }}{{ .Param "featuredImage" }}" />
+  <img class="entry-featuredImage" loading="lazy" src="{{ .Permalink | relURL }}{{ .Param "featuredImage" }}" />
   {{ end }}
   {{- if (ne (.Param "hideSummary") true) }}
   <div class="entry-content">

@@ -18,3 +18,6 @@ clean-hugo:
 
 all: bin/hugo
 	./bin/hugo
+
+serve: bin/hugo
+	./bin/hugo serve -D

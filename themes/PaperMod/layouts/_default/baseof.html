@@ -14,7 +14,7 @@
 {{- end -}}
 " id="top">
     {{- block "featuredImage" . }}
-    <div class="head-featuredImage" style="background-image: url('{{ "assets/deck_sunrise.jpg" | absURL }}')"></div>
+    <div class="head-featuredImage" style="background-image: url('{{ "assets/deck_sunrise.jpg" | relURL }}')"></div>
     {{ end }}
     {{- partialCached "header.html" . .Page -}}
     <main class="main">
