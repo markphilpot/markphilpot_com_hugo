@@ -7,6 +7,7 @@ slug: anime-2023-spring-first
 summary: First Impressions of the Anime Spring 2023 Season
 hero: assets/ko.jpg
 featuredImage: assets/ko.jpg
+draft: true
 ---
 
 ![](assets/ko.jpg "hidden")
