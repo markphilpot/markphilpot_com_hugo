@@ -1,10 +1,10 @@
 
-public: bin/hugo
-	./bin/hugo
+public: bin/hugo-x64
+	./bin/hugo-x64
 
-bin/hugo:
-	wget -P ./bin https://transfer-markphilpot.s3.amazonaws.com/hugo
-	chmod +x bin/hugo
+bin/hugo-x64:
+	wget -P ./bin https://transfer-markphilpot.s3.amazonaws.com/hugo-x64
+	chmod +x bin/hugo-x64
 
 clean:
 	rm -rf public
