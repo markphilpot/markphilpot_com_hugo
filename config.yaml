@@ -1,0 +1,40 @@
+baseURL: "https://markphilpot.com"
+languageCode: en-us
+title: mark philpot
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+
+permalinks:
+  page:
+    blog: /posts/:year/:month/:day/:slug
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
+
+menu:
+  main:
+    - name: µposts
+      url: https://micro.markphilpot.com
+    - name: about
+      url: about
+    - name: ~/projects
+      url: projects
+    # - name: archive
+    #   url: archives
+    - name: search
+      url: search
+      weight: 100
+
+params:
+  disableThemeToggle: true
+  ShowReadingTime: true

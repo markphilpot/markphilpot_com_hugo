@@ -1,0 +1,16 @@
+digraph G {
+  "Hikari" -> "Manaka"
+  "Manaka" -> "Hikari"
+  "Chisaki" -> "Hikari"
+  "Kaname" -> "Chisaki"
+  "Tsumugu" -> "Chisaki"
+  "Manaka" -> "Tsumugu" [style="dotted"]
+  "Tsumugu" -> "Manaka" [style="dotted"]
+  "Miuna" [shape=square, image="characters/miuna.png", label=""]
+  "Sayu" [shape=square, image="characters/sayu.png", label=""]
+  "Hikari" [shape=square, image="characters/hikari.png", label=""]
+  "Manaka" [shape=square, image="characters/manaka.png", label=""]
+  "Chisaki" [shape=square, image="characters/chisaki.png", label=""]
+  "Kaname" [shape=square, image="characters/kaname.png", label=""]
+  "Tsumugu" [shape=square, image="characters/tsumugu.png", label=""]
+}
