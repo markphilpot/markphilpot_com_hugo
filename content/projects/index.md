@@ -3,6 +3,7 @@ title: ~/projects
 date: '2016-03-02 22:23:00'
 slug: projects
 summary: My Projects
+featuredImage: hero.jpg
 ---
 
 ## Aviary (Twitter Favorite Gallery)
