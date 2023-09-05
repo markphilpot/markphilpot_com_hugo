@@ -1,16 +1,20 @@
 ---
 title: About
-date: '2016-03-02 22:23:00'
+date: "2016-03-02 22:23:00"
 slug: about
 summary: About Mark Philpot
 featuredImage: hero.jpg
 ---
 
+Some places you can find me on the internet
+
+| [Mastodon](https://philpot.org/@mark) | [Github](https://github.com/markphilpot) | [Flickr](https://www.flickr.com/photos/markphilpot) | [Anilist](https://anilist.co/user/mphilpot) | [Bandcamp](https://markphilpot.bandcamp.com) |
+| ------------------------------------- | ---------------------------------------- | --------------------------------------------------- | ------------------------------------------- | -------------------------------------------- |
+
 ### Experience
 
 ![Dark Castle](dark_castle.png)
-
-<div class="caption">Which path did you choose?</div>
+_Which path did you choose?_
 
 Let's take this in reverse chronological order:
 
