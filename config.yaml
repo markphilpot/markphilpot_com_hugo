@@ -38,3 +38,5 @@ menu:
 params:
   disableThemeToggle: true
   ShowReadingTime: true
+  disableScrollToTop: true
+  ShowPostNavLinks: true

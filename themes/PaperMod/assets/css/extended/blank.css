@@ -20,6 +20,12 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 img[title="hidden"] {
   display: none !important;
 }
+figcaption[title="hidden"] {
+  display: none !important;
+}
+figcaption[title="ew1920"] {
+  display: none !important;
+}
 
 img[title="ew1920"] {
   max-width: 1920px !important;
