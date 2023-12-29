@@ -15,6 +15,11 @@ permalinks:
   page:
     blog: /posts/:year/:month/:day/:slug
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 outputs:
   home:
     - HTML
@@ -27,16 +32,20 @@ menu:
       url: https://micro.markphilpot.com
     - name: about
       url: about
+      weight: 2
+    - name: social
+      url: https://philpot.org/@mark
     - name: ~/projects
       url: projects
+      weight: 3
     # - name: archive
     #   url: archives
     - name: search
       url: search
-      weight: 100
+      weight: 1
 
 params:
   disableThemeToggle: true
-  ShowReadingTime: true
+  ShowReadingTime: false
   disableScrollToTop: true
   ShowPostNavLinks: true
