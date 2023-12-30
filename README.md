@@ -26,3 +26,9 @@ These are saved to an s3 bucket for ease of use (See Makefile).
 # Run development server
 make serve
 ```
+
+# Favicon
+
+https://lucide.dev/icons/qr-code
+https://realfavicongenerator.net
+
