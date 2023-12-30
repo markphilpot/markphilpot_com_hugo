@@ -6,50 +6,53 @@ summary: My Projects
 featuredImage: hero.jpg
 ---
 
-## Aviary (Twitter Favorite Gallery)
 
-![aviary.gallery](aviary.jpg)
 
-[aviary.gallery](https://aviary.gallery) -- If you frequently like twitter posts from artists posting their latest creations, this site displays all that art in a dedicated gallery without all the twitter chrome around it.
+<i class="fa fa-calendar"></i> [weeklyanime.info](https://weeklyanime.info)
 
-## Weekly Anime
+*A simple site that shows the current seasonal anime airing during the week.  You can enter your Anilist username and the week will be your shows*
 
-![weeklyanime.info](weeklyanime.jpg)
+<i class="fa-brands fa-searchengin"></i> [naninani.info](https://naninani.info)
 
-[weeklyanime.info](https://weeklyanime.info) -- A simple site that shows the current seasonal anime airing during the week.  You can enter your Anilist username and the week will be your shows
+*An anime and manga search engine that lets you programmatically query it through the `?q=` search parameter*
 
-## 何 Nani
+<i class="fa-solid fa-rss"></i> [animefeed.info](https://animefeed.info)
 
-![naninani.info](nani.jpg)
+*Generate RSS feeds for your favorite anime studios, staff, & voice actors*
 
-[naninani.info](https://naninani.info) -- An anime and manga search engine that lets you programmatically query it through the `?q=` search parameter.
+<i class="fa-regular fa-lemon"></i> [anilime](https://itunes.apple.com/us/app/anilime/id1358133029)
 
-## anilime
+*Manage your AniList anime & manga on iOS*
 
-![anilime](anilime.png)
+<i class="fa-solid fa-guitar"></i> [triaxiseditor.com](https://triaxiseditor.com)
 
-<div style="text-align: center;">
-<a href="https://itunes.apple.com/us/app/anilime/id1358133029?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/appstore-lrg.svg) no-repeat;width:135px;height:40px;background-size:contain;border:0;"></a>
-</div>
+*Web editor for the Triaxis syx configuration*
 
-Manage your AniList anime & manga on iOS
+<i class="fa-solid fa-table-cells"></i> [gcproeditor.com](http://gcproeditor.com)
 
-## [Own Goals Podcast](projects/own_goals)
+*Web editor for the Ground Control Pro syx configuration*
 
-Discussing various topics with [Chris Biscardi](https://twitter.com/chrisbiscardi) around software development, hardware, and games while trying very hard not to screw things up too badly.
+<i class="fa-brands fa-java"></i> [AoC: Java](https://github.com/markphilpot/aoc-java)
 
-## TriAxis &amp; Ground Control Pro Web Apps
+*Advent of Code: Java Edition*
 
-[triaxiseditor.com](https://triaxiseditor.com)
+<i class="fa-regular fa-sun"></i> [DaedaFusion Github](https://github.com/daedafusion)
 
-![triaxiseditor.com](triaxiseditor.png)
+*Java library toolbelt: service-framework, service-configuration, security-framework*
 
-[gcproeditor.com](http://gcproeditor.com)
 
-![gcproeditor.com](gcproeditor.png)
 
-## DaedaFusion OSS
 
-[DaedaFusion Github](https://github.com/daedafusion)
+## OBE (Obsolete By Events)
+
+*Projects that have run their course or were uncerimoniously killed...*
+
+<i class="fab fa-twitter"></i> [aviary.gallery](https://aviary.gallery) 
+
+*If you frequently like twitter posts from artists posting their latest creations, this site displays all that art in a dedicated gallery without all the twitter chrome around it.*
+
+<i class="fa-solid fa-microphone-lines"></i> [Own Goals Podcast](./own_goals)
+
+*Discussing various topics with [Chris Biscardi](https://hachyderm.io/@chrisbiscardi) around software development, hardware, and games while trying very hard not to screw things up too badly.  Unfortunately cut short due to the pandemic...*
 
 

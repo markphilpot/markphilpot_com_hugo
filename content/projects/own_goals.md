@@ -5,7 +5,7 @@ slug: own_goals
 summary: Own Goals Podcast with Chris Biscardi
 ---
 
-![OG](cover.jpg)
+![OG](og_cover.jpg)
 
 Your hosts Chris Biscardi and Mark Philpot discuss various topics around software development, hardware, and games while trying very hard not to screw things up too badly.
 
