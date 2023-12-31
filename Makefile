@@ -22,6 +22,3 @@ all: bin/hugo
 
 serve: bin/hugo
 	./bin/hugo serve -D
-
-serve-codespace: bin/hugo
-	hugo server -D --baseURL="https://$(shell jq -r ".CODESPACE_NAME" /workspaces/.codespaces/shared/environment-variables.json)-1313.app.github.dev" --appendPort=false
