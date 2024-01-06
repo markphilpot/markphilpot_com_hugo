@@ -3,7 +3,7 @@ title: About
 date: "2023-12-29 20:47:00"
 slug: about
 summary: About Mark Philpot
-featuredImage: hero.jpg
+featuredImage: hello.jpg
 ---
 
 What am I up to [/now](/now)
@@ -15,9 +15,14 @@ Some places you can find me on the internet:
         width: 100%; 
         display: flex; 
         justify-content: space-around;
+        padding-top: 1rem;
     }
     .about-links > a {
         box-shadow: 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
     }
     .about-links > a:hover {
         box-shadow: 0 1px;

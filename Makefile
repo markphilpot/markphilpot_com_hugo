@@ -1,3 +1,4 @@
+.PHONY: public clean clean-hugo all serve start
 
 public: bin/hugo-x64
 	./bin/hugo-x64
@@ -22,3 +23,6 @@ all: bin/hugo
 
 serve: bin/hugo
 	./bin/hugo serve -D
+
+start:
+	zellij --layout ./layout.kdl

@@ -32,3 +32,6 @@ make serve
 https://lucide.dev/icons/qr-code
 https://realfavicongenerator.net
 
+# Colors
+
+https://color.adobe.com
