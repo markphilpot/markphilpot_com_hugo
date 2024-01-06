@@ -36,3 +36,7 @@
 .dark.list {
   background: var(--theme);
 }
+
+body {
+  transition: background 0.5s;
+}

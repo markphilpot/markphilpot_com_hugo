@@ -36,6 +36,14 @@
         document.body.classList.add('dark');
     }
 
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if(e.matches) {
+            document.body.classList.add('dark');
+        } else {
+            document.body.classList.remove('dark');
+        }
+    });
+
 </script>
 {{- end }}
 
