@@ -1,6 +1,6 @@
 ---
 title: ~/projects
-date: '2016-03-02 22:23:00'
+date: '2024-01-06 15:45:00'
 slug: projects
 summary: My Projects
 featuredImage: hero.jpg
@@ -50,12 +50,12 @@ featuredImage: hero.jpg
 
 *Projects that have run their course or were uncerimoniously killed...*
 
-<i class="fab fa-twitter" style="color: #42B6E7"></i> [aviary.gallery](https://aviary.gallery) 
+<i class="fab fa-twitter" style="color: #42B6E7"></i> [aviary.gallery](https://github.com/markphilpot/aviary) 
 
-*If you frequently like twitter posts from artists posting their latest creations, this site displays all that art in a dedicated gallery without all the twitter chrome around it.*
+*If you frequently like twitter posts from artists posting their latest creations, this site displays all that art in a dedicated gallery without all the twitter chrome around it. Killed by the removal of the Twitter API*
 
 <i class="fa-solid fa-microphone-lines" style="color: #9BA2A7"></i> [Own Goals Podcast](./own_goals)
 
-*Discussing various topics with [Chris Biscardi](https://hachyderm.io/@chrisbiscardi) around software development, hardware, and games while trying very hard not to screw things up too badly.  Unfortunately cut short due to the pandemic...*
+*Discussing various topics with [Chris Biscardi](https://hachyderm.io/@chrisbiscardi) around software development, hardware, and games while trying very hard not to screw things up too badly.  Unfortunately cut short due to the pandemic.*
 
 
