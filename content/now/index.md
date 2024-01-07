@@ -2,8 +2,7 @@
 title: /now
 date: "2023-12-28 22:48:00"
 slug: now
-#summary: About Mark Philpot
-#featuredImage: hero.jpg
+featuredImage: hero.jpg
 ---
 
 <style>
