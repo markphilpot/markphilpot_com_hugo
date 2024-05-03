@@ -13,15 +13,15 @@ featuredImage: hero.jpg
 
 ### what I'm playing
 
-- :wolf: *Witcher 3 - Wild Hunt* (on a Steam Deck this time)
+- ![Octopath Traveler II](octopath.jpg)
 
 ### what I'm reading
 
-- :revolving_hearts: *A Fire Born of Exile* by Aliette De Bodard
+- !["A Fire Born of Exile" by Aliette De Bodard](fire.jpg)
 
 ### what I'm listening to
 
-- :zombie: *Out of Body (2023 Remastered Edition)* by Dance with the Dead
+- !["In Contact" by Caligula's Horse](contact.jpg)
 
 ### what I'm creating
 
@@ -30,4 +30,4 @@ featuredImage: hero.jpg
 
 ### what I'm watching
 
-![](winter_2024.jpg)
+![](spring_2024.jpg)
