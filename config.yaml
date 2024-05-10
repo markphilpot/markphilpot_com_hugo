@@ -28,13 +28,13 @@ outputs:
 
 menu:
   main:
-    - name: µposts
-      url: https://micro.markphilpot.com
+    # - name: µposts
+    #   url: https://micro.markphilpot.com
     - name: about
       url: about
       weight: 2
-    - name: social
-      url: https://philpot.org/@mark
+    # - name: social
+    #   url: https://philpot.org/@mark
     - name: ~/projects
       url: projects
       weight: 3
