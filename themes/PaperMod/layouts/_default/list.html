@@ -63,7 +63,8 @@
 {{- $class = "post-entry tag-entry" }}
 {{- end }}
 
-<article class="{{ $class }}">
+{{/* When using _index.md this renders the sub sections in the "list" page  */}}
+{{/*  <article class="{{ $class }}">
   {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
   {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
   <header class="entry-header">
@@ -86,7 +87,7 @@
   </footer>
   {{- end }}
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink | relURL }}"></a>
-</article>
+</article>  */}}
 {{- end }}
 
 {{- if gt $paginator.TotalPages 1 }}
