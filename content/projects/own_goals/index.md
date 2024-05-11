@@ -1,13 +1,13 @@
 ---
-title: Own Goals
+title: 🎙️ Own Goals (OBE)
 date: 2021-01-15 11:49:00
 slug: own_goals
-summary: Own Goals Podcast with Chris Biscardi
+summary: Discussing various topics with Chris Biscardi around software development, hardware, and games while trying very hard not to screw things up too badly.  Unfortunately cut short due to the pandemic.
 ---
 
 ![OG](own_goals.jpg)
 
-Your hosts Chris Biscardi and Mark Philpot discuss various topics around software development, hardware, and games while trying very hard not to screw things up too badly.
+Your hosts [Chris Biscardi](https://hachyderm.io/@chrisbiscardi) and Mark Philpot discuss various topics around software development, hardware, and games while trying very hard not to screw things up too badly.
 
 
 ## E6: Consulting
