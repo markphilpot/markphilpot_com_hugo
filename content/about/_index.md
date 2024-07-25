@@ -30,7 +30,7 @@ Some places you can find me on the internet:
 </style>
 
 <div class="about-links">
-    <a href="https://philpot.org/@mark"><i class="fa-brands fa-mastodon fa-xl"></i> Mastodon</a>
+    <a href="https://hachyderm.io/@markphilpot"><i class="fa-brands fa-mastodon fa-xl"></i> Mastodon</a>
     <a href="https://github.com/markphilpot"><i class="fa-brands fa-github fa-xl"></i> Github</a>
     <a href="https://www.flickr.com/photos/markphilpot"><i class="fa-brands fa-flickr fa-xl"></i> Flickr</a>
     <a href="https://anilist.co/user/mphilpot"><i class="fa-solid fa-a fa-xl"></i> Anilist</a>
