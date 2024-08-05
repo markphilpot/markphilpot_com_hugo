@@ -48,4 +48,6 @@ featuredImage: hero.jpg
 
 *If you frequently like twitter posts from artists posting their latest creations, this site displays all that art in a dedicated gallery without all the twitter chrome around it. Killed by the removal of the Twitter API*
 
+<i class="fa-solid fa-microphone-lines" style="color: #9BA2A7"></i> [Own Goals Podcast](../own_goals)
 
+*Discussing various topics with [Chris Biscardi](https://hachyderm.io/@chrisbiscardi) around software development, hardware, and games while trying very hard not to screw things up too badly.  Unfortunately cut short due to the pandemic.*

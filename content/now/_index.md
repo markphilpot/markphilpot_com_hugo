@@ -30,4 +30,4 @@ featuredImage: hero.jpg
 
 ### what I'm watching
 
-![](spring_2024.jpg)
+![](summer_2024.jpg)
