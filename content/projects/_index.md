@@ -12,7 +12,11 @@ featuredImage: hero.jpg
 
 <i class="fa fa-link" style="color: #667BC6"></i> hrefstart.app (In Development)
 
-*Create a new tab page full of links. Optimized for Arc's spaces*
+*Create a new tab page full of links. Optimized for Arc's spaces.*
+
+<i class="fa fa-list" style="color: #af44bd"></i> makelist.app (In Development)
+
+*Simple, anonymous TODO lists. Exploring [pocketbase.io](https://pocketbase.io) as a backend.*
 
 <i class="fa fa-calendar" style="color: #98A8D9"></i> [weeklyanime.info](https://weeklyanime.info)
 
