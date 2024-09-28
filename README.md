@@ -4,7 +4,7 @@ This blog uses a modified hugo to enable support for `.textbundle` files ([spec]
 
 ## Patch
 
-[Here](https://github.com/markphilpot/hugo/tree/mark/textbundle-support) is a link to the repo and branch (and [here](https://github.com/gohugoio/hugo/compare/master...markphilpot:hugo:mark/textbundle-support) is the specific diff)
+[Here](https://github.com/markphilpot/hugo/tree/mark/textbundle-support-v2) is a link to the repo and branch (and [here](https://github.com/gohugoio/hugo/compare/master...markphilpot:hugo:mark/textbundle-support-v2) is the specific diff)
 
 ## Build instructions
 
