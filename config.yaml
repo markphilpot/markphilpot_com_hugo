@@ -40,9 +40,9 @@ menu:
       weight: 3
     # - name: archive
     #   url: archives
-    # - name: search
-    #   url: search
-    #   weight: 1
+    - name: search
+      url: search
+      weight: 1
 
 params:
   disableThemeToggle: true

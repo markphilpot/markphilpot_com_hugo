@@ -6,17 +6,13 @@ summary: My Projects
 featuredImage: hero.jpg
 ---
 
-<i class="fa fa-image" style="color: #E3A5C7"></i> hasgif (In Development)
+<i class="fa fa-image" style="color: #E3A5C7"></i> [hasgif](https://hasgif.com)
 
 *A macOS app for curating your gif reactions. Supports tagging and metadata searches for quick recall. Leveraging the [tauri](https://tauri.app/) framework.*
 
-<i class="fa fa-link" style="color: #667BC6"></i> hrefstart.app (In Development)
+<i class="fa fa-link" style="color: #667BC6"></i> [hrefstart.app](https://hrefstart.app)
 
-*Create a new tab page full of links. Optimized for Arc's spaces.*
-
-<i class="fa fa-list" style="color: #af44bd"></i> makelist.app (In Development)
-
-*Simple, anonymous TODO lists. Exploring [pocketbase.io](https://pocketbase.io) as a backend.*
+*Create a new tab page full of links. Exploring [pocketbase.io](https://pocketbase.io) as a backend. Optimized for Arc's spaces.*
 
 <i class="fa fa-calendar" style="color: #98A8D9"></i> [weeklyanime.info](https://weeklyanime.info)
 
