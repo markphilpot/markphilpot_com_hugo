@@ -48,7 +48,7 @@ mark {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    margin: var(--gap) 0 calc(var(--gap) * 2);
+    /* margin: var(--gap) 0 calc(var(--gap) * 2); */
 }
 
 .first-entry .entry-header h1 {
