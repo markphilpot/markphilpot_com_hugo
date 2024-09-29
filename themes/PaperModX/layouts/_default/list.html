@@ -17,7 +17,7 @@
     {{ .Description | markdownify }}
   </div>
   {{- end }}
-  {{- partial "inline_links.html" . -}}
+  {{/* @mphilpot {{- partial "inline_links.html" . -}}  */}}
 </header>
 {{- end }}
 
@@ -71,6 +71,9 @@
       {{- if .Weight }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[Pinned]</span></sup>{{- end }}
     </h2>
   </header>
+  {{- if (.Param "featuredImage") }}
+  <img class="entry-featuredImage" loading="lazy" src="{{ .Permalink | relURL }}{{ .Param "featuredImage" }}" />
+  {{ end }}
   {{- if (ne (.Param "hideSummary") true) }}
   <section class="entry-content">
     {{ if .Description }}

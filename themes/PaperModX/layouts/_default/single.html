@@ -1,3 +1,9 @@
+{{- define "featuredImage" }}
+{{- if (.Param "featuredImage") }}
+<div class="post-featuredImage" style="background-image: url('{{ (.Param "featuredImage") }}');"></div>
+{{ end }}
+{{- end }}
+
 {{- define "main" }}
 {{- $isNewsletter := eq .Type "newsletter" }}
 

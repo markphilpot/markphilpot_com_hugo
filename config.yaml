@@ -19,6 +19,10 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+  highlight:
+    style: dracula
+    lineNos: false
+    noClasses: false
 
 outputs:
   home:
@@ -28,26 +32,26 @@ outputs:
 
 menu:
   main:
-    # - name: µposts
-    #   url: https://micro.markphilpot.com
     - name: about
       url: about
-      weight: 2
-    # - name: social
-    #   url: https://philpot.org/@mark
+      weight: 1
     - name: ~/projects
       url: projects
+      weight: 1
+    - name: archive
+      url: archives
+      weight: 2
+    - name: tags
+      url: tags
       weight: 3
-    # - name: archive
-    #   url: archives
     - name: search
       url: search
-      weight: 1
+      weight: 4
 
 params:
   disableThemeToggle: true
-  ShowReadingTime: false
-  disableScrollToTop: true
+  ShowReadingTime: true
+  disableScrollToTop: false
   ShowPostNavLinks: true
   assets:
     favicon: "/assets/favicon/favicon.ico"

@@ -35,3 +35,7 @@ https://realfavicongenerator.net
 # Colors
 
 https://color.adobe.com
+
+# PaperModX
+
+https://reorx.github.io/hugo-PaperModX/
