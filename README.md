@@ -39,3 +39,40 @@ https://color.adobe.com
 # PaperModX
 
 https://reorx.github.io/hugo-PaperModX/
+
+# Posts
+
+`featuredImage` and `hero` should be 1920x500. `title` is "hidden" & `Export as` is "hero.jpg"
+
+## Maps
+
+```
+<script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+
+<div id="map" class="wDiv" style="height: 600px; margin-bottom: 2em;"></div>
+<script>
+  const map = new maplibregl.Map({
+    style: 'https://tiles.openfreemap.org/styles/positron',
+    center: [-122.43899, 37.790322],
+    zoom: 12.37,
+    container: 'map',
+  })
+</script>
+```
+
+For positioning:
+
+```js
+map.getCenter()
+map.getZoom()
+
+// For Quick Access
+JSON.stringify(Object.entries(map.getCenter()).map(([ k, v]) => v))
+```
+
+## Youtube
+
+```
+<lite-youtube videoid="83E0Fl1qkq4" playlabel="Adobe Answers YOUR Questions on AI, Controversies, and Photography! | The PetaPixel Podcast" params="start=1685"></lite-youtube>
+```
