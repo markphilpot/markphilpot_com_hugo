@@ -7,6 +7,7 @@
     margin-inline-end: auto;
     line-height: var(--header-height);
 }
+
 .nav ul {
     margin: 0;
     padding: 0;
@@ -17,7 +18,7 @@
 }
 
 .logo,
-#menu {
+.menu {
     display: flex;
     margin: auto var(--gap);
 }
@@ -27,7 +28,7 @@
 }
 
 .logo a {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: 700;
 }
 
@@ -60,40 +61,48 @@ body:not(.dark) #sun {
     display: none;
 }
 
-#menu {
+.menuContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1em;
+    padding: 1em;
+}
+
+.menu {
     list-style: none;
     word-break: keep-all;
     overflow-x: auto;
     white-space: nowrap;
 }
 
-#menu li + li {
-    margin-inline-start: var(--gap);
+.menu li + li {
+    margin-inline-start: var(--header-gap);
 }
 
-#menu a {
+.menu a {
     font-size: 16px;
     font-weight: 500;
     color: var(--secondary);
     display: inline-block;
     line-height: 1.5em;
 }
-#menu a:hover {
+.menu a:hover {
     color: var(--primary);
 }
 
-#menu a.active:hover {
+.menu a.active:hover {
     color: var(--signature);
 }
-#menu .active {
+.menu .active {
     color: var(--signature);
     box-shadow: 0 2px 0 var(--signature);
 }
 
-#menu .external-link {
+.menu .external-link {
     position: relative;
 }
-#menu .external-link svg {
+.menu .external-link svg {
     width: 13px;
     height: auto;
     position: relative;
@@ -121,4 +130,14 @@ body:not(.dark) #sun {
 
 .logo-switches {
     flex-wrap: inherit;
+}
+
+@media only screen and (max-width: 450px) {
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    .menuContainer {
+        align-items: center;
+    }
 }

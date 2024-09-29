@@ -45,7 +45,5 @@ Ultimately, that's the point. An app delivers functionality, and I'll go with th
 [^1]:	[Tauri](https://tauri.app) as a fully featured alternative is getting there. I'm currently working on my own Tauri app and seeing if I can get from prototype to production with the limitations it has. Tauri v2 is coming soon, so I have high hopes that it can eventually supplant Electron as my cross platform framework of choice.
 
 [^2]:	Note for webkit browsers: For web apps that rely heavily on websockets (e.g. Slack) you *must* turn off (uncheck) the following setting from the menu:  
-	  
-	`Develop -> Experimental Features -> NSURLSession Webscoket`  
-	  
+	`Develop -> Experimental Features -> NSURLSession Websocket`  
 	Otherwise most websocket heavy apps will just stop updating.

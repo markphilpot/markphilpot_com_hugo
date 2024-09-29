@@ -138,7 +138,25 @@ function toggleThemeListener() {
             </span>
         </div>
         {{- $currentPage := . }}
-        <ul id="menu">
+        <div class="menuContainer">
+          <ul id="externalMenu" class="menu">
+            <li>
+              <a href="https://aside.markphilpot.com"><span><i class="fa-solid fa-microphone-lines" style="color: #309aea"></i></span></a>
+          </li>
+          <li>
+              <a href="https://portfolio.markphilpot.com"><span><i class="fa-brands fa-instagram" style="color: #af44bd"></i></span></a>
+          </li>
+          <li>
+              <a href="https://hachyderm.io/@markphilpot"><span><i class="fa-brands fa-mastodon" style="color: #6363f5"></i></span></a>
+          </li>
+          <li>
+              <a href="https://micro.markphilpot.com"><span><i class="fa-brands fa-microblog" style="color: #f6c443"></i></span></a>
+          </li>
+          <li>
+              <a href="/index.xml"><span><i class="fa-solid fa-rss" style="color: #ee802f"></i></span></a>
+          </li>
+          </ul>
+          <ul id="menu" class="menu">
             {{- range site.Menus.main }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL)) | absURL }}
             {{- $page_url:= $currentPage.Permalink }}
@@ -157,21 +175,7 @@ function toggleThemeListener() {
                 </a>
             </li>
             {{- end }}
-            <li>
-                <a href="https://aside.markphilpot.com"><span><i class="fa-solid fa-microphone-lines" style="color: #309aea"></i></span></a>
-            </li>
-            <li>
-                <a href="https://portfolio.markphilpot.com"><span><i class="fa-brands fa-instagram" style="color: #af44bd"></i></span></a>
-            </li>
-            <li>
-                <a href="https://hachyderm.io/@markphilpot"><span><i class="fa-brands fa-mastodon" style="color: #6363f5"></i></span></a>
-            </li>
-            <li>
-                <a href="https://micro.markphilpot.com"><span><i class="fa-brands fa-microblog" style="color: #f6c443"></i></span></a>
-            </li>
-            <li>
-                <a href="/index.xml"><span><i class="fa-solid fa-rss" style="color: #ee802f"></i></span></a>
-            </li>
         </ul>
+        </div>
     </nav>
 </header>

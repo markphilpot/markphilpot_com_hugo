@@ -9,8 +9,6 @@ hero: assets/hero.jpg
 featuredImage: assets/hero.jpg
 ---
 
-![](assets/hero.jpg "hidden")
-
 The folks over at PetaPixel sat down with Maria Yap, Adobe's Vice President of Digital Imaging to "get some answers" around generative AI, subscriptions, and of particular interest to me: Lightroom.
 
 <lite-youtube videoid="83E0Fl1qkq4" playlabel="Adobe Answers YOUR Questions on AI, Controversies, and Photography! | The PetaPixel Podcast" params="start=1685"></lite-youtube>
@@ -40,6 +38,8 @@ Jumping from Classic to CC was predicated to a significant extent on the promise
 ## tradeoffs all the way down
 
 I appreciate the convenience of the cloud. Not having to be connected to my NAS to edit photos is a plus. At the same time, there is only *one* cloud. I can't create separate cloud catalogs like I can with Classic. I get it — there isn't a one size fits all solution. Every photographer is going to have their own workflow, and I'm not sure how realistic it is to expect a single piece of software to handle everything (in Adobe's case, they seem to believe for the past decade that they might be able to do with two versions).
+
+![](assets/hero.jpg "hidden")
 
 [^1]:	I actually understand the division of features between Lightroom and Lightroom Classic and I applaud Adobe for keeping Classic around as long as it has.  Most other companies would have jettisoned it long ago in the name of progress and a single code base.
 

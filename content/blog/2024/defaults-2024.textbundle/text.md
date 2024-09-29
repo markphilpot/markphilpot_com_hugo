@@ -9,8 +9,6 @@ hero: assets/hero.jpg
 featuredImage: assets/hero.jpg
 ---
 
-![](assets/hero.jpg "hidden")
-
 <style>
 	/* Let's use emoji as the bullets */
     ul li { list-style-type: none; }
@@ -121,3 +119,5 @@ I love Tot as a place to just put random text that I will need at some point.  S
 [iTerm](https://iterm2.com)
 
 Been using iTerm2 since... forever? I could probably get away with just using the bare terminal, but Apple isn't concerned about the terminal experience, so I would rather be using an app by a developer that cares.
+
+![](assets/hero.jpg "hidden")
