@@ -16,18 +16,26 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     background-position: 50%;
     background-size: cover;
   }
+
+  @keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.animate-fade {
+    animation: fadeIn .5s ease-in-out
+}
   
-  img[title="hidden"] {
-    display: none !important;
-  }
-  figcaption[title="hidden"] {
-    display: none !important;
-  }
-  figcaption[title="ew1920"] {
+  img[title="hidden"], p.imgCaption[title="hidden"], p.imgCaption[title="ew1920"], div[title="hidden"] {
     display: none !important;
   }
   
-  img[title="ew1920"] {
+  div[title="ew1920"] {
     max-width: 1920px !important;
     margin-left: calc((1920px - 720px) / -2) !important;
     margin-right: calc((1920px - 720px) / -2) !important;
@@ -46,7 +54,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
   }
 
   @media (max-width: 1920px) {
-    img[title="ew1920"] {
+    div[title="ew1920"] {
       max-width: 100vw !important;
       margin-left: calc((100vw - 720px) / -2) !important;
       margin-right: calc((100vw - 720px) / -2) !important;
@@ -54,7 +62,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
   }
 
   @media (max-width: 752px) {
-    img[title="ew1920"] {
+    div[title="ew1920"] {
       max-width: 100vw !important;
       margin-left: -14px !important;
       margin-right: -14px !important;

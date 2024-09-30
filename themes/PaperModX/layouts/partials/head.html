@@ -102,6 +102,8 @@
 {{- template "partials/templates/schema_json.html" (dict "page" . "pageTitle" $pageTitle) }}
 
 {{- partial "extend_head.html" . }}
+
+{{- template "partials/templates/head_imgs_css.html" . }}
 <noscript>
     <style>
         #theme-toggle,
