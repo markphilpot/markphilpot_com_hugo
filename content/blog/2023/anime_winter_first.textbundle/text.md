@@ -12,6 +12,9 @@ featuredImage: assets/tomoHero.jpg
 
 Let's jump in, shall we?
 
+<link rel="stylesheet" href="/js/lite-yt-embed.css" />
+<script src="/js/lite-yt-embed.js"></script>
+
 ### [NieR:Automata Ver1.1a](https://anilist.co/anime/145665)
 
 ![](assets/nier.jpg "ew1920")

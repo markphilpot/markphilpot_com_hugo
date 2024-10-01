@@ -2,7 +2,7 @@ baseURL: "https://markphilpot.com"
 languageCode: en-us
 title: mark philpot
 theme: PaperModX
-timeout: 90s
+timeout: 100s
 
 enableInlineShortcodes: true
 enableRobotsTXT: true

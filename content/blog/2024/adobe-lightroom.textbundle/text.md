@@ -9,6 +9,9 @@ hero: assets/hero.jpg
 featuredImage: assets/hero.jpg
 ---
 
+<link rel="stylesheet" href="/js/lite-yt-embed.css" />
+<script src="/js/lite-yt-embed.js"></script>
+
 The folks over at PetaPixel sat down with Maria Yap, Adobe's Vice President of Digital Imaging to "get some answers" around generative AI, subscriptions, and of particular interest to me: Lightroom.
 
 <lite-youtube videoid="83E0Fl1qkq4" playlabel="Adobe Answers YOUR Questions on AI, Controversies, and Photography! | The PetaPixel Podcast" params="start=1685"></lite-youtube>

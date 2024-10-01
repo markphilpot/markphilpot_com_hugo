@@ -17,7 +17,8 @@ HUGO_BUILD_TAGS="extended nodeploy" mage hugo
 # Builds a x86 linux executable suitable for netlify
 # Note: Fixing extended broke the x86 build from ARM.
 # You will need to run this in a codespace or VM
-HUGO_BUILD_TAGS="extended nodeploy" GOOS=linux GOARCH=amd64 mage hugo && mv hugo hugo-x64
+CGO_ENABLED=1 go build -tags extended,nodeploy
+mv hugo hugo-x64
 ```
 
 These are saved to an s3 bucket for ease of use (See Makefile).
