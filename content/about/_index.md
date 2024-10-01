@@ -39,5 +39,4 @@ Some places you can find me on the internet:
 
 ### Experience
 
-![Dark Castle](dark_castle.png)
-_Which path did you choose?_
+![Dark Castle](dark_castle.png "Which path did you choose?")

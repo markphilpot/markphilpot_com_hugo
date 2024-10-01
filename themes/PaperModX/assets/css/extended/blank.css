@@ -30,6 +30,12 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 .animate-fade {
     animation: fadeIn .5s ease-in-out
 }
+
+p.imgCaption {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-style: italic;
+}
   
   img[title="hidden"], p.imgCaption[title="hidden"], p.imgCaption[title="ew1920"], div[title="hidden"] {
     display: none !important;
@@ -94,7 +100,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     border-bottom: none !important;
   }
   
-  .post-content img {
+  .post-content .imgPicContainer {
     text-align: center;
     margin-left: auto;
     margin-right: auto;

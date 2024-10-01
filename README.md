@@ -21,7 +21,7 @@ CGO_ENABLED=1 go build -tags extended,nodeploy
 mv hugo hugo-x64
 ```
 
-These are saved to an s3 bucket for ease of use (See Makefile).
+These are saved to an s3 bucket for ease of use (See Makefile). Reminder to set Read permissions on the files in S3 to World.
 
 # Blog Development
 
