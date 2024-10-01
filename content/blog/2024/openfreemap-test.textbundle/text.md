@@ -35,7 +35,7 @@ map.getCenter()
 map.getZoom()
 
 // For Quick Access
-JSON.stringify(Object.entries(map.getCenter()).map(([ k, v]) => v))
+JSON.stringify(Object.entries(map.getCenter()).map(([k, v]) => v))
 ```
 
 There are now `.ewDiv` and `.wDiv` classes for breaking out of the central column[^1].

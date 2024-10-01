@@ -1,7 +1,7 @@
 {
-  "creatorURL" : "file:\/\/\/private\/var\/containers\/Bundle\/Application\/BFB48DD0-9933-4B29-8328-EDC210D43CD6\/Ulysses.app\/",
+  "creatorURL" : "file:\/\/\/Applications\/Setapp\/Ulysses.app\/",
   "transient" : false,
   "type" : "net.daringfireball.markdown",
-  "creatorIdentifier" : "com.ulyssesapp.mac",
+  "creatorIdentifier" : "com.soulmen.ulysses-setapp",
   "version" : 2
 }

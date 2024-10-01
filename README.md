@@ -12,10 +12,12 @@ You will probably have to brew install a few things to get a go build environmen
 
 ```bash
 # Generates a hugo binary without any of the s3 deployment logic for a smaller executable
-HUGO_BUILD_TAGS=extended HUGO_BUILD_TAGS=nodeploy mage hugo
+HUGO_BUILD_TAGS="extended nodeploy" mage hugo
 
 # Builds a x86 linux executable suitable for netlify
-HUGO_BUILD_TAGS=extended HUGO_BUILD_TAGS=nodeploy GOOS=linux GOARCH=amd64 mage hugo
+# Note: Fixing extended broke the x86 build from ARM.
+# You will need to run this in a codespace or VM
+HUGO_BUILD_TAGS="extended nodeploy" GOOS=linux GOARCH=amd64 mage hugo && mv hugo hugo-x64
 ```
 
 These are saved to an s3 bucket for ease of use (See Makefile).

@@ -20,11 +20,7 @@ Unlike [Edgerunners](https://anilist.co/anime/120377) from last season, I was a 
 
 I'm going to hold myself to completing the game before diving into the anime (which means a lot of spoiler-avoiding-ninjitsu for me this season). The opening episode was solid despite a bit of CGI wonkiness. Having Aimer singing the OP does mean I will miss out on an epic song each week, but I can still appreciate it until I can beat the game.
 
-<div class="iframe_wrapper">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Xcx6MVs2o8E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-
+<lite-youtube videoid="Xcx6MVs2o8E" playlabel="Adobe Answers YOUR Questions on AI, Controversies, and Photography! | The PetaPixel Podcast" params="start=1685"></lite-youtube>
 
 ### [Tomo-chan wa Onnanoko! (Tomo-chan Is a Girl!)](https://anilist.co/anime/151806)
 
