@@ -1,6 +1,44 @@
 {{- define "featuredImage" }}
 {{- if (.Param "featuredImage") }}
-<div class="post-featuredImage" style="background-image: url('{{ (.Param "featuredImage") }}');"></div>
+{{/*  <img class="post-featuredImage" loading="lazy" src="{{ .Param "featuredImage" }}" />  */}}
+{{ $fe := .Param "featuredImage" }}
+
+{{ with .Resources.Get $fe }}
+
+  {{- $imgBd5 := md5 $fe -}}
+  {{- $respSizes := slice "752" "1280" "1920" -}}
+  {{- $dataSzes := "(min-width: 1024px) 100vw, 50vw" -}}
+  {{- $holder := "LQIP" -}}
+  {{- $hint := "photo" -}}
+  {{- $filter := "box" -}}
+  {{- $imgClass := "post-featuredImage animate-fade" -}}
+
+  {{- $divClass := print "post-featuredImage imgB-" $imgBd5 "-" $holder -}}
+  {{- $imgRsc := . -}}
+  {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
+  <div class="{{ $divClass }}" {{ with $imgRsc.Width }}{{- if ge 752 . -}}style="width: {{ $imgRsc.Width }}px;"{{- end }}{{ end }} data-pagefind-ignore {{ with $.Title}} title="{{ . }}" {{ end }}>
+    <picture data-pagefind-ignore>
+      <source type="image/webp" srcset="
+      {{- with $respSizes -}}
+        {{- range $i, $e := . -}}
+          {{- if ge $imgRsc.Width . -}}
+            {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x webp " $hint " " $filter) ).RelPermalink }} {{ . }}w
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}" sizes="{{ $dataSzes }}" />
+      <source type="image/jpeg" srcset="
+      {{- with $respSizes -}}
+        {{- range $i, $e := . -}}
+          {{- if ge $imgRsc.Width . -}}
+            {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x jpg " $filter) ).RelPermalink }} {{ . }}w
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}" sizes="{{ $dataSzes }}" />
+      <img style="object-fit: cover;" class="{{ $imgClass }}" src="{{ $actualImg.RelPermalink }}" loading="lazy" data-pagefind-ignore />
+    </picture>
+  </div>
+{{ end }}
+
 {{ end }}
 {{- end }}
 

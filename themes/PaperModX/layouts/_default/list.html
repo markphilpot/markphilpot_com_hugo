@@ -72,7 +72,37 @@
     </h2>
   </header>
   {{- if (.Param "featuredImage") }}
-  <img class="entry-featuredImage" loading="lazy" src="{{ .Permalink | relURL }}{{ .Param "featuredImage" }}" />
+    {{ $fe := .Param "featuredImage" }}
+    
+    {{ with .Resources.Get $fe }}
+      {{- $respSizes := slice "400" "700" -}}
+      {{- $imgRsc := . -}}
+      {{- $hint := "photo" -}}
+      {{- $filter := "box" -}}
+      {{- $dataSzes := "(min-width: 1024px) 100vw, 50vw" -}}
+      {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
+      <div class="entry-featuredImage">
+        <picture data-pagefind-ignore>
+          <source type="image/webp" srcset="
+          {{- with $respSizes -}}
+            {{- range $i, $e := . -}}
+              {{- if ge $imgRsc.Width . -}}
+                {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x webp q80 " $hint " " $filter) ).RelPermalink }} {{ . }}w
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}" sizes="{{ $dataSzes }}" />
+          <source type="image/jpeg" srcset="
+          {{- with $respSizes -}}
+            {{- range $i, $e := . -}}
+              {{- if ge $imgRsc.Width . -}}
+                {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x jpg q80 " $filter) ).RelPermalink }} {{ . }}w
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}" sizes="{{ $dataSzes }}" />
+          <img style="width: 100%;" class="entry-featuredImage animate-fade" loading="lazy" src="{{ $actualImg.RelPermalink }}" data-pagefind-ignore />
+        </picture>
+      </div>
+    {{ end }}
   {{ end }}
   {{- if (ne (.Param "hideSummary") true) }}
   <section class="entry-content">
