@@ -30,11 +30,11 @@ Some places you can find me on the internet:
 </style>
 
 <div class="about-links">
-    <a href="https://hachyderm.io/@markphilpot"><i class="fa-brands fa-mastodon fa-xl"></i> Mastodon</a>
-    <a href="https://github.com/markphilpot"><i class="fa-brands fa-github fa-xl"></i> Github</a>
-    <a href="https://www.flickr.com/photos/markphilpot"><i class="fa-brands fa-flickr fa-xl"></i> Flickr</a>
-    <a href="https://anilist.co/user/mphilpot"><i class="fa-solid fa-a fa-xl"></i> Anilist</a>
-    <a href="https://markphilpot.bandcamp.com"><i class="fa-brands fa-bandcamp fa-xl"></i> Bandcamp</a>
+    <a href="https://hachyderm.io/@markphilpot">{{< svg icon="SimpleIconsMastodon" >}} Mastodon</a>
+    <a href="https://github.com/markphilpot">{{< svg icon="SimpleIconsGithub" >}} Github</a>
+    <a href="https://www.flickr.com/photos/markphilpot">{{< svg icon="SimpleIconsFlickr" >}} Flickr</a>
+    <a href="https://anilist.co/user/mphilpot">{{< svg icon="SimpleIconsAnilist" >}} Anilist</a>
+    <a href="https://markphilpot.bandcamp.com">{{< svg icon="SimpleIconsBandcamp" >}} Bandcamp</a>
 </div>
 
 ### Experience

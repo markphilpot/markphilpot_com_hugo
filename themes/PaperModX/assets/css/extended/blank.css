@@ -113,3 +113,14 @@ p.imgCaption {
   .menu a:hover span {
     box-shadow: 0 1px;
   }
+
+  .icon-sm {
+    width: 16px;
+    height: 16px;
+    margin-bottom: -2px;
+  }
+  .icon-md {
+    width: 18px;
+    height: 18px;
+    margin-bottom: -2px;
+  }

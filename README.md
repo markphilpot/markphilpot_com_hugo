@@ -79,3 +79,10 @@ JSON.stringify(Object.entries(map.getCenter()).map(([ k, v]) => v))
 ```
 <lite-youtube videoid="83E0Fl1qkq4" playlabel="Adobe Answers YOUR Questions on AI, Controversies, and Photography! | The PetaPixel Podcast" params="start=1685"></lite-youtube>
 ```
+
+## Icons
+
+https://icones.js.org
+
+1. Download SVG to `/assets/icons`
+
