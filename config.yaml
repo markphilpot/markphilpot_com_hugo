@@ -32,21 +32,28 @@ outputs:
 
 menu:
   main:
-    - name: about
-      url: about
-      weight: 1
     - name: ~/projects
-      url: projects
-      weight: 1
+      pageRef: /projects
+      weight: 10
+    - name: /micro
+      url: https://micro.markphilpot.com
+      weight: 20
+      params:
+        external: true
+    - name: /now
+      pageRef: /now
+      weight: 30
+    - name: /about
+      pageRef: /about
+      weight: 40
     # - name: archive
     #   url: archives
     #   weight: 2
     # - name: tags
     #   url: tags
     #   weight: 3
-    - name: search
-      url: search
-      weight: 4
+    - name: /search
+      pageRef: /search
 
 params:
   disableThemeToggle: true

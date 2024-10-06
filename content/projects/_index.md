@@ -4,6 +4,7 @@ date: '2024-01-06 15:45:00'
 slug: projects
 summary: My Projects
 featuredImage: hero.jpg
+skipTitle: true
 ---
 
 {{< svg icon="SolarGalleryFavouriteBoldDuotone" style="color: #E3A5C7; margin-bottom: -12px;" >}} [hasgif](https://hasgif.com)

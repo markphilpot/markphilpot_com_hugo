@@ -4,9 +4,8 @@ date: "2023-12-29 20:47:00"
 slug: about
 summary: About Mark Philpot
 featuredImage: hello.jpg
+skipTitle: true
 ---
-
-What am I up to [/now](/now)
 
 Some places you can find me on the internet:
 

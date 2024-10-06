@@ -3,3 +3,4 @@ public/
 bin/hugo
 bin/hugo-x64
 .Ulysses-Group.plist
+.idea/

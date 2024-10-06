@@ -1,140 +1,143 @@
 {{- define "main" }}
 
-{{- if (and site.Params.profileMode.enabled .IsHome) }}
-{{- partial "index_profile.html" . }}
-{{- else }} {{/* if not profileMode */}}
+  {{- if (and site.Params.profileMode.enabled .IsHome) }}
+    {{- partial "index_profile.html" . }}
+  {{- else }} {{/* if not profileMode */}}
 
-{{- if not .IsHome | and .Title }}
-<header class="page-header">
-  {{- partial "breadcrumbs.html" . }}
-  <h1>
-    {{/* see: https://gohugo.io/variables/taxonomy/#taxonomy-terms-page-variables */}}
-    {{- if eq .Kind "term" -}}{{- .Data.Singular }}: {{ end -}}
-    {{ .Title -}}
-  </h1>
-  {{- if .Description }}
-  <div class="post-description">
-    {{ .Description | markdownify }}
-  </div>
+  {{- if not .IsHome | and .Title }}
+    <header class="page-header">
+      {{- partial "breadcrumbs.html" . }}
+      <h1>
+        {{/* see: https://gohugo.io/variables/taxonomy/#taxonomy-terms-page-variables */}}
+        {{- if eq .Kind "term" -}}{{- .Data.Singular }}: {{ end -}}
+        {{- if not (.Param "skipTitle") }}
+          {{ .Title -}}
+        {{ end -}}
+      </h1>
+      {{- if .Description }}
+        <div class="post-description">
+          {{ .Description | markdownify }}
+        </div>
+      {{- end }}
+      {{/* @mphilpot {{- partial "inline_links.html" . -}}  */}}
+    </header>
   {{- end }}
-  {{/* @mphilpot {{- partial "inline_links.html" . -}}  */}}
-</header>
-{{- end }}
 
-{{- if .Content }}
-<div class="post-content">
-  {{- if not (.Param "disableAnchoredHeadings") }}
-  {{- partial "anchored_headings.html" .Content -}}
-  {{- else }}{{ .Content }}{{ end }}
-</div>
-{{- end }}
+  {{- if .Content }}
+    <div class="post-content">
+      {{- if not (.Param "disableAnchoredHeadings") }}
+        {{- partial "anchored_headings.html" .Content -}}
+      {{- else }}{{ .Content }}{{ end }}
+    </div>
+  {{- end }}
 
 
-{{- $pages := .Pages }}
-{{- if .IsHome }}
-  {{/* get all regular pages instead of pages in a section */}}
-  {{- $pages = where site.RegularPages "Section" "in" site.Params.mainSections }}
-{{- end }}
-{{- $pages = where $pages "Params.hidden" "!=" true }}
+  {{- $pages := .Pages }}
+  {{- if .IsHome }}
+    {{/* get all regular pages instead of pages in a section */}}
+    {{- $pages = where site.RegularPages "Section" "in" site.Params.mainSections }}
+  {{- end }}
+  {{- $pages = where $pages "Params.hidden" "!=" true }}
 
-{{/* related issue: https://github.com/gohugoio/hugo/issues/9003 */}}
-{{ $paginator := "" }}
-{{ if (.Param "paginate") }}
-  {{- $paginator = .Paginate $pages (.Param "paginate") }}
-{{ else }}
-  {{- $paginator = .Paginate $pages }}
-{{ end }}
+  {{/* related issue: https://github.com/gohugoio/hugo/issues/9003 */}}
+  {{ $paginator := "" }}
+  {{ if (.Param "paginate") }}
+    {{- $paginator = .Paginate $pages (.Param "paginate") }}
+  {{ else }}
+    {{- $paginator = .Paginate $pages }}
+  {{ end }}
 
-{{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
-{{- partial "home_info.html" . }}
-{{- end }}
+  {{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
+    {{- partial "home_info.html" . }}
+  {{- end }}
 
-{{- $term := .Data.Term }}
-{{- range $index, $page := $paginator.Pages }}
+  {{- $term := .Data.Term }}
+  {{- range $index, $page := $paginator.Pages }}
 
-{{- $class := "post-entry" }}
+    {{- $class := "post-entry" }}
 
-{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
-{{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
-{{- $class = "first-entry" }}
-{{- else if $term }}
-{{- $class = "post-entry tag-entry" }}
-{{- end }}
+    {{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
+    {{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
+      {{- $class = "first-entry" }}
+    {{- else if $term }}
+      {{- $class = "post-entry tag-entry" }}
+    {{- end }}
 
-<article class="{{ $class }}">
-  {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
-  {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
-  <header class="entry-header">
-    <h2>
-      {{- .Title }}
-      {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[Draft]</span></sup>{{- end }}
-      {{- if .Weight }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[Pinned]</span></sup>{{- end }}
-    </h2>
-  </header>
-  {{- if (.Param "featuredImage") }}
-    {{ $fe := .Param "featuredImage" }}
-    
-    {{ with .Resources.Get $fe }}
-      {{- $respSizes := slice "400" "700" -}}
-      {{- $imgRsc := . -}}
-      {{- $hint := "photo" -}}
-      {{- $filter := "box" -}}
-      {{- $dataSzes := "(min-width: 1024px) 100vw, 50vw" -}}
-      {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
-      <div class="entry-featuredImage">
-        <picture data-pagefind-ignore>
-          <source type="image/webp" srcset="
+    <article class="{{ $class }}">
+      {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
+      {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
+      <header class="entry-header">
+        <h2>
+          {{- .Title }}
+          {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[Draft]</span></sup>{{- end }}
+          {{- if .Weight }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[Pinned]</span></sup>{{- end }}
+        </h2>
+      </header>
+      {{- if (.Param "featuredImage") }}
+        {{ $fe := .Param "featuredImage" }}
+
+        {{ with .Resources.Get $fe }}
+          {{- $respSizes := slice "400" "700" -}}
+          {{- $imgRsc := . -}}
+          {{- $hint := "photo" -}}
+          {{- $filter := "box" -}}
+          {{- $dataSzes := "(min-width: 1024px) 100vw, 50vw" -}}
+          {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
+          <div class="entry-featuredImage">
+            <picture data-pagefind-ignore>
+              <source type="image/webp" srcset="
           {{- with $respSizes -}}
             {{- range $i, $e := . -}}
               {{- if ge $imgRsc.Width . -}}
                 {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x webp q80 " $hint " " $filter) ).RelPermalink }} {{ . }}w
               {{- end -}}
             {{- end -}}
-          {{- end -}}" sizes="{{ $dataSzes }}" />
-          <source type="image/jpeg" srcset="
+          {{- end -}}" sizes="{{ $dataSzes }}"/>
+              <source type="image/jpeg" srcset="
           {{- with $respSizes -}}
             {{- range $i, $e := . -}}
               {{- if ge $imgRsc.Width . -}}
                 {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x jpg q80 " $filter) ).RelPermalink }} {{ . }}w
               {{- end -}}
             {{- end -}}
-          {{- end -}}" sizes="{{ $dataSzes }}" />
-          <img style="width: 100%;" class="entry-featuredImage animate-fade" loading="lazy" src="{{ $actualImg.RelPermalink }}" data-pagefind-ignore />
-        </picture>
-      </div>
-    {{ end }}
-  {{ end }}
-  {{- if (ne (.Param "hideSummary") true) }}
-  <section class="entry-content">
-    {{ if .Description }}
-      <p>{{ .Description | plainify | htmlUnescape }}</p>
-    {{ else }}
-      <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-    {{ end }}
-  </section>
+          {{- end -}}" sizes="{{ $dataSzes }}"/>
+              <img style="width: 100%;" class="entry-featuredImage animate-fade" loading="lazy"
+                   src="{{ $actualImg.RelPermalink }}" data-pagefind-ignore/>
+            </picture>
+          </div>
+        {{ end }}
+      {{ end }}
+      {{- if (ne (.Param "hideSummary") true) }}
+        <section class="entry-content">
+          {{ if .Description }}
+            <p>{{ .Description | plainify | htmlUnescape }}</p>
+          {{ else }}
+            <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+          {{ end }}
+        </section>
+      {{- end }}
+      {{- if not (.Param "hideMeta") }}
+        <footer class="entry-footer">
+          {{- partial "post_meta.html" . -}}
+        </footer>
+      {{- end }}
+      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </article>
   {{- end }}
-  {{- if not (.Param "hideMeta") }}
-  <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
-  </footer>
+
+  {{- if gt $paginator.TotalPages 1 }}
+    <footer class="page-footer">
+      <nav class="pagination">
+        {{- if $paginator.HasPrev }}
+          <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">« {{ i18n "prev_page" }}</a>
+        {{- end }}
+        {{- if $paginator.HasNext }}
+          <a class="next" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} »</a>
+        {{- end }}
+      </nav>
+    </footer>
   {{- end }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-</article>
-{{- end }}
 
-{{- if gt $paginator.TotalPages 1 }}
-<footer class="page-footer">
-  <nav class="pagination">
-    {{- if $paginator.HasPrev }}
-    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">« {{ i18n "prev_page" }}</a>
-    {{- end }}
-    {{- if $paginator.HasNext }}
-    <a class="next" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} »</a>
-    {{- end }}
-  </nav>
-</footer>
-{{- end }}
-
-{{- end }}{{/* end profileMode */}}
+  {{- end }}{{/* end profileMode */}}
 
 {{- end }}{{- /* end main */ -}}

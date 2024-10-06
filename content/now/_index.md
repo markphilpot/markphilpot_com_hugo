@@ -3,6 +3,7 @@ title: /now
 date: "2023-12-28 22:48:00"
 slug: now
 featuredImage: hero.jpg
+skipTitle: true
 ---
 
 <style>

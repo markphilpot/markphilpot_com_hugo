@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     max-width: calc(var(--nav-width) + var(--gap) * 2);
     margin-inline-start: auto;
     margin-inline-end: auto;
@@ -13,6 +14,19 @@
     padding: 0;
 }
 
+.navLeft {
+  display: flex;
+  flex-direction: column;
+  margin: auto var(--gap);
+}
+
+.navPlaces {
+  line-height: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-top: -8px;
+}
+
 .logo a {
     display: block;
 }
@@ -20,7 +34,10 @@
 .logo,
 .menu {
     display: flex;
-    margin: auto var(--gap);
+}
+
+#menu {
+  margin-right: var(--gap);
 }
 
 .logo {
@@ -61,15 +78,8 @@ body:not(.dark) #sun {
     display: none;
 }
 
-.menuContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    line-height: 1em;
-    padding: 1em;
-}
-
 .menu {
+    font-family: 'SourceCodePro';
     list-style: none;
     word-break: keep-all;
     overflow-x: auto;
@@ -132,7 +142,7 @@ body:not(.dark) #sun {
     flex-wrap: inherit;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 660px) {
     .nav {
         flex-direction: column;
         align-items: center;

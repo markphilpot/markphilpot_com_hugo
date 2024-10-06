@@ -1,7 +1,8 @@
 {{ $svg := .Get "icon" }}
 {{ $class := .Get "class" }}
 {{ $style := .Get "style" }}
-{{ $match := "<svg (.*)?>(.*)</svg>" }}
 
+{{ $match := "<svg (.*)?>(.*)</svg>" }}
 {{ $replaceWith := printf `<svg class="%s" style="%s" ${1}>${2}</svg>` $class $style }}
+
 {{ print (replaceRE $match $replaceWith (printf "/assets/icons/%s.svg" $svg | readFile)) | safeHTML }}
