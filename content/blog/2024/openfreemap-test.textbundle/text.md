@@ -1,7 +1,7 @@
 ---
 title: 'A Quick Mapping Diversion'
 date: '2024-09-29 11:52:00'
-tags: [maps]
+tags: [maps, blog]
 category: 
 slug: 
 summary: "Want to make a quick detour to see if I can use a new mapping project on this site: OpenFreeMap"

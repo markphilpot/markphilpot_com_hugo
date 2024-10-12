@@ -67,9 +67,8 @@
     {{- if not (.Param "hideMeta") }}
     <div class="post-meta">
       {{- partial "post_meta.html" . -}}
-      {{/* TODO move to footer */}}
-      {{/* partial "edit_post.html" . */}}
-      {{/* partial "post_canonical.html" . */}}
+      {{- partial "edit_post.html" . -}}
+      {{- partial "post_canonical.html" . -}}
     </div>
     {{- end }}
   </header>
@@ -86,6 +85,17 @@
     {{- else }}{{ .Content }}{{ end }}
   </div>
   {{- end }}
+
+  {{ if .Store.Get "hasMermaid" }}
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: isDarkTheme() ? 'dark' : 'default',
+      });
+    </script>
+  {{ end }}
 
   <footer class="post-footer">
     {{- if (.Param "socialLinks") }}

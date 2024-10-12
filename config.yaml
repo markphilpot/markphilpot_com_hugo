@@ -10,6 +10,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 enableEmoji: true
+capitalizeListTitles: false
 
 permalinks:
   page:
@@ -66,3 +67,8 @@ params:
     favicon32x32: "/assets/favicon/favicon-32x32.png"
     apple_touch_icon: "/assets/favicon/apple-touch-icon.png"
     safari_pinned_tab: "/assets/favicon/safari-pinned-tab.svg"
+
+  editPost:
+    URL: "https://github.com/markphilpot/markphilpot_com_hugo/tree/main/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
