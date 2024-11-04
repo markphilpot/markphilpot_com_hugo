@@ -55,7 +55,9 @@
       {{- if $isNewsletter -}}
         {{- replace .Title (.Param "titlePrefix") (.Param "titlePrefixReplace") -}}
       {{- else -}}
-        {{- .Title -}}
+        {{- if not (.Param "skipTitle") }}
+          {{ .Title -}}
+        {{ end -}}
       {{- end -}}
       {{- if .Draft -}}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end -}}
     </h1>

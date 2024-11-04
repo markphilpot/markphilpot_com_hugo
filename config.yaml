@@ -34,7 +34,7 @@ outputs:
 menu:
   main:
     - name: ~/projects
-      pageRef: /projects
+      url: /projects
       weight: 10
     - name: /micro
       url: https://micro.markphilpot.com
@@ -42,10 +42,10 @@ menu:
       params:
         external: true
     - name: /now
-      pageRef: /now
+      url: /now
       weight: 30
     - name: /about
-      pageRef: /about
+      url: /about
       weight: 40
     # - name: archive
     #   url: archives
@@ -70,5 +70,5 @@ params:
 
   editPost:
     URL: "https://github.com/markphilpot/markphilpot_com_hugo/tree/main/content"
-    Text: "Suggest Changes" # edit text
+    Text: "⑆" # edit text
     appendFilePath: true # to append file path to Edit link
