@@ -1,5 +1,5 @@
 ---
-title: \~/projects
+title: ∽/projects
 date: '2024-11-03 16:04:00'
 tags: []
 category: 
