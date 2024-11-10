@@ -33,12 +33,6 @@
     --signature: var(--primary);
     --signature-bg: var(--secondary);
 }
-@media screen and (max-width: 500px) {
-    :root {
-        --header-height: 52px;
-    }
-
-}
 
 .dark {
     --theme: rgb(17, 0, 28);

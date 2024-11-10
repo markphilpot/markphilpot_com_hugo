@@ -25,6 +25,7 @@
   display: flex;
   justify-content: center;
   margin-top: -8px;
+  margin-bottom: 8px;
 }
 
 .logo a {
@@ -38,6 +39,13 @@
 
 #menu {
   margin-right: var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#menu li {
+  line-height: 1rem;
 }
 
 .logo {

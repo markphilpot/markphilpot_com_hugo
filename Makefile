@@ -26,3 +26,6 @@ serve: bin/hugo
 
 start:
 	zellij --layout ./layout.kdl
+
+min:
+	open -a min http://localhost:1313
