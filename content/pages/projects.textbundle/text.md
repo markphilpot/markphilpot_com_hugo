@@ -11,6 +11,11 @@ skipTitle: true
 ShowPostNavLinks: false
 ---
 
+{{< svg icon="SolarBookLineDuotone" style="color: #BA68C8; margin-bottom: -12px;" >}} [wordsword.one](https://wordsword.one)
+
+*A Wordle/Wordscapes/Scrabble dictionary app*
+
+
 {{< svg icon="SolarGalleryFavouriteBoldDuotone" style="color: #E3A5C7; margin-bottom: -12px;" >}} [hasgif](https://hasgif.com)
 
 *A macOS app for curating your gif reactions. Supports tagging and metadata searches for quick recall. Leveraging the [tauri](https://tauri.app/) framework.*

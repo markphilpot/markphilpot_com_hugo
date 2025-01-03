@@ -31,7 +31,6 @@ Some places you can find me on the internet:
 </style>
 
 <div class="about-links">
-    <a href="https://hachyderm.io/@markphilpot">{{< svg icon="SimpleIconsMastodon" >}} Mastodon</a>
     <a href="https://github.com/markphilpot">{{< svg icon="SimpleIconsGithub" >}} Github</a>
     <a href="https://www.flickr.com/photos/markphilpot">{{< svg icon="SimpleIconsFlickr" >}} Flickr</a>
     <a href="https://anilist.co/user/mphilpot">{{< svg icon="SimpleIconsAnilist" >}} Anilist</a>
