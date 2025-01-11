@@ -1,4 +1,5 @@
 ---
+slug: kinda-first-post
 date: '2025-01-10 21:01:00'
 ---
 ![](assets/32ec3c3f-e91a-40a3-8e71-246cef0268eb.gif)
