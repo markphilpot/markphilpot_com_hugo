@@ -63,16 +63,19 @@
       {{- $class = "post-entry tag-entry" }}
     {{- end }}
 
-    <article class="{{ $class }}">
+    <article class="{{ $class }} {{ if .Title }}essay{{ end }}">
       {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
       {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
-      <header class="entry-header">
-        <h2>
-          {{- .Title }}
-          {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[Draft]</span></sup>{{- end }}
-          {{- if .Weight }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[Pinned]</span></sup>{{- end }}
-        </h2>
-      </header>
+
+      {{ if .Title }}
+        <header class="entry-header">
+          <h2>
+            {{- .Title }}
+            {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[Draft]</span></sup>{{- end }}
+            {{- if .Weight }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[Pinned]</span></sup>{{- end }}
+          </h2>
+        </header>
+      {{ end }}
       {{- if (.Param "featuredImage") }}
         {{ $fe := .Param "featuredImage" }}
 
@@ -108,13 +111,19 @@
         {{ end }}
       {{ end }}
       {{- if (ne (.Param "hideSummary") true) }}
-        <section class="entry-content">
-          {{ if .Description }}
-            <p>{{ .Description | plainify | htmlUnescape }}</p>
-          {{ else }}
-            <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-          {{ end }}
-        </section>
+        {{ if .Title }}
+          <section class="entry-content">
+            {{ if .Description }}
+              <p>{{ .Description | plainify | htmlUnescape }}</p>
+            {{ else }}
+              <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+            {{ end }}
+          </section>
+        {{ else }}
+          <section class="post-content">
+            {{ .Content }}
+          </section>
+        {{ end }}
       {{- end }}
       {{- if not (.Param "hideMeta") }}
         <footer class="entry-footer">

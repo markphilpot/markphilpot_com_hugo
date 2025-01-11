@@ -15,6 +15,7 @@ capitalizeListTitles: false
 permalinks:
   page:
     blog: /posts/:year/:month/:day/:slug
+    micro: /micro/:year/:month/:day/:slug
 
 markup:
   goldmark:
@@ -33,14 +34,17 @@ outputs:
 
 menu:
   main:
+    - name: essays
+      url: /blog
+      weight: 1
     - name: ~/projects
       url: /projects
       weight: 10
-    - name: /micro
-      url: https://micro.markphilpot.com
-      weight: 20
-      params:
-        external: true
+    # - name: /micro
+    #   url: https://micro.markphilpot.com
+    #   weight: 20
+    #   params:
+    #     external: true
     - name: /now
       url: /now
       weight: 30
@@ -67,6 +71,9 @@ params:
     favicon32x32: "/assets/favicon/favicon-32x32.png"
     apple_touch_icon: "/assets/favicon/apple-touch-icon.png"
     safari_pinned_tab: "/assets/favicon/safari-pinned-tab.svg"
+  mainSections:
+    - blog
+    - micro
 
   editPost:
     URL: "https://github.com/markphilpot/markphilpot_com_hugo/tree/main/content"

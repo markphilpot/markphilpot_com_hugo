@@ -124,3 +124,15 @@ p.imgCaption {
     height: 18px;
     margin-bottom: -2px;
   }
+
+  :root {
+    --essay: rgb(245, 239, 255);
+  }
+
+  .dark {
+    --essay: rgb(68, 23, 82);
+  }
+
+  .post-entry.essay {
+    background-color: var(--essay);
+  }
