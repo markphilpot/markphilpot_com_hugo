@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2025/onk.jpg
   width: 848
   height: 848
-url: /2025/01/03/oshi-no-ko-nd-season.html
+#url: /2025/01/03/oshi-no-ko-nd-season.html
 mastodon:
   id: 113766245197018443
   username: markphilpot

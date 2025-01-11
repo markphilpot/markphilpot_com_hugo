@@ -6,7 +6,7 @@ post_id: 3506328
 date: 2023-08-22T19:00:30-0800
 lastmod: 2023-08-22T19:00:30-0800
 type: post
-url: /2023/08/22/i-have-two.html
+#url: /2023/08/22/i-have-two.html
 mastodon:
   id: 110936695240884614
   username: markphilpot

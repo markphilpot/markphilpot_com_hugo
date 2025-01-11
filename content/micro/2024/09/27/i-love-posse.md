@@ -7,7 +7,7 @@ date: 2024-09-27T16:55:58-0800
 lastmod: 2024-09-27T16:57:01-0800
 type: post
 thumbnail: https://s3.amazonaws.com/micro.blog/thumbnails/2024/09/28/micro.markphilpot.com/fce75cb1edd70cf7085c73708d10be0f.png
-url: /2024/09/27/i-love-posse.html
+#url: /2024/09/27/i-love-posse.html
 mastodon:
   id: 113212454374921244
   username: markphilpot

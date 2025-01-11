@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/break-all-destruction-flags.jpg
   width: 1799
   height: 1012
-url: /2024/06/17/nokori-ichinichi-de.html
+#url: /2024/06/17/nokori-ichinichi-de.html
 mastodon:
   id: 112636159214676682
   username: markphilpot

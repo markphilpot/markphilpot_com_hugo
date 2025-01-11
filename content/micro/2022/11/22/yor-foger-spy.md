@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/5da01663f8.jpg
   width: 1800
   height: 1200
-url: /2022/11/22/yor-foger-spy.html
+#url: /2022/11/22/yor-foger-spy.html
 twitter:
   id: 1595294117222928384
   username: 

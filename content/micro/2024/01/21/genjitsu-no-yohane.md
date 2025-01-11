@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/sunshine.jpg
   width: 960
   height: 960
-url: /2024/01/21/genjitsu-no-yohane.html
+#url: /2024/01/21/genjitsu-no-yohane.html
 mastodon:
   id: 111795244018487481
   username: markphilpot

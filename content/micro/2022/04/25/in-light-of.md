@@ -10,7 +10,7 @@ images:
 - https://cdn.uploads.micro.blog/64442/2022/94bb65955b.png
 photos:
 photos_with_metadata:
-url: /2022/04/25/in-light-of.html
+#url: /2022/04/25/in-light-of.html
 twitter:
   id: 1518701105831714816
   username: 

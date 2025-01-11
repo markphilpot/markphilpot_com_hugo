@@ -6,7 +6,7 @@ post_id: 4356416
 date: 2024-09-28T13:38:59-0800
 lastmod: 2024-09-28T13:38:59-0800
 type: post
-url: /2024/09/28/honestly-i-think.html
+#url: /2024/09/28/honestly-i-think.html
 mastodon:
   id: 113217342084018417
   username: markphilpot

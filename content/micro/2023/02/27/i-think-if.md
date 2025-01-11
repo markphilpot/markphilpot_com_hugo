@@ -6,7 +6,7 @@ post_id: 1820211
 date: 2023-02-27T08:46:43-0800
 lastmod: 2023-02-27T08:46:43-0800
 type: post
-url: /2023/02/27/i-think-if.html
+#url: /2023/02/27/i-think-if.html
 mastodon:
   id: 109937718099238498
   username: markphilpot

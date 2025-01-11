@@ -6,7 +6,7 @@ post_id: 4391437
 date: 2024-10-18T16:23:27-0800
 lastmod: 2024-10-18T16:23:27-0800
 type: post
-url: /2024/10/18/i-think-this.html
+#url: /2024/10/18/i-think-this.html
 mastodon:
   id: 113331235139888299
   username: markphilpot

@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2023/d6c5e58d20.jpg
   width: 800
   height: 710
-url: /2023/01/15/omg-new-hiroyuki.html
+#url: /2023/01/15/omg-new-hiroyuki.html
 mastodon:
   id: 109696421599710537
   username: markphilpot

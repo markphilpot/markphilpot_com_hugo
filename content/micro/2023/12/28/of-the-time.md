@@ -6,7 +6,7 @@ post_id: 3812990
 date: 2023-12-28T23:13:48-0800
 lastmod: 2023-12-28T23:13:48-0800
 type: post
-url: /2023/12/28/of-the-time.html
+#url: /2023/12/28/of-the-time.html
 mastodon:
   id: 111662467361104264
   username: markphilpot

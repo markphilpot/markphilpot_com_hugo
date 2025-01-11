@@ -12,7 +12,7 @@ photos:
 - https://cdn.uploads.micro.blog/64442/2024/wand.jpg
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/wand.jpg
-url: /2024/10/30/tsue-to-tsurugi.html
+#url: /2024/10/30/tsue-to-tsurugi.html
 mastodon:
   id: 113397348743705897
   username: markphilpot

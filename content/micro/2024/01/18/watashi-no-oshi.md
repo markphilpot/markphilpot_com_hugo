@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/villianess.jpg
   width: 1800
   height: 1800
-url: /2024/01/18/watashi-no-oshi.html
+#url: /2024/01/18/watashi-no-oshi.html
 mastodon:
   id: 111778140159085118
   username: markphilpot

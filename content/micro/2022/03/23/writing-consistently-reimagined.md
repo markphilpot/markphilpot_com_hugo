@@ -7,7 +7,7 @@ post_id: 1532357
 date: 2022-03-23T20:14:18-0800
 lastmod: 2022-03-23T20:14:18-0800
 type: post
-url: /2022/03/23/writing-consistently-reimagined.html
+#url: /2022/03/23/writing-consistently-reimagined.html
 twitter:
   id: 1506846858123128833
   username: 

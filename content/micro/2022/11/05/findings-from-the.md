@@ -6,7 +6,7 @@ post_id: 1701713
 date: 2022-11-05T10:58:55-0800
 lastmod: 2022-11-05T10:58:55-0800
 type: post
-url: /2022/11/05/findings-from-the.html
+#url: /2022/11/05/findings-from-the.html
 twitter:
   id: 1588969134745964544
   username: 

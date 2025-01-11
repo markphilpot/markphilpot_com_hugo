@@ -7,7 +7,7 @@ date: 2024-09-14T09:04:44-0800
 lastmod: 2024-09-14T09:05:57-0800
 type: post
 thumbnail: https://s3.amazonaws.com/micro.blog/thumbnails/2024/09/14/micro.markphilpot.com/0962f2812551210a2e57bf1038b5eb16.png
-url: /2024/09/14/the-new-version.html
+#url: /2024/09/14/the-new-version.html
 mastodon:
   id: 113136991383351765
   username: markphilpot

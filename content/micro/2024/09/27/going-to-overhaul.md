@@ -6,7 +6,7 @@ post_id: 4355945
 date: 2024-09-27T17:36:46-0800
 lastmod: 2024-09-27T17:36:46-0800
 type: post
-url: /2024/09/27/going-to-overhaul.html
+#url: /2024/09/27/going-to-overhaul.html
 mastodon:
   id: 113212614731183142
   username: markphilpot

@@ -6,7 +6,7 @@ post_id: 1574529
 date: 2022-05-17T11:07:52-0800
 lastmod: 2022-05-17T11:07:52-0800
 type: post
-url: /2022/05/17/a-post-from.html
+#url: /2022/05/17/a-post-from.html
 twitter:
   id: 1526640671012134912
   username: 

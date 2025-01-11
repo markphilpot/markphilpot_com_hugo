@@ -6,7 +6,7 @@ post_id: 1589380
 date: 2022-06-05T09:45:20-0800
 lastmod: 2022-06-05T09:45:20-0800
 type: post
-url: /2022/06/05/i-dont-think.html
+#url: /2022/06/05/i-dont-think.html
 twitter:
   id: 1533505272844455936
   username: 

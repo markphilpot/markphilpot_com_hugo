@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/hikikomari.jpg
   width: 1799
   height: 1799
-url: /2024/04/18/hikikomari-kyuuketsuki-no.html
+#url: /2024/04/18/hikikomari-kyuuketsuki-no.html
 mastodon:
   id: 112295873820279870
   username: markphilpot

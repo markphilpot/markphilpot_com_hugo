@@ -12,7 +12,7 @@ photos:
 - https://cdn.uploads.micro.blog/64442/2022/16b3628af4.jpg
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/16b3628af4.jpg
-url: /2022/11/30/am-i-going.html
+#url: /2022/11/30/am-i-going.html
 twitter:
   id: 1598160497404157955
   username: 

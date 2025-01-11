@@ -6,7 +6,7 @@ post_id: 4429820
 date: 2024-11-11T13:51:02-0800
 lastmod: 2024-11-11T13:51:02-0800
 type: post
-url: /2024/11/11/took-out-my.html
+#url: /2024/11/11/took-out-my.html
 mastodon:
   id: 113466531189540688
   username: markphilpot

@@ -6,7 +6,7 @@ post_id: 1711012
 date: 2022-11-10T15:09:25-0800
 lastmod: 2022-11-10T15:09:25-0800
 type: post
-url: /2022/11/10/for-the-most.html
+#url: /2022/11/10/for-the-most.html
 twitter:
   id: 1590844123719897089
   username: 

@@ -6,7 +6,7 @@ post_id: 3704963
 date: 2023-11-16T21:13:05-0800
 lastmod: 2023-11-16T21:13:05-0800
 type: post
-url: /2023/11/16/the-biannual-dilemma.html
+#url: /2023/11/16/the-biannual-dilemma.html
 mastodon:
   id: 111424175258649528
   username: markphilpot

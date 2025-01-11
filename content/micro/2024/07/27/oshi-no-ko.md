@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/oshi.jpg
   width: 1024
   height: 1024
-url: /2024/07/27/oshi-no-ko.html
+#url: /2024/07/27/oshi-no-ko.html
 mastodon:
   id: 112859196756982620
   username: markphilpot

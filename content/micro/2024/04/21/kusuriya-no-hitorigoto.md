@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/kusuriya.jpg
   width: 1600
   height: 1600
-url: /2024/04/21/kusuriya-no-hitorigoto.html
+#url: /2024/04/21/kusuriya-no-hitorigoto.html
 mastodon:
   id: 112311540613283380
   username: markphilpot

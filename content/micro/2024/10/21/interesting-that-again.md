@@ -6,7 +6,7 @@ post_id: 4397609
 date: 2024-10-21T07:16:12-0800
 lastmod: 2024-10-21T07:16:12-0800
 type: post
-url: /2024/10/21/interesting-that-again.html
+#url: /2024/10/21/interesting-that-again.html
 mastodon:
   id: 113346070110877978
   username: markphilpot

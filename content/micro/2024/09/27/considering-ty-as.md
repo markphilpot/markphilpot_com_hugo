@@ -6,7 +6,7 @@ post_id: 4356027
 date: 2024-09-27T21:37:34-0800
 lastmod: 2024-09-27T21:37:34-0800
 type: post
-url: /2024/09/27/considering-ty-as.html
+#url: /2024/09/27/considering-ty-as.html
 mastodon:
   id: 113213561654198847
   username: markphilpot

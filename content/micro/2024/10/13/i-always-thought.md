@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/work-7.jpg
   width: 1400
   height: 700
-url: /2024/10/13/i-always-thought.html
+#url: /2024/10/13/i-always-thought.html
 mastodon:
   id: 113301743057870039
   username: markphilpot

@@ -10,7 +10,7 @@ images:
 - https://cdn.uploads.micro.blog/64442/2022/26271dcb28.png
 photos:
 photos_with_metadata:
-url: /2022/09/13/trapped-in-time.html
+#url: /2022/09/13/trapped-in-time.html
 twitter:
   id: 1569888312118366208
   username: 

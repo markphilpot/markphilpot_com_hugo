@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/light-novel-volume-3.jpg
   width: 1200
   height: 1200
-url: /2024/05/07/yagate-kimi-ni.html
+#url: /2024/05/07/yagate-kimi-ni.html
 mastodon:
   id: 112403425298565483
   username: markphilpot

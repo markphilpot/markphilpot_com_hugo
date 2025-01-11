@@ -10,7 +10,7 @@ images:
 - https://cdn.uploads.micro.blog/64442/2022/41e02ee836.png
 photos:
 photos_with_metadata:
-url: /2022/04/03/currently-exploring-if.html
+#url: /2022/04/03/currently-exploring-if.html
 twitter:
   id: 1510831584013918212
   username: 

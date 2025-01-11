@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/jellyfish-cant-swim-in-the-nights01e01jellyfish-in-the-night-0001.jpg
   width: 1799
   height: 1012
-url: /2024/04/13/yoru-no-kurage.html
+#url: /2024/04/13/yoru-no-kurage.html
 mastodon:
   id: 112267733949243612
   username: markphilpot

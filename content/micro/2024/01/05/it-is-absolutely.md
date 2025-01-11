@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/cleanshot-2024-01-05-at-19.48.582x.jpg
   width: 1583
   height: 670
-url: /2024/01/05/it-is-absolutely.html
+#url: /2024/01/05/it-is-absolutely.html
 mastodon:
   id: 111706968272673775
   username: markphilpot

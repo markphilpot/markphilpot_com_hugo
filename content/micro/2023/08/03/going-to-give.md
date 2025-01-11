@@ -12,7 +12,7 @@ photos:
 - https://cdn.uploads.micro.blog/64442/2023/2e29f4d6-28fd-4b68-9ec3-8c796a07175a.jpg
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2023/2e29f4d6-28fd-4b68-9ec3-8c796a07175a.jpg
-url: /2023/08/03/going-to-give.html
+#url: /2023/08/03/going-to-give.html
 mastodon:
   id: 110826397433516533
   username: markphilpot

@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/girls-band-crys01e01tokyo-hype-0001.jpg
   width: 1799
   height: 1012
-url: /2024/05/04/girls-band-cry.html
+#url: /2024/05/04/girls-band-cry.html
 mastodon:
   id: 112383732747808602
   username: markphilpot

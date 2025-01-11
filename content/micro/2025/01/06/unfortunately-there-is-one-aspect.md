@@ -6,7 +6,7 @@ post_id: 4579458
 date: 2025-01-06T17:07:23-0800
 lastmod: 2025-01-06T17:07:23-0800
 type: post
-url: /2025/01/06/unfortunately-there-is-one-aspect.html
+#url: /2025/01/06/unfortunately-there-is-one-aspect.html
 mastodon:
   id: 113784392971156007
   username: markphilpot

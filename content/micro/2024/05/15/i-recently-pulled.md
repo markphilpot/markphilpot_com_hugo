@@ -6,7 +6,7 @@ post_id: 4075305
 date: 2024-05-15T21:57:39-0800
 lastmod: 2024-06-10T21:35:21-0800
 type: post
-url: /2024/05/15/i-recently-pulled.html
+#url: /2024/05/15/i-recently-pulled.html
 mastodon:
   id: 112449228730974862
   username: markphilpot

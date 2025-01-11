@@ -10,7 +10,7 @@ images:
 - https://cdn.uploads.micro.blog/64442/2022/d0defc54ac.png
 photos:
 photos_with_metadata:
-url: /2022/06/21/summer-speculation-inbound.html
+#url: /2022/06/21/summer-speculation-inbound.html
 twitter:
   id: 1539435337033842690
   username: 

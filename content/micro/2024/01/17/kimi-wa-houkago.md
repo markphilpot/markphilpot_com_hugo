@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/insomnia.jpg
   width: 1000
   height: 1000
-url: /2024/01/17/kimi-wa-houkago.html
+#url: /2024/01/17/kimi-wa-houkago.html
 mastodon:
   id: 111772693375582232
   username: markphilpot

@@ -12,7 +12,7 @@ photos:
 - https://cdn.uploads.micro.blog/64442/2025/mv5bnmmym2rkndetyzi0ms00zgm3lwi1yzyty2y0yzezmgy3ntlmxkeyxkfqcgc.-v1-fmjpg-u.jpg
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2025/mv5bnmmym2rkndetyzi0ms00zgm3lwi1yzyty2y0yzezmgy3ntlmxkeyxkfqcgc.-v1-fmjpg-u.jpg
-url: /2025/01/10/hazbin-hotel-masterpiece-i-cant.html
+#url: /2025/01/10/hazbin-hotel-masterpiece-i-cant.html
 mastodon:
   id: 113805482863474012
   username: markphilpot

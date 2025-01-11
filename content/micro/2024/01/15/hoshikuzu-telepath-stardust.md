@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/stardust.jpg
   width: 1000
   height: 1000
-url: /2024/01/15/hoshikuzu-telepath-stardust.html
+#url: /2024/01/15/hoshikuzu-telepath-stardust.html
 mastodon:
   id: 111763815917721405
   username: markphilpot

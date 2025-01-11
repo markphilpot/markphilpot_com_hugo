@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/frieren.jpg
   width: 1325
   height: 1325
-url: /2024/04/28/sousou-no-frieren.html
+#url: /2024/04/28/sousou-no-frieren.html
 mastodon:
   id: 112352681487838392
   username: markphilpot

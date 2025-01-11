@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/f50256ac3d.jpg
   width: 600
   height: 400
-url: /2022/11/21/bocchi-the-rock.html
+#url: /2022/11/21/bocchi-the-rock.html
 twitter:
   id: 1594902401047154688
   username: 

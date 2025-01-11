@@ -6,7 +6,7 @@ post_id: 3850921
 date: 2024-01-22T12:07:28-0800
 lastmod: 2024-01-22T12:07:28-0800
 type: post
-url: /2024/01/22/screens-is-leaving.html
+#url: /2024/01/22/screens-is-leaving.html
 mastodon:
   id: 111801404703830242
   username: markphilpot

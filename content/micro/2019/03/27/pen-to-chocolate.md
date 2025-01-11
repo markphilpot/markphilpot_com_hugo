@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/9cad88e22b.jpg
   width: 600
   height: 187
-url: /2019/03/27/pen-to-chocolate.html
+#url: /2019/03/27/pen-to-chocolate.html
 ---
 <img src="uploads/2022/9cad88e22b.jpg" width="600" height="187" alt="">
 

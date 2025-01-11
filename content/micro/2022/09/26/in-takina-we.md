@@ -12,7 +12,7 @@ photos:
 - https://cdn.uploads.micro.blog/64442/2022/5345ca6c70.jpg
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/5345ca6c70.jpg
-url: /2022/09/26/in-takina-we.html
+#url: /2022/09/26/in-takina-we.html
 twitter:
   id: 1574458654002221068
   username: 

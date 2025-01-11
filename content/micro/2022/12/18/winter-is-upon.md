@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/f15cefb796.jpg
   width: 1799
   height: 1137
-url: /2022/12/18/winter-is-upon.html
+#url: /2022/12/18/winter-is-upon.html
 mastodon:
   id: 109536285883122136
   username: markphilpot

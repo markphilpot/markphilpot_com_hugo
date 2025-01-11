@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/futaribeya.jpg
   width: 891
   height: 891
-url: /2024/04/02/futaribeya-one-of.html
+#url: /2024/04/02/futaribeya-one-of.html
 mastodon:
   id: 112205336751561559
   username: markphilpot

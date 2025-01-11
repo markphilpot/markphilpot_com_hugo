@@ -6,7 +6,7 @@ post_id: 4359530
 date: 2024-10-02T07:43:20-0800
 lastmod: 2024-10-02T07:43:20-0800
 type: post
-url: /2024/10/02/forgot-that-the.html
+#url: /2024/10/02/forgot-that-the.html
 mastodon:
   id: 113238592830704662
   username: markphilpot

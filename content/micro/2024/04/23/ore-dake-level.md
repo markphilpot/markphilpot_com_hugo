@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/solo.jpg
   width: 1769
   height: 1769
-url: /2024/04/23/ore-dake-level.html
+#url: /2024/04/23/ore-dake-level.html
 mastodon:
   id: 112324222542805185
   username: markphilpot

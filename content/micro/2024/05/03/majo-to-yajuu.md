@@ -12,7 +12,7 @@ photos:
 - https://cdn.uploads.micro.blog/64442/2024/witch-beast.jpg
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/witch-beast.jpg
-url: /2024/05/03/majo-to-yajuu.html
+#url: /2024/05/03/majo-to-yajuu.html
 mastodon:
   id: 112378866514922691
   username: markphilpot

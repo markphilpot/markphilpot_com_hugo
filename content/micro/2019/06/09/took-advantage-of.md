@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/e5e6d534bd.jpg
   width: 600
   height: 337
-url: /2019/06/09/took-advantage-of.html
+#url: /2019/06/09/took-advantage-of.html
 ---
 <img src="uploads/2022/e5e6d534bd.jpg" width="600" height="337" alt="">
 

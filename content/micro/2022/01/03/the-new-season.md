@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/4bdceff944.jpg
   width: 600
   height: 337
-url: /2022/01/03/the-new-season.html
+#url: /2022/01/03/the-new-season.html
 ---
 The new season of The Witcher dropped and I waited for the holidays to binge it.
 

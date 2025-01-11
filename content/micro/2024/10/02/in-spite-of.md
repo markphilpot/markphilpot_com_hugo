@@ -6,7 +6,7 @@ post_id: 4359492
 date: 2024-10-02T07:37:03-0800
 lastmod: 2024-10-02T07:37:03-0800
 type: post
-url: /2024/10/02/in-spite-of.html
+#url: /2024/10/02/in-spite-of.html
 mastodon:
   id: 113238568182116463
   username: markphilpot

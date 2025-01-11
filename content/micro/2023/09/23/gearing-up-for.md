@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://mphilpot-test.micro.blog/uploads/2023/cleanshot-2023-09-23-at-11.25.012x.jpg
   width: 1574
   height: 1152
-url: /2023/09/23/gearing-up-for.html
+#url: /2023/09/23/gearing-up-for.html
 mastodon:
   id: 111117363974968446
   username: markphilpot

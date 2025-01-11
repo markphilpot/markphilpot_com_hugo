@@ -6,7 +6,7 @@ post_id: 1575239
 date: 2022-05-18T18:20:43-0800
 lastmod: 2022-05-18T18:20:43-0800
 type: post
-url: /2022/05/18/installed-nightfall-a.html
+#url: /2022/05/18/installed-nightfall-a.html
 twitter:
   id: 1527111985648762880
   username: 

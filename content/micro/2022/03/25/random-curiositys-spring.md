@@ -10,7 +10,7 @@ images:
 - https://cdn.uploads.micro.blog/64442/2022/0c206ee6b7.png
 photos:
 photos_with_metadata:
-url: /2022/03/25/random-curiositys-spring.html
+#url: /2022/03/25/random-curiositys-spring.html
 twitter:
   id: 1507370733344854016
   username: 

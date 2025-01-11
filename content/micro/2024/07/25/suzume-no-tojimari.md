@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/suzame.jpg
   width: 1200
   height: 1200
-url: /2024/07/25/suzume-no-tojimari.html
+#url: /2024/07/25/suzume-no-tojimari.html
 mastodon:
   id: 112850445511011646
   username: markphilpot

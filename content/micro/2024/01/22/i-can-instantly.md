@@ -10,7 +10,7 @@ images:
 - https://cdn.uploads.micro.blog/64442/2024/d2ce51d3-83ef-42e4-b269-51f0b33d0f89.gif
 photos:
 photos_with_metadata:
-url: /2024/01/22/i-can-instantly.html
+#url: /2024/01/22/i-can-instantly.html
 ---
 I can instantly tell if an app has been written in SwiftUI — my scroll wheel works only 50% of the time when scrolling any list.
 

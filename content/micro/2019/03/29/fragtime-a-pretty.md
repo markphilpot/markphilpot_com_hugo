@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/2432de26e1.jpg
   width: 600
   height: 187
-url: /2019/03/29/fragtime-a-pretty.html
+#url: /2019/03/29/fragtime-a-pretty.html
 ---
 <img src="uploads/2022/2432de26e1.jpg" width="600" height="187" alt="">
 

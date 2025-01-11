@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/promare.jpg
   width: 835
   height: 835
-url: /2024/07/16/promare-is-there.html
+#url: /2024/07/16/promare-is-there.html
 mastodon:
   id: 112798091554533611
   username: markphilpot

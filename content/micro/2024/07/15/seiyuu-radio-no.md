@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/voice.jpg
   width: 1000
   height: 1000
-url: /2024/07/15/seiyuu-radio-no.html
+#url: /2024/07/15/seiyuu-radio-no.html
 mastodon:
   id: 112791284976246635
   username: markphilpot

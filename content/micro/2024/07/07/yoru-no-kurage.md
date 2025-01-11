@@ -14,7 +14,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/jellyfish.jpg
   width: 1000
   height: 1000
-url: /2024/07/07/yoru-no-kurage.html
+#url: /2024/07/07/yoru-no-kurage.html
 mastodon:
   id: 112748672393308048
   username: markphilpot
