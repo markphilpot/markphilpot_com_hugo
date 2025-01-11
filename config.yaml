@@ -17,6 +17,10 @@ permalinks:
     blog: /posts/:year/:month/:day/:slug
     micro: /micro/:year/:month/:day/:slugorfilename
 
+services:
+  rss:
+    limit: 42
+
 markup:
   goldmark:
     renderer:
