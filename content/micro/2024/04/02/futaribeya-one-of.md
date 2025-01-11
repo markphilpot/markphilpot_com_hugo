@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 891
   height: 891
 #url: /2024/04/02/futaribeya-one-of.html
+showReadingTime: false
 mastodon:
   id: 112205336751561559
   username: markphilpot

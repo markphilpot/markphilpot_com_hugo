@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1400
   height: 700
 #url: /2024/10/13/i-always-thought.html
+showReadingTime: false
 mastodon:
   id: 113301743057870039
   username: markphilpot

@@ -7,6 +7,7 @@ date: 2019-06-17T21:51:00-0800
 lastmod: 2022-11-17T23:06:58-0800
 type: post
 #url: /2019/06/17/prismaio-seems-to.html
+showReadingTime: false
 ---
 prisma.io seems to fail very quickly on even the most basic SQL types. I think if you are doing a project from scratch and you have a very vanilla data model, Prisma might make sense. However trying to pair it with an existing database, you quickly find out where all the assumptions in the abstraction break down.
 

@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1800
   height: 1200
 #url: /2022/04/18/spring.html
+showReadingTime: false
 twitter:
   id: 1516090665620414467
   username: 

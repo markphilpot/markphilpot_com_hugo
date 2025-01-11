@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1800
   height: 1200
 #url: /2022/11/22/yor-foger-spy.html
+showReadingTime: false
 twitter:
   id: 1595294117222928384
   username: 

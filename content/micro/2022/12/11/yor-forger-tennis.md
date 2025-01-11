@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1800
   height: 1200
 #url: /2022/12/11/yor-forger-tennis.html
+showReadingTime: false
 twitter:
   id: 1602160678323757057
   username: 

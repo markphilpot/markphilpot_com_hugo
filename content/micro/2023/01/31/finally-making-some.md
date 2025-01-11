@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1799
   height: 756
 #url: /2023/01/31/finally-making-some.html
+showReadingTime: false
 mastodon:
   id: 109787688826312446
   username: markphilpot

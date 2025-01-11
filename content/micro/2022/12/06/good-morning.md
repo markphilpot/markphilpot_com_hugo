@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1799
   height: 1201
 #url: /2022/12/06/good-morning.html
+showReadingTime: false
 twitter:
   id: 1600241419444183053
   username: 

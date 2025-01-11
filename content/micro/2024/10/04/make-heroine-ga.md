@@ -13,6 +13,7 @@ photos:
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/heroines.jpg
 #url: /2024/10/04/make-heroine-ga.html
+showReadingTime: false
 mastodon:
   id: 113252877140987635
   username: markphilpot

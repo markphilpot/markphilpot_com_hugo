@@ -7,6 +7,7 @@ date: 2024-01-12T20:43:32-0800
 lastmod: 2024-01-12T20:43:32-0800
 type: post
 #url: /2024/01/12/it-is-unbelievable.html
+showReadingTime: false
 mastodon:
   id: 111746810735863487
   username: markphilpot

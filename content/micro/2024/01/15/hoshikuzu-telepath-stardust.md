@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1000
   height: 1000
 #url: /2024/01/15/hoshikuzu-telepath-stardust.html
+showReadingTime: false
 mastodon:
   id: 111763815917721405
   username: markphilpot

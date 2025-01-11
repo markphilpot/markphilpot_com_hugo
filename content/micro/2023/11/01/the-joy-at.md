@@ -7,6 +7,7 @@ date: 2023-11-01T19:38:26-0800
 lastmod: 2023-11-01T19:38:26-0800
 type: post
 #url: /2023/11/01/the-joy-at.html
+showReadingTime: false
 mastodon:
   id: 111338868573935187
   username: markphilpot

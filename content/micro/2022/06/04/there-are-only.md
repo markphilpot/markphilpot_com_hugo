@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1200
   height: 628
 #url: /2022/06/04/there-are-only.html
+showReadingTime: false
 twitter:
   id: 1533301472326168576
   username: 

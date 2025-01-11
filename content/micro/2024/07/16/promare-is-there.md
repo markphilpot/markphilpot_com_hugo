@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 835
   height: 835
 #url: /2024/07/16/promare-is-there.html
+showReadingTime: false
 mastodon:
   id: 112798091554533611
   username: markphilpot

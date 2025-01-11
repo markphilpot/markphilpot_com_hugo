@@ -16,6 +16,7 @@ photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/4ad40f4085.jpg
 - url: https://cdn.uploads.micro.blog/64442/2022/71a9582e58.jpg
 #url: /2022/09/13/ive-determined-im.html
+showReadingTime: false
 twitter:
   id: 1569788810178838529
   username: 

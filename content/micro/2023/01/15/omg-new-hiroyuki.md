@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 800
   height: 710
 #url: /2023/01/15/omg-new-hiroyuki.html
+showReadingTime: false
 mastodon:
   id: 109696421599710537
   username: markphilpot

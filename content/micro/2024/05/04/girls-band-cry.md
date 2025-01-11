@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1799
   height: 1012
 #url: /2024/05/04/girls-band-cry.html
+showReadingTime: false
 mastodon:
   id: 112383732747808602
   username: markphilpot

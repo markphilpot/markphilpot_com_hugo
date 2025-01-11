@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1574
   height: 1152
 #url: /2023/09/23/gearing-up-for.html
+showReadingTime: false
 mastodon:
   id: 111117363974968446
   username: markphilpot

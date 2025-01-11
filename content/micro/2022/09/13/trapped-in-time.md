@@ -11,6 +11,7 @@ images:
 photos:
 photos_with_metadata:
 #url: /2022/09/13/trapped-in-time.html
+showReadingTime: false
 twitter:
   id: 1569888312118366208
   username: 

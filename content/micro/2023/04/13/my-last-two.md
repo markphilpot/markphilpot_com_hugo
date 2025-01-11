@@ -7,6 +7,7 @@ date: 2023-04-13T14:19:55-0800
 lastmod: 2023-04-13T14:20:51-0800
 type: post
 #url: /2023/04/13/my-last-two.html
+showReadingTime: false
 mastodon:
   id: 110193829304977475
   username: markphilpot

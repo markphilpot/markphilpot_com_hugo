@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1000
   height: 1000
 #url: /2024/07/15/seiyuu-radio-no.html
+showReadingTime: false
 mastodon:
   id: 112791284976246635
   username: markphilpot

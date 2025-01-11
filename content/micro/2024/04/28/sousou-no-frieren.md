@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1325
   height: 1325
 #url: /2024/04/28/sousou-no-frieren.html
+showReadingTime: false
 mastodon:
   id: 112352681487838392
   username: markphilpot

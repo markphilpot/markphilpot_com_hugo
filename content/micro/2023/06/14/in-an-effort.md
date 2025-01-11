@@ -7,6 +7,7 @@ date: 2023-06-14T21:31:37-0800
 lastmod: 2023-06-14T21:31:37-0800
 type: post
 #url: /2023/06/14/in-an-effort.html
+showReadingTime: false
 mastodon:
   id: 110546590109252991
   username: markphilpot

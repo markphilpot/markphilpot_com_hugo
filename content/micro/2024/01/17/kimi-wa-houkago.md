@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1000
   height: 1000
 #url: /2024/01/17/kimi-wa-houkago.html
+showReadingTime: false
 mastodon:
   id: 111772693375582232
   username: markphilpot

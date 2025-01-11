@@ -7,6 +7,7 @@ date: 2022-07-31T09:39:50-0800
 lastmod: 2022-07-31T09:39:50-0800
 type: post
 #url: /2022/07/31/been-trying-to.html
+showReadingTime: false
 twitter:
   id: 1553798510553825281
   username: 

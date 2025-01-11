@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 600
   height: 187
 #url: /2019/03/21/yahari-ore-no.html
+showReadingTime: false
 ---
 <img src="uploads/2022/2bff4cb7b4.jpg" width="600" height="187" alt="">
 

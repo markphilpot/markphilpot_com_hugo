@@ -7,6 +7,7 @@ date: 2022-11-05T10:58:55-0800
 lastmod: 2022-11-05T10:58:55-0800
 type: post
 #url: /2022/11/05/findings-from-the.html
+showReadingTime: false
 twitter:
   id: 1588969134745964544
   username: 

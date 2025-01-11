@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1600
   height: 1600
 #url: /2024/04/21/kusuriya-no-hitorigoto.html
+showReadingTime: false
 mastodon:
   id: 112311540613283380
   username: markphilpot

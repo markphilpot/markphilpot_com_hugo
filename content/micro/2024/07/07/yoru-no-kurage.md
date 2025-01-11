@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1000
   height: 1000
 #url: /2024/07/07/yoru-no-kurage.html
+showReadingTime: false
 mastodon:
   id: 112748672393308048
   username: markphilpot

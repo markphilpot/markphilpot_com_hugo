@@ -13,6 +13,7 @@ photos:
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/feelings.jpg
 #url: /2024/10/05/tokidoki-bosotto-russiago.html
+showReadingTime: false
 mastodon:
   id: 113255803125134880
   username: markphilpot

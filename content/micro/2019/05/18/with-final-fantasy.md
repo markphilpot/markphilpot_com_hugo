@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 600
   height: 337
 #url: /2019/05/18/with-final-fantasy.html
+showReadingTime: false
 ---
 <img src="uploads/2022/941683bc9c.jpg" width="600" height="337" alt="">
 

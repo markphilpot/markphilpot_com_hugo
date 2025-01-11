@@ -7,6 +7,7 @@ date: 2024-09-28T08:13:19-0800
 lastmod: 2024-09-28T08:13:19-0800
 type: post
 #url: /2024/09/28/it-would-be.html
+showReadingTime: false
 mastodon:
   id: 113216061522585600
   username: markphilpot

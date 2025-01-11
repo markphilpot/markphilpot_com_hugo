@@ -7,6 +7,7 @@ date: 2022-11-06T11:46:18-0800
 lastmod: 2022-11-06T11:46:18-0800
 type: post
 #url: /2022/11/06/mastodon-thoughts-if.html
+showReadingTime: false
 twitter:
   id: 1589343671488598018
   username: 

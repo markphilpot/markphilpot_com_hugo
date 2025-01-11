@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1799
   height: 1799
 #url: /2024/04/18/hikikomari-kyuuketsuki-no.html
+showReadingTime: false
 mastodon:
   id: 112295873820279870
   username: markphilpot

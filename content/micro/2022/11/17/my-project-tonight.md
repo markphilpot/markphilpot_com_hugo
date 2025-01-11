@@ -7,6 +7,7 @@ date: 2022-11-17T21:32:47-0800
 lastmod: 2022-11-17T21:32:47-0800
 type: post
 #url: /2022/11/17/my-project-tonight.html
+showReadingTime: false
 twitter:
   id: 1593477318244270081
   username: 

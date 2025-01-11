@@ -7,6 +7,7 @@ date: 2024-03-02T10:40:44-0800
 lastmod: 2024-03-02T10:40:44-0800
 type: post
 #url: /2024/03/02/as-an-introduction.html
+showReadingTime: false
 mastodon:
   id: 112027556112307832
   username: markphilpot

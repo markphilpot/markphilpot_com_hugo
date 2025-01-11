@@ -8,6 +8,7 @@ date: 2022-03-29T19:11:41-0800
 lastmod: 2022-03-29T19:12:42-0800
 type: post
 #url: /2022/03/29/eps-to-svg.html
+showReadingTime: false
 twitter:
   id: 1509005418424582146
   username: 

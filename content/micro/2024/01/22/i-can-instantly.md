@@ -11,6 +11,7 @@ images:
 photos:
 photos_with_metadata:
 #url: /2024/01/22/i-can-instantly.html
+showReadingTime: false
 ---
 I can instantly tell if an app has been written in SwiftUI — my scroll wheel works only 50% of the time when scrolling any list.
 

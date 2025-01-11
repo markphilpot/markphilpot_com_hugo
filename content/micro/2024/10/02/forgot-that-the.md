@@ -7,6 +7,7 @@ date: 2024-10-02T07:43:20-0800
 lastmod: 2024-10-02T07:43:20-0800
 type: post
 #url: /2024/10/02/forgot-that-the.html
+showReadingTime: false
 mastodon:
   id: 113238592830704662
   username: markphilpot

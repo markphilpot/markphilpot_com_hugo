@@ -7,6 +7,7 @@ date: 2023-02-25T20:54:33-0800
 lastmod: 2023-02-25T20:54:33-0800
 type: post
 #url: /2023/02/25/posse-publish-own.html
+showReadingTime: false
 mastodon:
   id: 109929252456732737
   username: markphilpot

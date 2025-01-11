@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1200
   height: 1200
 #url: /2024/07/25/suzume-no-tojimari.html
+showReadingTime: false
 mastodon:
   id: 112850445511011646
   username: markphilpot

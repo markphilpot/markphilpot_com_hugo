@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 600
   height: 187
 #url: /2019/03/29/fragtime-a-pretty.html
+showReadingTime: false
 ---
 <img src="uploads/2022/2432de26e1.jpg" width="600" height="187" alt="">
 

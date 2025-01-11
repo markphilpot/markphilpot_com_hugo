@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 600
   height: 187
 #url: /2019/03/27/pen-to-chocolate.html
+showReadingTime: false
 ---
 <img src="uploads/2022/9cad88e22b.jpg" width="600" height="187" alt="">
 

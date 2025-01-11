@@ -7,6 +7,7 @@ date: 2021-01-12T12:59:00-0800
 lastmod: 2022-11-17T23:04:29-0800
 type: post
 #url: /2021/01/12/steps-to-write.html
+showReadingTime: false
 ---
 Steps to write a new static micro post:
 

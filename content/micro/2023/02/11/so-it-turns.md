@@ -7,6 +7,7 @@ date: 2023-02-11T09:55:30-0800
 lastmod: 2023-02-11T09:55:30-0800
 type: post
 #url: /2023/02/11/so-it-turns.html
+showReadingTime: false
 mastodon:
   id: 109847388627008374
   username: markphilpot

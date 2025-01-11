@@ -11,6 +11,7 @@ images:
 photos:
 photos_with_metadata:
 #url: /2022/03/25/random-curiositys-spring.html
+showReadingTime: false
 twitter:
   id: 1507370733344854016
   username: 

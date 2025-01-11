@@ -11,6 +11,7 @@ images:
 photos:
 photos_with_metadata:
 #url: /2022/06/21/summer-speculation-inbound.html
+showReadingTime: false
 twitter:
   id: 1539435337033842690
   username: 

@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1653
   height: 1272
 #url: /2023/03/21/spring-is-simply.html
+showReadingTime: false
 mastodon:
   id: 110064701696402469
   username: markphilpot

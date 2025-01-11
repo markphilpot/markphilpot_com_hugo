@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 600
   height: 337
 #url: /2021/11/21/arcane-league-of.html
+showReadingTime: false
 ---
 Arcane: League of Legends is the surprise hit of the season and season 2 has just been confirmed.
 

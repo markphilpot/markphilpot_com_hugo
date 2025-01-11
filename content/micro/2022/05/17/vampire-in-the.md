@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1799
   height: 1012
 #url: /2022/05/17/vampire-in-the.html
+showReadingTime: false
 twitter:
   id: 1526603381497909250
   username: 

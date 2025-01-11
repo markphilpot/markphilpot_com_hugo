@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 960
   height: 960
 #url: /2024/01/21/genjitsu-no-yohane.html
+showReadingTime: false
 mastodon:
   id: 111795244018487481
   username: markphilpot

@@ -13,6 +13,7 @@ photos:
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/537a57f65f.jpg
 #url: /2022/09/13/fall-speculation-a.html
+showReadingTime: false
 twitter:
   id: 1569849362770968576
   username: 

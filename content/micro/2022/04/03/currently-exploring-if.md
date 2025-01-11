@@ -11,6 +11,7 @@ images:
 photos:
 photos_with_metadata:
 #url: /2022/04/03/currently-exploring-if.html
+showReadingTime: false
 twitter:
   id: 1510831584013918212
   username: 

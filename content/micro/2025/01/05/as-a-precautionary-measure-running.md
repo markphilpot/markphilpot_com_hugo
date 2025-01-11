@@ -7,6 +7,7 @@ date: 2025-01-05T10:32:59-0800
 lastmod: 2025-01-05T10:32:59-0800
 type: post
 #url: /2025/01/05/as-a-precautionary-measure-running.html
+showReadingTime: false
 mastodon:
   id: 113777180777236347
   username: markphilpot

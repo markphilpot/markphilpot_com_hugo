@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1350
   height: 1350
 #url: /2024/03/26/koushin-koinu-ni.html
+showReadingTime: false
 mastodon:
   id: 112165917263969999
   username: markphilpot

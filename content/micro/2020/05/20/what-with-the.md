@@ -7,6 +7,7 @@ date: 2020-05-20T20:44:00-0800
 lastmod: 2022-11-17T23:06:07-0800
 type: post
 #url: /2020/05/20/what-with-the.html
+showReadingTime: false
 ---
 What with the whole SIP COVID situation, I decided I wanted to be able to noodle on some music ideas and wanted to get my home studio functioning again. Easier said than done.
 

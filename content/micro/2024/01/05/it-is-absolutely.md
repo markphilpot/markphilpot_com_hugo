@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1583
   height: 670
 #url: /2024/01/05/it-is-absolutely.html
+showReadingTime: false
 mastodon:
   id: 111706968272673775
   username: markphilpot

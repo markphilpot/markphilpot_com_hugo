@@ -11,6 +11,7 @@ images:
 photos:
 photos_with_metadata:
 #url: /2022/04/25/in-light-of.html
+showReadingTime: false
 twitter:
   id: 1518701105831714816
   username: 

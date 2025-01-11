@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1799
   height: 1012
 #url: /2022/03/26/this-smile-must.html
+showReadingTime: false
 twitter:
   id: 1507834291534942208
   username: 

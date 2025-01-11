@@ -7,6 +7,7 @@ date: 2022-11-05T08:18:13-0800
 lastmod: 2022-11-05T08:18:13-0800
 type: post
 #url: /2022/11/05/i-think-my.html
+showReadingTime: false
 twitter:
   id: 1588928693962956801
   username: 

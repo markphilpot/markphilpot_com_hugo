@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1799
   height: 1012
 #url: /2024/06/17/nokori-ichinichi-de.html
+showReadingTime: false
 mastodon:
   id: 112636159214676682
   username: markphilpot

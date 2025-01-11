@@ -13,6 +13,7 @@ photos:
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2023/4cfc4b1e51.jpg
 #url: /2023/01/24/just-finished-the.html
+showReadingTime: false
 mastodon:
   id: 109748214179765110
   username: markphilpot

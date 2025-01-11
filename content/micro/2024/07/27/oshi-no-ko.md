@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1024
   height: 1024
 #url: /2024/07/27/oshi-no-ko.html
+showReadingTime: false
 mastodon:
   id: 112859196756982620
   username: markphilpot

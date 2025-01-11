@@ -7,6 +7,7 @@ date: 2022-05-17T11:07:52-0800
 lastmod: 2022-05-17T11:07:52-0800
 type: post
 #url: /2022/05/17/a-post-from.html
+showReadingTime: false
 twitter:
   id: 1526640671012134912
   username: 

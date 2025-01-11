@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 600
   height: 400
 #url: /2022/11/21/bocchi-the-rock.html
+showReadingTime: false
 twitter:
   id: 1594902401047154688
   username: 

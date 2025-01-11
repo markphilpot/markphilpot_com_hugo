@@ -13,6 +13,7 @@ photos:
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/happy-marriage.jpg
 #url: /2024/01/14/watashi-no-shiawase.html
+showReadingTime: false
 mastodon:
   id: 111755845626876639
   username: markphilpot

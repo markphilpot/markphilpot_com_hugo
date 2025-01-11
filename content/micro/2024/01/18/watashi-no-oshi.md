@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1800
   height: 1800
 #url: /2024/01/18/watashi-no-oshi.html
+showReadingTime: false
 mastodon:
   id: 111778140159085118
   username: markphilpot

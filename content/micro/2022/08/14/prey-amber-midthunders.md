@@ -13,6 +13,7 @@ photos:
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2022/f2c97b06f9.jpg
 #url: /2022/08/14/prey-amber-midthunders.html
+showReadingTime: false
 twitter:
   id: 1559024160872996865
   username: 

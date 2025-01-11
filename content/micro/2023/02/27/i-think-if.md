@@ -7,6 +7,7 @@ date: 2023-02-27T08:46:43-0800
 lastmod: 2023-02-27T08:46:43-0800
 type: post
 #url: /2023/02/27/i-think-if.html
+showReadingTime: false
 mastodon:
   id: 109937718099238498
   username: markphilpot

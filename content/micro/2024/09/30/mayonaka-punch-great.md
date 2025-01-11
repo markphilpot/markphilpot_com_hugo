@@ -13,6 +13,7 @@ photos:
 photos_with_metadata:
 - url: https://cdn.uploads.micro.blog/64442/2024/punch.jpg
 #url: /2024/09/30/mayonaka-punch-great.html
+showReadingTime: false
 mastodon:
   id: 113227593227050343
   username: markphilpot

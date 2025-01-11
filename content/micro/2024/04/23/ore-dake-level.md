@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 1769
   height: 1769
 #url: /2024/04/23/ore-dake-level.html
+showReadingTime: false
 mastodon:
   id: 112324222542805185
   username: markphilpot

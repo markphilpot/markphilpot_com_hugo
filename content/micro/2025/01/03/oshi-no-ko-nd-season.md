@@ -15,6 +15,7 @@ photos_with_metadata:
   width: 848
   height: 848
 #url: /2025/01/03/oshi-no-ko-nd-season.html
+showReadingTime: false
 mastodon:
   id: 113766245197018443
   username: markphilpot
