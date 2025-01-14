@@ -67,7 +67,7 @@
       {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
       {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
 
-      {{ if .Title }}
+      {{ if or .Title .Draft }}
         <header class="entry-header">
           <h2>
             {{- .Title }}
