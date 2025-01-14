@@ -10,18 +10,11 @@ const {getTextbundlePlainText} = require("./common");
 const BLUESKY_USERNAME = process.env.BLUESKY_USERNAME;
 const BLUESKY_PASSWORD = process.env.BLUESKY_PASSWORD;
 
-// pnpm xpost:bluesky content/micro/2025_/arcane.textbundle
-const TEXTBUNDLE_PATH = process.argv[2];
-if (!TEXTBUNDLE_PATH) {
-  console.error("Error: Please provide the path to the .textbundle as the first argument.");
-  process.exit(1);
-}
-
 const md = MarkdownIt();
 
 const agent = new AtpAgent({ service: "https://bsky.social" });
 
-async function main() {
+async function main(TEXTBUNDLE_PATH) {
   try {
     await agent.login({ identifier: BLUESKY_USERNAME, password: BLUESKY_PASSWORD });
 
@@ -83,4 +76,4 @@ async function uploadImage(imagePath) {
   return uploadResponse.data.blob;
 }
 
-main();
+module.exports = main

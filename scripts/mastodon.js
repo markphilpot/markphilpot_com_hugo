@@ -10,13 +10,6 @@ const { getTextbundlePlainText } = require("./common");
 const MASTODON_ACCESS_TOKEN = process.env.MASTODON_ACCESS_TOKEN;
 const MASTODON_API_URL = process.env.MASTODON_API_URL;
 
-// pnpm xpost:mastodon content/micro/2025_/arcane.textbundle
-const TEXTBUNDLE_PATH = process.argv[2];
-if (!TEXTBUNDLE_PATH) {
-  console.error("Error: Please provide the path to the .textbundle as the first argument.");
-  process.exit(1);
-}
-
 const md = MarkdownIt();
 
 const mastodonClient = new Mastodon({
@@ -24,7 +17,7 @@ const mastodonClient = new Mastodon({
   api_url: `${MASTODON_API_URL}`,
 });
 
-async function main() {
+async function main(TEXTBUNDLE_PATH) {
   try {
     const assetsPath = path.join(TEXTBUNDLE_PATH, "assets");
 
@@ -85,4 +78,4 @@ async function postStatus(params) {
   await mastodonClient.post("/statuses", params);
 }
 
-main();
+module.exports = main
