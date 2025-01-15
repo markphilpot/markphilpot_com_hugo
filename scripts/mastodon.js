@@ -5,7 +5,7 @@ const path = require("path");
 const MarkdownIt = require("markdown-it");
 const Mastodon = require("mastodon-api");
 
-const { getTextbundlePlainText } = require("./common");
+const { getTextbundlePlainText, truncateContent } = require("./common");
 
 const MASTODON_ACCESS_TOKEN = process.env.MASTODON_ACCESS_TOKEN;
 const MASTODON_API_URL = process.env.MASTODON_API_URL;
@@ -17,15 +17,15 @@ const mastodonClient = new Mastodon({
   api_url: `${MASTODON_API_URL}`,
 });
 
-async function main(TEXTBUNDLE_PATH) {
+async function main(textbundle, link) {
   try {
-    const assetsPath = path.join(TEXTBUNDLE_PATH, "assets");
+    const assetsPath = path.join(textbundle, "assets");
 
-    const plainTextContent = getTextbundlePlainText(TEXTBUNDLE_PATH, md);
+    const plainTextContent = getTextbundlePlainText(textbundle, md);
 
     // Get character limit from Mastodon
     const charLimit = await getCharLimit();
-    const truncatedContent = truncateContent(plainTextContent, charLimit);
+    const truncatedContent = truncateContent(plainTextContent, charLimit, link);
 
     // Find the first image in the assets folder
     let mediaId = null;
@@ -53,13 +53,6 @@ async function main(TEXTBUNDLE_PATH) {
 async function getCharLimit() {
   const response = await mastodonClient.get("/instance");
   return response.data.configuration.statuses.max_characters;
-}
-
-function truncateContent(content, limit) {
-  if (content.length > limit) {
-    return content.slice(0, limit - 3) + "...";
-  }
-  return content;
 }
 
 function isImage(filename) {

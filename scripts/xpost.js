@@ -5,6 +5,14 @@ const yargs = require('yargs');
 const mast = require('./mastodon');
 const bsky = require('./bluesky');
 
+function computeBackref(link) {
+  if(link && !link.startsWith('http')) {
+    return `${process.env.BACKREF_HOST}${link.startsWith('/') ? '' : '/'}${link}`;
+  }
+
+  return link;
+}
+
 var argv = yargs
   .scriptName("xpost")
   .option("f", {
@@ -33,12 +41,14 @@ var argv = yargs
   .version(false)
   .argv;
 
+const link = computeBackref(argv.link);
+
 if(argv.mastodon) {
-  mast(argv.file)
+  mast(argv.file, link)
 }
 
 if(argv.bluesky) {
-  bsky(argv.file)
+  bsky(argv.file, link)
 }
 
 

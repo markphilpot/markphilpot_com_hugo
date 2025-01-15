@@ -36,6 +36,21 @@ function getTextbundlePlainText(textbundlePath, md) {
   return plainTextContent;
 }
 
+function truncateContent(content, limit, link) {
+  if(link) {
+    if (content.length + link.length + 4 > limit) {
+      return content.slice(0, limit - (4 + link.length)) + "... " + link;
+    } else {
+      return `${content} ${link}`;
+    }
+  } else if (content.length > limit) {
+    return content.slice(0, limit - 3) + "...";
+  }
+
+  return content;
+}
+
 module.exports = {
-  getTextbundlePlainText
+  getTextbundlePlainText,
+  truncateContent
 }
