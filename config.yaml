@@ -34,7 +34,23 @@ outputs:
   home:
     - HTML
     - RSS
+    - ATOM
     - JSON # is necessary
+
+mediaTypes:
+  application/atom+xml:
+    suffixes:
+      - xml
+
+outputFormats:
+  atom:
+    mediaType: "application/atom+xml"
+    baseName: "atom"
+    suffix: "xml"
+    isHTML: false
+    isPlainText: false
+    noUgly: true
+    rel: "alternate"
 
 menu:
   main:
