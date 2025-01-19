@@ -3,7 +3,7 @@
 {
 	"name": "Node.js",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm"
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -14,7 +14,7 @@
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "corepack enable pnpm && make bin/hugo-x64",
+	"postCreateCommand": "corepack enable pnpm && make bin/hugo-x64"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
