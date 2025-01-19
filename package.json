@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "xpost:mastodon": "node scripts/mastodon.js",
-    "xpost:bluesky": "node scripts/bluesky.js"
+    "xpost": "node scripts/xpost.js"
   },
   "keywords": [],
   "author": "",
