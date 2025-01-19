@@ -17,7 +17,7 @@ const mastodonClient = new Mastodon({
   api_url: `${MASTODON_API_URL}`,
 });
 
-async function main(textbundle, link) {
+async function main(textbundle, link, preview) {
   try {
     const assetsPath = path.join(textbundle, "assets");
 
@@ -26,6 +26,12 @@ async function main(textbundle, link) {
     // Get character limit from Mastodon
     const charLimit = await getCharLimit();
     const truncatedContent = truncateContent(plainTextContent, charLimit, link);
+
+    if(preview) {
+      console.log('\n\n--- Mastodon Post ---');
+      console.log(truncatedContent);
+      return;
+    }
 
     // Find the first image in the assets folder
     let mediaId = null;

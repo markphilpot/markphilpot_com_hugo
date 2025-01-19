@@ -4,14 +4,7 @@ const yargs = require('yargs');
 
 const mast = require('./mastodon');
 const bsky = require('./bluesky');
-
-function computeBackref(link) {
-  if(link && !link.startsWith('http')) {
-    return `${process.env.BACKREF_HOST}${link.startsWith('/') ? '' : '/'}${link}`;
-  }
-
-  return link;
-}
+const { computeBackref } = require('./common');
 
 var argv = yargs
   .scriptName("xpost")
@@ -34,21 +27,26 @@ var argv = yargs
   .option('link', {
     alias: 'l',
     describe: 'Link back to post',
-    type: 'string',
+    type: 'boolean',
+  })
+  .option('preview', {
+    alias: 'p',
+    describe: 'Preview output (skip posting)',
+    type: 'boolean',
   })
   .help('h')
   .alias('h', 'help')
   .version(false)
   .argv;
 
-const link = computeBackref(argv.link);
+const link = argv.link ? computeBackref(argv.file) : undefined;
 
 if(argv.mastodon) {
-  mast(argv.file, link)
+  mast(argv.file, link, argv.preview)
 }
 
 if(argv.bluesky) {
-  bsky(argv.file, link)
+  bsky(argv.file, link, argv.preview)
 }
 
 

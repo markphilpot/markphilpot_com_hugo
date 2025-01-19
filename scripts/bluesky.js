@@ -14,7 +14,7 @@ const md = MarkdownIt();
 
 const agent = new AtpAgent({ service: "https://bsky.social" });
 
-async function main(textbundle, link) {
+async function main(textbundle, link, preview) {
   try {
     await agent.login({ identifier: BLUESKY_USERNAME, password: BLUESKY_PASSWORD });
 
@@ -24,6 +24,12 @@ async function main(textbundle, link) {
 
     const charLimit = 300;
     const truncatedContent = truncateContent(plainTextContent, charLimit, link);
+
+    if(preview) {
+      console.log('\n\n--- Bluesky Post ---');
+      console.log(truncatedContent);
+      return;
+    }
 
     // Find the first image in the assets folder
     let imageBlob = null;

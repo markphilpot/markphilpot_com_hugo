@@ -1,4 +1,4 @@
-.PHONY: public clean clean-hugo all serve start
+.PHONY: public clean clean-hugo all serve start last
 
 public: bin/hugo-x64
 	./bin/hugo-x64
@@ -29,3 +29,14 @@ start:
 
 min:
 	open -a min http://localhost:1313
+
+last:
+	@git show --name-only --pretty=format: | grep "\.textbundle/text.md$$" | sed "s/.\{8\}$$//"
+
+last3:
+	@git log -n 3 --name-only --pretty=format: | grep "\.textbundle/text.md$$" | sed "s/.\{8\}$$//"
+
+# xpost --preview -l "micro/2025/01/18/fate-strange-fake/"
+
+xpost-last:
+	pnpm xpost --preview -l -m -b -f `git show --name-only --pretty=format: | grep "\.textbundle/text.md$$" | sed "s/.\{8\}$$//"` last
