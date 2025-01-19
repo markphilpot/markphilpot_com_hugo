@@ -6,7 +6,7 @@ public: bin/hugo-x64
 bin/hugo-x64:
 	wget -P ./bin https://transfer-markphilpot.s3.amazonaws.com/hugo-x64
 	chmod +x bin/hugo-x64
-	ln -s hugo-x64 hugo
+	ln -s bin/hugo-x64 bin/hugo
 
 bin/hugo:
 	wget -P ./bin https://transfer-markphilpot.s3.amazonaws.com/hugo
@@ -18,10 +18,10 @@ clean:
 clean-hugo:
 	rm -f bin/hugo bin/hugo-x64
 
-all: bin/hugo
+all:
 	./bin/hugo
 
-serve: bin/hugo
+serve:
 	./bin/hugo serve -D
 
 start:
