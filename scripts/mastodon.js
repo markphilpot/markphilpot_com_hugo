@@ -3,7 +3,7 @@ require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
 const MarkdownIt = require("markdown-it");
-const Mastodon = require("mastodon-api");
+const { createRestAPIClient } = require("masto");
 
 const { getTextbundlePlainText, truncateContent, extractFrontmatter } = require("./common");
 
@@ -12,9 +12,9 @@ const MASTODON_API_URL = process.env.MASTODON_API_URL;
 
 const md = MarkdownIt();
 
-const mastodonClient = new Mastodon({
-  access_token: MASTODON_ACCESS_TOKEN,
-  api_url: `${MASTODON_API_URL}`,
+const masto = createRestAPIClient({
+  url: MASTODON_API_URL,
+  accessToken: MASTODON_ACCESS_TOKEN,
 });
 
 async function main(textbundle, link, preview) {
@@ -60,8 +60,8 @@ async function main(textbundle, link, preview) {
 }
 
 async function getCharLimit() {
-  const response = await mastodonClient.get("/instance");
-  return response.data.configuration.statuses.max_characters;
+  const instance = await masto.v1.instance.fetch();
+  return instance.configuration.statuses.maxCharacters;
 }
 
 function isImage(filename) {
@@ -70,14 +70,14 @@ function isImage(filename) {
 }
 
 async function uploadMedia(imagePath) {
-  const mediaResponse = await mastodonClient.post("/media", {
+  const mediaResponse = await masto.v2.mediaAttachments.create({
     file: fs.createReadStream(imagePath),
   });
-  return mediaResponse.data.id;
+  return mediaResponse.id;
 }
 
 async function postStatus(params) {
-  await mastodonClient.post("/statuses", params);
+  await masto.v1.statuses.create(params);
 }
 
 module.exports = main
