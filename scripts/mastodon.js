@@ -5,7 +5,7 @@ const path = require("path");
 const MarkdownIt = require("markdown-it");
 const Mastodon = require("mastodon-api");
 
-const { getTextbundlePlainText, truncateContent } = require("./common");
+const { getTextbundlePlainText, truncateContent, extractFrontmatter } = require("./common");
 
 const MASTODON_ACCESS_TOKEN = process.env.MASTODON_ACCESS_TOKEN;
 const MASTODON_API_URL = process.env.MASTODON_API_URL;
@@ -22,10 +22,13 @@ async function main(textbundle, link, preview) {
     const assetsPath = path.join(textbundle, "assets");
 
     const plainTextContent = getTextbundlePlainText(textbundle, md);
+    const { title, summary } = extractFrontmatter(textbundle);
+
+    const content = title ? `${title}\n\n${summary}` : plainTextContent;
 
     // Get character limit from Mastodon
     const charLimit = await getCharLimit();
-    const truncatedContent = truncateContent(plainTextContent, charLimit, link);
+    const truncatedContent = truncateContent(content, charLimit, link);
 
     if(preview) {
       console.log('\n\n--- Mastodon Post ---');

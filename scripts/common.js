@@ -93,18 +93,30 @@ function computeBackref(textbundlePath) {
 
   const d = new Date(date);
 
-  // TODO this logic should probably be configurable
-  const category = textbundlePath.includes("micro") ? "micro" : "posts"
+  if(textbundlePath.includes("micro")) {
+    const category = "micro"
 
-  const year = `${d.getFullYear()}`
-  const month = `${d.getMonth() + 1}`.padStart(2, "0");
-  const day = `${d.getDate()}`.padStart(2, "0");
+    const year = `${d.getFullYear()}`
+    const month = `${d.getMonth() + 1}`.padStart(2, "0");
+    const day = `${d.getDate()}`.padStart(2, "0");
+    const hour = `${d.getHours()}`.padStart(2, "0");
+    const minute = `${d.getMinutes()}`.padStart(2, "0");
 
-  return `${process.env.BACKREF_HOST}/${category}/${year}/${month}/${day}/${slug}/`;
+    return `${process.env.BACKREF_HOST}/${category}/${year}${month}${day}${hour}${minute}/`;
+  } else {
+    const category = "posts"
+
+    const year = `${d.getFullYear()}`
+    const month = `${d.getMonth() + 1}`.padStart(2, "0");
+    const day = `${d.getDate()}`.padStart(2, "0");
+
+    return `${process.env.BACKREF_HOST}/${category}/${year}/${month}/${day}/${slug}/`;
+  }
 }
 
 module.exports = {
   getTextbundlePlainText,
   truncateContent,
-  computeBackref
+  computeBackref,
+  extractFrontmatter,
 }

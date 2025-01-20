@@ -5,7 +5,7 @@ const path = require("path");
 const MarkdownIt = require("markdown-it");
 const { AtpAgent } = require("@atproto/api");
 
-const {getTextbundlePlainText, truncateContent} = require("./common");
+const {getTextbundlePlainText, truncateContent, extractFrontmatter} = require("./common");
 
 const BLUESKY_USERNAME = process.env.BLUESKY_USERNAME;
 const BLUESKY_PASSWORD = process.env.BLUESKY_PASSWORD;
@@ -21,9 +21,12 @@ async function main(textbundle, link, preview) {
     const assetsPath = path.join(textbundle, "assets");
 
     const plainTextContent = getTextbundlePlainText(textbundle, md);
+    const { title, summary } = extractFrontmatter(textbundle);
+
+    const content = title ? `${title}\n\n${summary}` : plainTextContent;
 
     const charLimit = 300;
-    const truncatedContent = truncateContent(plainTextContent, charLimit, link);
+    const truncatedContent = truncateContent(content, charLimit, link);
 
     if(preview) {
       console.log('\n\n--- Bluesky Post ---');

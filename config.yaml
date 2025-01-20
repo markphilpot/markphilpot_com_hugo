@@ -15,7 +15,7 @@ capitalizeListTitles: false
 permalinks:
   page:
     blog: /posts/:year/:month/:day/:slug
-    micro: /micro/:year/:month/:day/:slugorfilename
+    micro: /micro/:year:month:day:15:04
 
 services:
   rss:
