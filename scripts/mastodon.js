@@ -15,6 +15,7 @@ const md = MarkdownIt();
 const masto = createRestAPIClient({
   url: MASTODON_API_URL,
   accessToken: MASTODON_ACCESS_TOKEN,
+  // log: 'debug'
 });
 
 async function main(textbundle, link, preview) {
@@ -50,7 +51,7 @@ async function main(textbundle, link, preview) {
 
     // Create the Mastodon post
     const status = truncatedContent;
-    const params = mediaId ? { status, media_ids: [mediaId] } : { status };
+    const params = mediaId ? { status, mediaIds: [mediaId] } : { status };
     await postStatus(params);
 
     console.log("Mastodon post created successfully.");
@@ -70,8 +71,8 @@ function isImage(filename) {
 }
 
 async function uploadMedia(imagePath) {
-  const mediaResponse = await masto.v2.mediaAttachments.create({
-    file: fs.createReadStream(imagePath),
+  const mediaResponse = await masto.v2.media.create({
+    file: new Blob([fs.readFileSync(imagePath)]),
   });
   return mediaResponse.id;
 }
