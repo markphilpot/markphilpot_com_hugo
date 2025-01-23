@@ -15,7 +15,7 @@
 
   {{- $divClass := print "post-featuredImage imgB-" $imgBd5 "-" $holder -}}
   {{- $imgRsc := . -}}
-  {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
+  {{- $actualImg := $imgRsc.Process (print "resize 720x jpg " $filter) -}}
   <div class="{{ $divClass }}" {{ with $imgRsc.Width }}{{- if ge 752 . -}}style="width: {{ $imgRsc.Width }}px;"{{- end }}{{ end }} data-pagefind-ignore {{ with $.Title}} title="{{ . }}" {{ end }}>
     <picture data-pagefind-ignore>
       <source type="image/webp" srcset="

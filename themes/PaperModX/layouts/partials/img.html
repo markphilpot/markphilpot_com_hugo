@@ -39,7 +39,7 @@
 {{- if .Page.Resources.GetMatch $src -}}
 	{{ with .Page.Resources.GetMatch $src }}
 		{{- $imgRsc := . -}}
-		{{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
+		{{- $actualImg := $imgRsc.Process (print "resize 720x jpg " $filter) -}}
 		{{- if eq $simple false -}}
 		<div class="{{ $divClass }}" data-pagefind-ignore>
 		{{- end }}

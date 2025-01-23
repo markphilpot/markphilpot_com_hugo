@@ -25,7 +25,7 @@
 
       {{- $divClass := print "imgPicContainer imgB-" $imgBd5 "-" $holder -}}
       {{- $imgRsc := . -}}
-      {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
+      {{- $actualImg := $imgRsc.Process (print "resize 720x jpg " $filter) -}}
       <div class="{{ $divClass }}" data-pagefind-ignore {{ with $.Title}} title="{{ . }}" {{ end }}>
         <picture data-pagefind-ignore>
           <source type="image/webp" srcset="

@@ -86,7 +86,7 @@
             {{- $hint := "photo" -}}
             {{- $filter := "box" -}}
             {{- $dataSzes := "(min-width: 1024px) 100vw, 50vw" -}}
-            {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
+            {{- $actualImg := $imgRsc.Process (print "resize 720x jpg " $filter) -}}
             <div class="entry-featuredImage">
               <picture data-pagefind-ignore>
                 <source type="image/webp" srcset="
