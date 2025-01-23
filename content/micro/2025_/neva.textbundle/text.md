@@ -1,6 +1,6 @@
 ---
-slug: 'neva'
 date: '2025-01-18T17:21:50'
+tags: [game, review]
 showReadingTime: false
 ---
 ![](assets/fccefbd2e111473a6398f16b5c68cad89ed09dcab9e83207.jpg)

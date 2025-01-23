@@ -1,6 +1,6 @@
 ---
-slug: 'metaphor-refantazio'
 date: '2025-01-13T21:57:56'
+tags: [game, review]
 showReadingTime: false
 ---
 

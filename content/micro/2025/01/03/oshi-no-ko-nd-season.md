@@ -27,6 +27,7 @@ bluesky:
   handle: markphilpot.bsky.social
   hostname: bsky.social
   did: 'did:plc:trf6kmgpr3zrafozy6zgtbdg'
+tags: [anime, review]
 ---
 ![](https://micro.markphilpot.com/uploads/2025/onk.jpg)
 

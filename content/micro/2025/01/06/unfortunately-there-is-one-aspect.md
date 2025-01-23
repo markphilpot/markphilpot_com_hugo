@@ -19,6 +19,7 @@ bluesky:
   handle: markphilpot.bsky.social
   hostname: bsky.social
   did: 'did:plc:trf6kmgpr3zrafozy6zgtbdg'
+tags: [browsers, zen]
 ---
 Unfortunately, there is one aspect of Zen/Firefox that doesn't look to be configurable (that will probably be a deal breaker without a lot of retraining my brain) -- The Location Bar won't autocomplete to browsing history first ahead of executing a search for the string in the field. Example: If I've been to espn.com, in Arc if I type "es" then the first thing that matches is the history entry and I can just type "es↩" and go. In Firefox, the default first entry is to execute a search for the string "es" and the second entry is "espn.com" if I'm lucky (requiring "es↓↩"). It doesn't look like this behavior is configurable either.
 

@@ -1,6 +1,6 @@
 ---
-slug: 'posse-thoughts'
 date: '2025-01-13T21:58:28'
+tags: [posse]
 showReadingTime: false
 ---
 

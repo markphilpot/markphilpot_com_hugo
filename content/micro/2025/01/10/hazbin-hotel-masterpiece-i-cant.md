@@ -25,6 +25,7 @@ bluesky:
   handle: markphilpot.bsky.social
   hostname: bsky.social
   did: 'did:plc:trf6kmgpr3zrafozy6zgtbdg'
+tags: [tv, review]
 ---
 ![](https://micro.markphilpot.com/uploads/2025/mv5bnmmym2rkndetyzi0ms00zgm3lwi1yzyty2y0yzezmgy3ntlmxkeyxkfqcgc.-v1-fmjpg-u.jpg)
 

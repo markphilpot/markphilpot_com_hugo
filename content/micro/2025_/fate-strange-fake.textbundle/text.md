@@ -1,6 +1,6 @@
 ---
-slug: 'fate-strange-fake'
 date: '2025-01-18T17:36:47'
+tags: [anime, review]
 showReadingTime: false
 ---
 

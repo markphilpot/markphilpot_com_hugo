@@ -1,5 +1,6 @@
 ---
 date: '2025-01-20T20:43:49'
+tags: [anime, review]
 showReadingTime: false
 ---
 

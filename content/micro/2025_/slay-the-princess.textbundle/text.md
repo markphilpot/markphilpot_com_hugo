@@ -1,5 +1,6 @@
 ---
 date: '2025-01-21T19:02:57'
+tags: [game, review]
 showReadingTime: false
 ---
 

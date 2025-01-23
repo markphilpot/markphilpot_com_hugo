@@ -19,6 +19,7 @@ bluesky:
   handle: markphilpot.bsky.social
   hostname: bsky.social
   did: 'did:plc:trf6kmgpr3zrafozy6zgtbdg'
+tags: [browsers, zen]
 ---
 As a precautionary measure, running an experiment with Zen Browser as an Arc replacement. Given a bit of customization, I was fairly happy with the result. The recent Arc updates are essentially Chromium upgrades which really isn't surprising given the company's pivot to Dia (a new AI focused browser). Definitely not for me, so I'm glad Zen is at a point where I can drop it in.
 
