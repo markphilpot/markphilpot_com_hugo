@@ -31,6 +31,7 @@
     </div>
   {{- end }}
 
+    {{ $plyrIncluded := false }}
 
   {{- $pages := .Pages }}
   {{- if .IsHome }}
@@ -128,6 +129,11 @@
         {{- end }}
         {{ if .Title }}
           <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+        {{ end }}
+
+        {{ if and (not $plyrIncluded) (or ( .HasShortcode "audio" ) ( .HasShortcode "video" )) }}
+          {{ $plyrIncluded := true }}
+          {{- partial "plyr.html" . }}
         {{ end }}
       </div>
       {{- if not (.Param "hideMeta") }}

@@ -89,14 +89,11 @@
   {{- end }}
 
   {{ if .Store.Get "hasMermaid" }}
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    {{- partial "mermaid.html" -}}
+  {{ end }}
 
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: isDarkTheme() ? 'dark' : 'default',
-      });
-    </script>
+  {{ if or ( .HasShortcode "audio" ) ( .HasShortcode "video" ) }}
+    {{- partial "plyr.html" . -}}
   {{ end }}
 
   <footer class="post-footer">

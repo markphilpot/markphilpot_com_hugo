@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<script>
+  (function() {
+    const players = Array.from(document.querySelectorAll('.player')).map(
+      p => new Plyr(p, {
+        controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+        {{/*  autoplay: true,  */}}
+        {{/*  settings: ['speed']  */}}
+      })
+    );
+    {{/*  Stop other players when starting  */}}
+    players.forEach(function(p){
+      p.on('play', event => {
+        const instance = event.detail.plyr;
+        console.log('Stop others players');
+        players.forEach(function(p){ if(p != instance) p.stop()});
+      })
+    });
+  })();
+</script>
