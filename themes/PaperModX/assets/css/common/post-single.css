@@ -3,7 +3,7 @@
 }
 
 .post-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: var(--content-gap);
 }
 
@@ -17,7 +17,7 @@
 
 .post-meta,
 .breadcrumbs {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .breadcrumbs {
@@ -29,7 +29,7 @@
 }
 
 .post-content {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--content);
 }
 
@@ -642,7 +642,7 @@ h6:hover .anchor {
 }
 .footnotes ol:before {
     content: "Footnotes";
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin-left: -1em;
     font-weight: 200;
 }
