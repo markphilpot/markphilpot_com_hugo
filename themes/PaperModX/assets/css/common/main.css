@@ -52,13 +52,13 @@ mark {
 }
 
 .first-entry .entry-header h1 {
-    font-size: 34px;
+    font-size: 2rem;
     line-height: 1.3;
 }
 
 .first-entry .entry-content {
     margin: 14px 0;
-    font-size: 17px;
+    font-size: 1rem;
     color: var(--primary);
     line-height: 1.6em;
     display: block;
@@ -67,10 +67,10 @@ mark {
 
 @media screen and (max-width: 500px) {
     .first-entry .entry-header h1 {
-        font-size: 30px;
+        font-size: 2rem;
     }
     .first-entry .entry-content {
-        font-size: 16px;
+        font-size: 1rem;
     }
 }
 
@@ -86,7 +86,7 @@ mark {
 }
 
 .first-entry .entry-footer {
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 .inline-links a {
@@ -113,7 +113,7 @@ mark {
 }
 
 .page-header h1 {
-    font-size: 40px;
+    font-size: 3rem;
     margin-bottom: var(--content-gap);
     text-transform: capitalize;
 }
@@ -124,7 +124,7 @@ mark {
 
 .pagination a {
     color: var(--theme);
-    font-size: 13px;
+    font-size: 0.8rem;
     line-height: 36px;
     background: var(--primary);
     border-radius: calc(36px / 2);
@@ -176,7 +176,7 @@ pre {
     background: rgba(78, 78, 78, 0.8);
     border-radius: var(--radius);
     padding: 0 5px;
-    font-size: 14px;
+    font-size: 0.9rem;
     user-select: none;
 }
 
@@ -254,7 +254,7 @@ figure > img {
 /* shortcodes */
 
 .standout {
-    font-size: 24px;
+    font-size: 1.5rem;
     padding: .5em;
     text-align: center;
 }

@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'NebulaSans';
+    src: url(/fonts/nebulasans/NebulaSans-Book.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'NebulaSans';
+    src: url(/fonts/nebulasans/NebulaSans-Italic.woff2) format('woff2');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NebulaSans';
+    src: url(/fonts/nebulasans/NebulaSans-Medium.woff2) format('woff2');
+    font-weight: 700;
+}
+
+@font-face {
+  font-family: 'SourceCodePro';
+  src: url(/fonts/sourcesans/SourceCodePro-Regular.ttf) format('truetype');
+}

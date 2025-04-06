@@ -3,7 +3,7 @@
 }
 
 .post-title {
-    font-size: 40px;
+    font-size: 3rem;
     margin-bottom: var(--content-gap);
 }
 
@@ -17,7 +17,7 @@
 
 .post-meta,
 .breadcrumbs {
-    font-size: 15px;
+    font-size: 0.9rem;
 }
 
 .breadcrumbs {
@@ -25,11 +25,11 @@
     flex-wrap: wrap;
 }
 .breadcrumbs a {
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .post-content {
-    font-size: 17px;
+    font-size: 1.1rem;
     color: var(--content);
 }
 
@@ -44,28 +44,28 @@
 
 .post-content h1 {
     margin: 40px auto 32px;
-    font-size: 40px;
+    font-size: 3rem;
 }
 
 .post-content h2 {
     margin: 40px auto 32px;
-    font-size: 32px;
+    font-size: 2rem;
 }
 
 .post-content h3 {
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 .post-content h4 {
-    font-size: 20px;
+    font-size: 1.3rem;
 }
 
 .post-content h5 {
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 .post-content h6 {
-    font-size: 12px;
+    font-size: 0.8rem;
 }
 
 .post-content a {
@@ -183,7 +183,7 @@ h6:hover .anchor {
 }
 
 .post-content table th {
-    font-size: 14px;
+    font-size: 0.9rem;
     text-align: start;
 }
 
@@ -322,14 +322,14 @@ h6:hover .anchor {
 
 .post-content figure > figcaption {
     color: var(--primary);
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     margin: 8px 0 16px;
 }
 
 .post-content figure > figcaption > p {
     color: var(--secondary);
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: normal;
 }
 

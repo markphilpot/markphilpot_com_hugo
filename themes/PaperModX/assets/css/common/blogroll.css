@@ -1,5 +1,5 @@
 .links-container {
-  font-size: 16px;
+  font-size: 1rem;
 }
 .links-container blockquote {
   margin: var(--gap) 0;

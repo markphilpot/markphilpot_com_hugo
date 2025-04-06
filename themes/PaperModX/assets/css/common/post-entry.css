@@ -24,7 +24,7 @@
 }
 
 .entry-header h2 {
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 1.3;
     transition: var(--link-transition);
     display: inline-block;
@@ -33,7 +33,7 @@
 .entry-content {
     margin: 8px 0;
     color: var(--secondary);
-    font-size: 14px;
+    font-size: 0.9rem;
     line-height: 1.6;
     overflow: hidden;
     display: -webkit-box;
@@ -44,7 +44,7 @@
 .entry-footer,
 .entry-footer span > a {
     color: var(--secondary);
-    font-size: 13px;
+    font-size: 0.8rem;
 }
 
 .entry-link {
@@ -57,7 +57,7 @@
 
 .entry-cover,
 .entry-isdraft {
-    font-size: 14px;
+    font-size: 0.9rem;
     color: var(--secondary);
 }
 
