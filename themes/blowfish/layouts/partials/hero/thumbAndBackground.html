@@ -1,17 +1,17 @@
 {{ $disableImageOptimization := .Page.Site.Params.disableImageOptimization | default false }}
 
 {{- $images := .Resources.ByType "image" -}}
-{{- $background := $images.GetMatch "*background*" -}}
+{{- $background := $images.GetMatch "**/*background*" -}}
 {{- if not $background }}{{ with .Site.Params.defaultBackgroundImage }}{{ $background = resources.Get . }}{{ end }}{{ end -}}
-{{- if not $background }}{{ $background = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
-{{- if not $background }}{{ $background = $images.GetMatch "*feature*" }}{{ end -}}
-{{- $featured := $images.GetMatch "*feature*" -}}
-{{- if not $featured }}{{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
+{{- if not $background }}{{ $background = $images.GetMatch "**/*{cover,thumbnail,hero}*" }}{{ end -}}
+{{- if not $background }}{{ $background = $images.GetMatch "**/*feature*" }}{{ end -}}
+{{- $featured := $images.GetMatch "**/*feature*" -}}
+{{- if not $featured }}{{ $featured = $images.GetMatch "**/*{cover,thumbnail,hero}*" }}{{ end -}}
 {{ if .Params.featureimage }}
 {{- $url:= .Params.featureimage -}}
 {{- if not $featured }}{{ $featured = resources.GetRemote $url }}{{ end -}}
 {{ end }}
-{{- if not $featured }}{{ $featured = $images.GetMatch "*background*" }}{{ end -}}
+{{- if not $featured }}{{ $featured = $images.GetMatch "**/*background*" }}{{ end -}}
 {{- if not $featured }}{{ with .Site.Params.defaultBackgroundImage }}{{ $featured = resources.Get . }}{{ end }}{{ end -}}
 {{ $isParentList := eq (.Scratch.Get "scope") "list"  }}
 {{ $shouldBlur := $.Params.layoutBackgroundBlur | default (or 
