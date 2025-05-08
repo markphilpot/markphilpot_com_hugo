@@ -1,0 +1,7 @@
+figure[title="hidden"] {
+  display: none !important;
+}
+
+figure[title="ew1920"] > figcaption {
+  display: none !important;
+}

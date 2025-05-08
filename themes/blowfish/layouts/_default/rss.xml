@@ -43,8 +43,8 @@
       <description>{{ .Summary | html }}</description>
       {{ range ( where .Site.RegularPages ".RelPermalink" .RelPermalink | first 1 ) }}
         {{- $images := .Resources.ByType "image" -}}
-        {{- $featured := $images.GetMatch "*feature*" -}}
-        {{- if not $featured }}{{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
+        {{- $featured := $images.GetMatch "**/*feature*" -}}
+        {{- if not $featured }}{{ $featured = $images.GetMatch "**/*{cover,thumbnail,hero}*" }}{{ end -}}
         {{- with $featured -}}
         <media:content xmlns:media="http://search.yahoo.com/mrss/" url="{{ $featured.Permalink  }}" />
         {{- end -}}

@@ -65,6 +65,15 @@
 
     <div class="{{ $articleInnerClasses }}">
       <div class="items-center text-left text-xl font-semibold">
+        {{ if and (not .Title) (.Params.showContent | default (.Site.Params.list.showContent | default false)) }}
+        <div class="py-1 max-w-fit prose dark:prose-invert">
+          <div class="min-w-0 min-h-0 max-w-fit">
+            <div class="article-content max-w-prose m-auto">
+              {{ .Content }}
+            </div>
+          </div>
+        </div>
+        {{ end }}
         {{ with .Params.externalUrl }}
         <div>
           <div
