@@ -13,14 +13,14 @@
   {{ end }}
   {{ end }}
 
-  <header id="single_header" class="mt-5 max-w-prose">
+  <header id="single_header" class="mt-5 max-w-prose text-center mx-auto">
     {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
     {{ partial "breadcrumbs.html" . }}
     {{ end }}
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
       {{ .Title | emojify }}
     </h1>
-    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden flex flex-col items-center">
       {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
     </div>
 
@@ -84,7 +84,7 @@
       </div>
       {{ end }}
 
-      <div class="min-w-0 min-h-0 max-w-fit">
+      <div class="min-w-0 min-h-0 max-w-fit mx-auto">
         
         {{ partial "series/series.html" . }}
 
@@ -150,7 +150,7 @@
       {{ end }}
   
     </section>
-  <footer class="pt-8 max-w-prose print:hidden">
+  <footer class="pt-8 max-w-prose print:hidden mx-auto">
 
     {{ partial "article-pagination.html" . }}
     {{ if .Params.showComments | default (.Site.Params.article.showComments | default false) }}

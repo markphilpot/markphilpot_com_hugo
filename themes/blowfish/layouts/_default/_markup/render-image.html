@@ -3,10 +3,10 @@
 {{- $altText := .Text }}
 {{- $caption := .Title }}
 {{- if findRE "^https?" $url.Scheme }}
-  <figure>
+  <div title="{{ $caption }}">
     <img class="my-0 rounded-md" loading="lazy" src="{{ $url.String }}" alt="{{ $altText }}" />
     {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
-  </figure>
+  </div>
 {{- else }}
   {{- $resource := "" }}
   {{- if $.Page.Resources.GetMatch ($url.String) }}
@@ -15,7 +15,7 @@
     {{- $resource = resources.Get ($url.String) }}
   {{- end }}
   {{- with $resource }}
-    <figure>
+    <div title="{{ $caption }}">
       {{- if or $disableImageOptimization (eq .MediaType.SubType "svg")}}
       <img
         class="my-0 rounded-md"
@@ -35,14 +35,17 @@
         data-zoom-src="{{ (.Resize "1320x").RelPermalink }}"
         src="{{ (.Resize "660x").RelPermalink }}"
         alt="{{ $altText }}"
+        style="height: auto;"
+        width="{{ .Width }}"
+        height="{{ .Height }}"
       />
       {{- end }}
       {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
-    </figure>
+    </div>
   {{- else }}
-    <figure>
+    <div title="{{ $caption }}">
       <img class="my-0 rounded-md" loading="lazy" src="{{ $url.String }}" alt="{{ $altText }}" />
       {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
-    </figure>
+    </div>
   {{- end }}
 {{- end }}

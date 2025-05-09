@@ -11,6 +11,8 @@
   {{ partial "recent-articles/cardview.html" . }}
 {{ else if and .Site.Params.homepage.cardView .Site.Params.homepage.cardViewScreenWidth | default false }}
   {{ partial "recent-articles/cardview-fullwidth.html" . }}
+{{ else if and .Site.Params.homepage.contentView .Site.Params.homepage.contentView | default false }}
+  {{ partial "recent-articles/content.html" . }}
 {{ else }}
   {{ partial "recent-articles/list.html" . }}
 {{ end }}
