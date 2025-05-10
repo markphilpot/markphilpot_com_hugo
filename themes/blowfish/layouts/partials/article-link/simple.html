@@ -65,7 +65,7 @@
 
     <div class="{{ $articleInnerClasses }}">
       <div class="items-center text-left text-xl font-semibold">
-        {{ if and (not .Title) (.Params.showContent | default (.Site.Params.list.showContent | default false)) }}
+        {{ if and (not .Title) (.Params.showMicroContent | default (.Site.Params.list.showMicroContent | default false)) }}
         <div class="py-1 max-w-fit prose dark:prose-invert">
           <div class="min-w-0 min-h-0 max-w-fit">
             <div class="article-content max-w-prose m-auto">
@@ -101,7 +101,7 @@
       <div class="text-sm text-neutral-500 dark:text-neutral-400">
         {{ partial "article-meta/basic.html" . }}
       </div>
-      {{ if .Params.showSummary | default (.Site.Params.list.showSummary | default false) }}
+      {{ if and (.Title) (.Params.showSummary | default (.Site.Params.list.showSummary | default false)) }}
       <div class="py-1 max-w-fit prose dark:prose-invert">
         {{ .Summary | plainify }}
       </div>
