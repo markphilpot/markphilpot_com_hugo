@@ -1,0 +1,57 @@
+html {
+  font-family: 'NebulaSans';
+  font-size: 11pt;
+}
+
+
+div[title="hidden"] {
+  display: none !important;
+}
+
+div[title="ew1920"] > figcaption {
+  display: none !important;
+}
+
+div[title="ew1920"] {
+  max-width: 1920px !important;
+  margin-left: calc((1920px - 65ch) / -2) !important;
+  margin-right: calc((1920px - 65ch) / -2) !important;
+}
+
+.ewDiv {
+  max-width: 100vw !important;
+  margin-left: calc((100vw - 65ch) / -2) !important;
+  margin-right: calc((100vw - 65ch) / -2) !important;
+}
+
+.wDiv {
+  /*max-width: 80vw !important;*/
+  margin-left: calc((80vw - 65ch) / -2) !important;
+  margin-right: calc((80vw - 65ch) / -2) !important;
+}
+
+@media (max-width: 1920px) {
+  div[title="ew1920"] {
+    max-width: 100vw !important;
+    margin-left: calc((100vw - 65ch) / -2) !important;
+    margin-right: calc((100vw - 65ch) / -2) !important;
+  }
+}
+
+@media (max-width: 752px) {
+  div[title="ew1920"] {
+    max-width: 100vw !important;
+    margin-left: -14px !important;
+    margin-right: -14px !important;
+  }
+  .ewDiv {
+    max-width: 100vw !important;
+    margin-left: -14px !important;
+    margin-right: -14px !important;
+  }
+  .wDiv {
+    max-width: 100vw !important;
+    margin-left: -14px !important;
+    margin-right: -14px !important;
+  }
+}
