@@ -22,7 +22,7 @@ TocSide: right
 
 ### what I'm playing
 
-![](assets/metaphor.jpg)
+![](assets/clair.jpg)
 
 ### what I'm reading
 
