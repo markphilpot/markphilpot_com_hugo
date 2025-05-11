@@ -70,5 +70,5 @@ title = "mark philpot"
 #     { youtube = "https://youtube.com/username" },
 #     { ko-fi = "https://ko-fi.com/username" },
 #     { codeberg = "https://codeberg.org/username"},
-    { rss = "https://markphilpot/index.xml"}
+    { rss = "https://markphilpot.com/index.xml"}
   ]
