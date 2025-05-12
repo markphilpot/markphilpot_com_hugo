@@ -3,7 +3,7 @@
 <script src="{{ $jqueryLib.RelPermalink }}" integrity="{{ $jqueryLib.Data.Integrity }}"></script>
 
 {{/* Mermaid */}}
-{{ if .Page.HasShortcode "mermaid" }}
+{{ if or (.Page.HasShortcode "mermaid") (.Store.Get "hasMermaid") }}
   {{ $mermaidLib := resources.Get "lib/mermaid/mermaid.min.js" }}
   {{ $mermaidConfig := resources.Get "js/mermaid.js" }}
   {{ $mermaidConfig := $mermaidConfig | resources.Minify }}
