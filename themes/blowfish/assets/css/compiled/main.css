@@ -3789,8 +3789,11 @@ pre {
   text-align: left;
 }
 .thumbnail {
-  min-width: 300px;
-  height: 180px;
+  /*@markphilpot*/
+  /*min-width: 300px;*/
+  /*height: 180px;*/
+  min-width: 180px;
+  height: 120px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
