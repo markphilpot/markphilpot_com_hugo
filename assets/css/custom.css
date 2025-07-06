@@ -8,7 +8,9 @@ div[title="hidden"] {
   display: none !important;
 }
 
-div[title="ew1920"] > figcaption {
+div[title="ew1920"] > figcaption,
+div[title="ewDiv"] > figcaption,
+div[title="wDiv"] > figcaption {
   display: none !important;
 }
 
@@ -18,14 +20,14 @@ div[title="ew1920"] {
   margin-right: calc((1920px - 65ch) / -2) !important;
 }
 
-.ewDiv {
+div[title="ewDiv"] {
   max-width: 100vw !important;
   margin-left: calc((100vw - 65ch) / -2) !important;
   margin-right: calc((100vw - 65ch) / -2) !important;
 }
 
-.wDiv {
-  /*max-width: 80vw !important;*/
+div[title="wDiv"] {
+  max-width: 80vw !important;
   margin-left: calc((80vw - 65ch) / -2) !important;
   margin-right: calc((80vw - 65ch) / -2) !important;
 }
@@ -44,14 +46,29 @@ div[title="ew1920"] {
     margin-left: -14px !important;
     margin-right: -14px !important;
   }
-  .ewDiv {
+  div[title="ewDiv"] {
     max-width: 100vw !important;
     margin-left: -14px !important;
     margin-right: -14px !important;
   }
-  .wDiv {
+  div[title="wDiv"] {
     max-width: 100vw !important;
     margin-left: -14px !important;
     margin-right: -14px !important;
   }
+}
+
+.post-curtain {
+  background-color: rgba(var(--color-primary-900), 0.1);
+  &:is(.dark *) {
+    background-color: rgba(var(--color-primary-100), 0.1);
+  }
+  backdrop-filter: none !important;
+  position: absolute;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  z-index: -10;
+  border-radius: 4px;
+  top: -8px;
+  left: -8px;
 }

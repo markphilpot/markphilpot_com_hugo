@@ -17,9 +17,9 @@ title = "mark philpot"
 [params.author]
   name = ""
   email = "mark@philpot.org"
-#   image = "img/blowfish_logo.png"
-#   imageQuality = 96
-#  headline = "I'm only human"
+  image = "profile.jpg"
+  imageQuality = 96
+  headline = "Software Engineer, Photographer, Musician <br/> (although not always in that order)"
 #  bio = "A little bit about you"
   links = [
 #     { email = "mailto:hello@your_domain.com" },
