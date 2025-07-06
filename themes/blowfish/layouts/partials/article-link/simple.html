@@ -31,8 +31,9 @@
 {{ with .Params.externalUrl }}
 <a class="{{ $articleClasses }}" href="{{ . }}" target="_blank" rel="external">
   {{ else }}
-  <a class="{{ $articleClasses }}prose max-w-prose pt-8" href="{{ .RelPermalink }}">
+  <a class="{{ $articleClasses }}prose max-w-prose mt-8 relative" href="{{ .RelPermalink }}">
     {{ end }}
+    {{ if .Title }}<div class="post-curtain"></div>{{ end }}
     {{- with $.Params.images -}}
     {{- range first 6 . }}
     <meta property="og:image" content="{{ . | absURL }}" />{{ end -}}
@@ -102,7 +103,7 @@
         {{ partial "article-meta/basic.html" . }}
       </div>
       {{ if and (.Title) (.Params.showSummary | default (.Site.Params.list.showSummary | default false)) }}
-      <div class="py-1 max-w-fit prose dark:prose-invert">
+      <div class="py-1 pt-2 max-w-fit prose dark:prose-invert text-sm">
         {{ .Summary | plainify }}
       </div>
       {{ end }}
