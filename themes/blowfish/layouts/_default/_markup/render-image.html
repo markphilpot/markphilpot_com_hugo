@@ -5,7 +5,7 @@
 {{- if findRE "^https?" $url.Scheme }}
   <div title="{{ $caption }}">
     <img class="my-0 rounded-md" loading="lazy" src="{{ $url.String }}" alt="{{ $altText }}" />
-    {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+<!--    {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}-->
   </div>
 {{- else }}
   {{- $resource := "" }}
@@ -40,12 +40,12 @@
         height="{{ .Height }}"
       />
       {{- end }}
-      {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+<!--      {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}-->
     </div>
   {{- else }}
     <div title="{{ $caption }}">
       <img class="my-0 rounded-md" loading="lazy" src="{{ $url.String }}" alt="{{ $altText }}" />
-      {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+<!--      {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}-->
     </div>
   {{- end }}
 {{- end }}

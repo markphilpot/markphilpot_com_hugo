@@ -5,6 +5,9 @@
 [goldmark.renderer]
   unsafe = true
 
+[goldmark.parser]
+  wrapStandAloneImageWithinParagraph = false
+
 [highlight]
   style = "dracula"
   lineNos = false
