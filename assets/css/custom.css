@@ -59,11 +59,10 @@ div[title="wDiv"] {
 }
 
 .post-curtain {
-  background-color: rgba(var(--color-primary-900), 0.1);
+  background-color: rgba(var(--color-primary-900), 0.15);
   &:is(.dark *) {
-    background-color: rgba(var(--color-primary-100), 0.1);
+    background-color: rgba(var(--color-primary-100), 0.15);
   }
-  backdrop-filter: none !important;
   position: absolute;
   width: calc(100% + 16px);
   height: calc(100% + 16px);

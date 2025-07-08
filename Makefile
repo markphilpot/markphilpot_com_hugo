@@ -39,4 +39,4 @@ last3:
 # xpost --preview -l "micro/2025/01/18/fate-strange-fake/"
 
 xpost-last:
-	pnpm xpost --preview -l -m -b -f `git show --name-only --pretty=format: | grep "\.textbundle/text.md$$" | sed "s/.\{8\}$$//"` last
+	pnpm xpost -l -m -f `git show --name-only --pretty=format: | grep "\.textbundle/text.md$$" | sed "s/.\{8\}$$//"` last
