@@ -68,9 +68,12 @@
       <div class="items-center text-left text-xl font-semibold">
         {{ if and (not .Title) (.Params.showMicroContent | default (.Site.Params.list.showMicroContent | default false)) }}
         <div class="py-1 max-w-fit prose dark:prose-invert">
-          <div class="min-w-0 min-h-0 max-w-fit">
+          <div class="min-w-0 min-h-0 max-w-fit mt-8 mb-8">
             <div class="article-content max-w-prose m-auto">
               {{ .Content }}
+            </div>
+            <div class="text-sm text-neutral-500 dark:text-neutral-400">
+              {{ partial "article-meta/basic-center.html" . }}
             </div>
           </div>
         </div>
@@ -99,9 +102,11 @@
         {{ partial "extend-article-link.html" . }}
         {{ end }}
       </div>
+      {{ if .Title }}
       <div class="text-sm text-neutral-500 dark:text-neutral-400">
         {{ partial "article-meta/basic.html" . }}
       </div>
+      {{ end }}
       {{ if and (.Title) (.Params.showSummary | default (.Site.Params.list.showSummary | default false)) }}
       <div class="py-1 pt-2 max-w-fit prose dark:prose-invert text-sm">
         {{ .Summary | plainify }}

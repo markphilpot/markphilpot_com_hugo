@@ -4,7 +4,7 @@
 {{- $caption := .Title }}
 {{- if findRE "^https?" $url.Scheme }}
   <div title="{{ $caption }}">
-    <img class="my-0 rounded-md" loading="lazy" src="{{ $url.String }}" alt="{{ $altText }}" />
+    <img class="my-0 rounded-md not-prose" loading="lazy" src="{{ $url.String }}" alt="{{ $altText }}" />
 <!--    {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}-->
   </div>
 {{- else }}
@@ -18,14 +18,14 @@
     <div title="{{ $caption }}">
       {{- if or $disableImageOptimization (eq .MediaType.SubType "svg")}}
       <img
-        class="my-0 rounded-md"
+        class="my-0 rounded-md not-prose"
         loading="lazy"
         src="{{ .RelPermalink }}"
         alt="{{ $altText }}"
       />
       {{- else }}
       <img
-        class="my-0 rounded-md"
+        class="my-0 rounded-md not-prose"
         loading="lazy"
         srcset="
         {{ (.Resize "330x").RelPermalink }} 330w,
@@ -44,7 +44,7 @@
     </div>
   {{- else }}
     <div title="{{ $caption }}">
-      <img class="my-0 rounded-md" loading="lazy" src="{{ $url.String }}" alt="{{ $altText }}" />
+      <img class="my-0 rounded-md not-prose" loading="lazy" src="{{ $url.String }}" alt="{{ $altText }}" />
 <!--      {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}-->
     </div>
   {{- end }}
