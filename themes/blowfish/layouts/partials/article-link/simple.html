@@ -27,12 +27,12 @@
 {{ $articleClasses = delimit (slice $articleClasses "max-w-prose") " " }}
 {{ end }}
 
-
 {{ with .Params.externalUrl }}
 <a class="{{ $articleClasses }}" href="{{ . }}" target="_blank" rel="external">
   {{ else }}
-  <a class="{{ $articleClasses }}prose max-w-prose mt-8 relative" href="{{ .RelPermalink }}">
-    {{ end }}
+  {{ if .Title }}<a class="{{ $articleClasses }}prose max-w-prose mt-8 relative" href="{{ .RelPermalink }}">{{ end }}
+{{ end }}
+
     {{ if .Title }}<div class="post-curtain"></div>{{ end }}
     {{- with $.Params.images -}}
     {{- range first 6 . }}
@@ -72,9 +72,9 @@
             <div class="article-content max-w-prose m-auto">
               {{ .Content }}
             </div>
-            <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            <a href="{{ .RelPermalink }}" class="text-sm text-neutral-500 dark:text-neutral-400">
               {{ partial "article-meta/basic-center.html" . }}
-            </div>
+            </a>
           </div>
         </div>
         {{ end }}
@@ -113,4 +113,7 @@
       </div>
       {{ end }}
     </div>
+
+{{ if .Title }}
   </a>
+{{ end }}
