@@ -14,7 +14,7 @@ Want to make a quick detour to see if I can use a new mapping project on this si
 <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
 <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
 
-<div id="map" class="wDiv" style="height: 600px; margin-bottom: 2em;"></div>
+<div id="map" title="wDiv" style="height: 600px; margin-bottom: 2em;"></div>
 <script>
   const map = new maplibregl.Map({
     style: 'https://tiles.openfreemap.org/styles/positron',

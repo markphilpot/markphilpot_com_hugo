@@ -27,7 +27,7 @@ div[title="ewDiv"] {
 }
 
 div[title="wDiv"] {
-  max-width: 80vw !important;
+  /*max-width: 80vw !important;*/
   margin-left: calc((80vw - 65ch) / -2) !important;
   margin-right: calc((80vw - 65ch) / -2) !important;
 }
