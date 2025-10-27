@@ -6,3 +6,4 @@ bin/hugo-x64
 .idea/
 node_modules/
 .env
+.vscode/
