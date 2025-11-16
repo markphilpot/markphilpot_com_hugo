@@ -67,22 +67,24 @@
     {{ if not $cardView }}
 
     <section class="space-y-10 w-full">
-      {{ if not $orderByWeight }}
-        {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
-        {{ if $groupByYear }}
-        <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
-          {{ .Key }}
-        </h2>
+      <div class="mx-auto max-w-fit">
+        {{ if not $orderByWeight }}
+          {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
+          {{ if $groupByYear }}
+          <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
+            {{ .Key }}
+          </h2>
+          {{ end }}
+          {{ range .Pages }}
+          {{ partial "article-link/simple.html" . }}
+          {{ end }}
+          {{ end }}
+        {{ else }}
+          {{ range (.Paginate (.Pages.ByWeight)).Pages }}
+          {{ partial "article-link/simple.html" . }}
+          {{ end }}
         {{ end }}
-        {{ range .Pages }}
-        {{ partial "article-link/simple.html" . }}
-        {{ end }}
-        {{ end }}
-      {{ else }}
-        {{ range (.Paginate (.Pages.ByWeight)).Pages }}
-        {{ partial "article-link/simple.html" . }}
-        {{ end }}
-      {{ end }}
+      </div>
     </section>
 
     {{ else }}
