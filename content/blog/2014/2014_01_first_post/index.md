@@ -1,6 +1,6 @@
 ---
 title: "First Post"
-date: "2014-03-31 21:13"
+date: "2014-03-31 21:13:00"
 tags: [imported, first]
 category: blog
 slug: first-post

@@ -29,7 +29,7 @@ enableEmoji = true
   limit = 42
 
 [pagination]
-  pagerSize = 100
+  pagerSize = 10
 
 [imaging]
   anchor = 'Center'
