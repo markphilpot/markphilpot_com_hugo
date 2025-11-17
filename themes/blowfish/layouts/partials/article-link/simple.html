@@ -73,7 +73,7 @@
 {{ end }}
 
 
-<article class="{{ $cardClasses }} {{ if .Title }}mt-8 max-w-prose{{ end }}">
+<article class="{{ $cardClasses }} {{ if .Title }}mt-8 max-w-prose text-base py-8{{ end }}">
   {{ with $featuredURL }}
     <div class="flex-none relative overflow-hidden {{ $imgWrapperClasses }} thumbnail">
       <img
@@ -132,5 +132,5 @@
       <div class="prose dark:prose-invert max-w-fit py-1">{{ .Summary | plainify }}</div>
     {{ end }}
   </div>
-  <div class="px-6 pt-4 pb-2"></div>
+<!--  <div class="px-6 pt-4 pb-2"></div>-->
 </article>
