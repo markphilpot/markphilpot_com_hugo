@@ -5,7 +5,8 @@ showReadingTime: false
 ---
 
 ![](assets/background.jpg)
-[Kekkon Suru tte, Hontou desu ka: 365 Days To The Wedding](https://anilist.co/anime/165790/Kekkon-Suru-tte-Hontou-desu-ka-365-Days-To-The-Wedding/)
+
+### [Kekkon Suru tte, Hontou desu ka: 365 Days To The Wedding](https://anilist.co/anime/165790/Kekkon-Suru-tte-Hontou-desu-ka-365-Days-To-The-Wedding/)
 
 Cute little story about two *incredibly* shy and awkward people. Enjoyed the fact that it was workplace romance.
 
