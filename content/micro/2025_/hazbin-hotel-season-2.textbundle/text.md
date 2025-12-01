@@ -5,6 +5,8 @@ showReadingTime: false
 
 ![](assets/background.jpg)
 
+### Hazbin Hotel - Season 2
+
 Once again, a musical theater masterpiece with spectacular animation and character designs. Loved every second.
 
 10/10
