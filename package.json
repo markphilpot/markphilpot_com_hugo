@@ -13,12 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@atproto/api": "^0.13.26",
-    "dotenv": "^16.4.7",
+    "@atproto/api": "^0.13.35",
+    "dotenv": "^16.6.1",
     "ink": "^6.6.0",
     "ink-text-input": "^6.0.0",
     "markdown-it": "^14.1.0",
-    "masto": "^6.10.3",
+    "masto": "^6.10.4",
     "react": "^19.2.3",
     "yargs": "^17.7.2"
   },

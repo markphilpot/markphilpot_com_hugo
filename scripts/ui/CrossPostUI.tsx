@@ -73,7 +73,12 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
     if (key.tab && !state.isEditing) {
       const fields: FocusedField[] = ['text', 'backlink', 'mastodon', 'bluesky', 'submit', 'cancel'];
       const currentIndex = fields.indexOf(state.focusedField);
-      const nextIndex = (currentIndex + 1) % fields.length;
+
+      // Shift+Tab navigates backwards, Tab navigates forwards
+      const nextIndex = key.shift
+        ? (currentIndex - 1 + fields.length) % fields.length
+        : (currentIndex + 1) % fields.length;
+
       setState(prev => ({ ...prev, focusedField: fields[nextIndex] }));
       return;
     }
@@ -154,7 +159,7 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
       {/* Instructions */}
       <Box marginBottom={1}>
         <Text dimColor>
-          Tab: Navigate | Enter: Select/Edit | Esc: Cancel/Exit Edit
+          Tab: Next | Shift+Tab: Previous | Enter: Select/Edit | Esc: Cancel/Exit Edit
         </Text>
       </Box>
 
