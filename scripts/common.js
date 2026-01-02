@@ -114,9 +114,37 @@ function computeBackref(textbundlePath) {
   }
 }
 
+function findFirstImage(textbundlePath) {
+  const assetsPath = path.join(textbundlePath, "assets");
+
+  if (!fs.existsSync(assetsPath) || !fs.statSync(assetsPath).isDirectory()) {
+    return null;
+  }
+
+  const files = fs.readdirSync(assetsPath);
+  const firstImage = files.find((file) => isImage(file));
+
+  return firstImage ? path.join(assetsPath, firstImage) : null;
+}
+
+function isImage(filename) {
+  const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".webp"];
+  return imageExtensions.includes(path.extname(filename).toLowerCase());
+}
+
+function preparePostContent(textbundlePath, md) {
+  const plainTextContent = getTextbundlePlainText(textbundlePath, md);
+  const { title, summary } = extractFrontmatter(textbundlePath);
+
+  return title ? `${title}\n\n${summary}` : plainTextContent;
+}
+
 module.exports = {
   getTextbundlePlainText,
   truncateContent,
   computeBackref,
   extractFrontmatter,
+  findFirstImage,
+  isImage,
+  preparePostContent,
 }

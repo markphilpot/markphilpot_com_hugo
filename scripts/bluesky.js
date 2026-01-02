@@ -1,81 +1,75 @@
 require("dotenv").config();
 
 const fs = require("fs");
-const path = require("path");
-const MarkdownIt = require("markdown-it");
 const { AtpAgent } = require("@atproto/api");
 
-const {getTextbundlePlainText, truncateContent, extractFrontmatter} = require("./common");
+const { findFirstImage } = require("./common");
 
 const BLUESKY_USERNAME = process.env.BLUESKY_USERNAME;
 const BLUESKY_PASSWORD = process.env.BLUESKY_PASSWORD;
-
-const md = MarkdownIt();
+const BLUESKY_CHAR_LIMIT = 300;
 
 const agent = new AtpAgent({ service: "https://bsky.social" });
 
-async function main(textbundle, link, preview) {
+function getCharLimit() {
+  return BLUESKY_CHAR_LIMIT;
+}
+
+async function post(textbundlePath, content, preview) {
   try {
-    await agent.login({ identifier: BLUESKY_USERNAME, password: BLUESKY_PASSWORD });
-
-    const assetsPath = path.join(textbundle, "assets");
-
-    const plainTextContent = getTextbundlePlainText(textbundle, md);
-    const { title, summary } = extractFrontmatter(textbundle);
-
-    const content = title ? `${title}\n\n${summary}` : plainTextContent;
-
-    const charLimit = 300;
-    const truncatedContent = truncateContent(content, charLimit, link);
-
-    if(preview) {
-      console.log('\n\n--- Bluesky Post ---');
-      console.log(truncatedContent);
+    if (preview) {
+      console.log('\n--- Bluesky Post ---');
+      console.log(content);
+      console.log(`\nCharacter count: ${content.length}/${BLUESKY_CHAR_LIMIT}`);
       return;
     }
 
-    // Find the first image in the assets folder
-    let imageBlob = null;
-    if (fs.existsSync(assetsPath) && fs.statSync(assetsPath).isDirectory()) {
-      const files = fs.readdirSync(assetsPath);
-      const firstImage = files.find((file) => isImage(file));
+    // Login
+    await agent.login({
+      identifier: BLUESKY_USERNAME,
+      password: BLUESKY_PASSWORD
+    });
 
-      if (firstImage) {
-        const imagePath = path.join(assetsPath, firstImage);
-        imageBlob = await uploadImage(imagePath);
-      }
+    // Find and upload image if it exists
+    const imagePath = findFirstImage(textbundlePath);
+    let imageBlob = null;
+
+    if (imagePath) {
+      imageBlob = await uploadImage(imagePath);
     }
 
     // Create post
     const postRecord = {
-      text: truncatedContent,
-      embed: imageBlob ? { $type: "app.bsky.embed.images", images: [{
-        alt: 'blog post image',
-        image: imageBlob
-      }] } : undefined,
+      text: content,
+      embed: imageBlob ? {
+        $type: "app.bsky.embed.images",
+        images: [{
+          alt: 'blog post image',
+          image: imageBlob
+        }]
+      } : undefined,
     };
 
     await agent.post(postRecord);
 
     console.log("Bluesky post created successfully.");
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Bluesky error:", error.message);
+    throw error;
   }
-}
-
-function isImage(filename) {
-  const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".webp"];
-  return imageExtensions.includes(path.extname(filename).toLowerCase());
 }
 
 async function uploadImage(imagePath) {
   const imageBuffer = fs.readFileSync(imagePath);
 
   const uploadResponse = await agent.uploadBlob(imageBuffer, {
-    encoding: "image/*", // Automatically infer the type
+    encoding: "image/*",
   });
 
   return uploadResponse.data.blob;
 }
 
-module.exports = main
+module.exports = {
+  post,
+  getCharLimit,
+}
