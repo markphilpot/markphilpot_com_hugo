@@ -1,7 +1,15 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-function extractFrontmatter(textbundlePath, md) {
+interface Frontmatter {
+  [key: string]: any;
+  title?: string;
+  summary?: string;
+  date?: string;
+  slug?: string;
+}
+
+function extractFrontmatter(textbundlePath: string): Frontmatter {
   const textPath = path.join(textbundlePath, "text.md");
 
   if (!fs.existsSync(textPath)) {
@@ -10,16 +18,16 @@ function extractFrontmatter(textbundlePath, md) {
 
   const markdown = fs.readFileSync(textPath, "utf8");
 
-  const frontmatterRegex = /^---\n([\s\S]*?)\n---/; // Regex to match the frontmatter block
+  const frontmatterRegex = /^---\n([\s\S]*?)\n---/;
   const match = markdown.match(frontmatterRegex);
 
   if (!match) {
-    return {}; // Return an empty object if no frontmatter is found
+    return {};
   }
 
   const frontmatterContent = match[1];
   const lines = frontmatterContent.split('\n');
-  const result = {};
+  const result: Frontmatter = {};
 
   lines.forEach(line => {
     const [key, ...rest] = line.split(':').map(str => str.trim());
@@ -31,7 +39,7 @@ function extractFrontmatter(textbundlePath, md) {
       } else if (value === 'false') {
         result[key] = false;
       } else {
-        result[key] = value.replace(/^['"]|['"]$/g, ''); // Remove surrounding quotes if present
+        result[key] = value.replace(/^['"]|['"]$/g, '');
       }
     }
   });
@@ -39,7 +47,7 @@ function extractFrontmatter(textbundlePath, md) {
   return result;
 }
 
-function getTextbundlePlainText(textbundlePath, md) {
+function getTextbundlePlainText(textbundlePath: string, md: any): string {
   const textPath = path.join(textbundlePath, "text.md");
 
   if (!fs.existsSync(textPath)) {
@@ -48,34 +56,21 @@ function getTextbundlePlainText(textbundlePath, md) {
 
   const markdownContent = fs.readFileSync(textPath, "utf8");
 
-  // Regex to match YAML frontmatter (starts and ends with ---)
   const frontmatterRegex = /^---\s*[\s\S]*?\s*---\s*/;
 
-  // Remove frontmatter (if any) from the markdown string and rewrite links
   const contentWithoutFrontmatter = markdownContent
     .replace(frontmatterRegex, '');
-    // .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '$1 ($2)');
 
   const plainTextContent = md.render(contentWithoutFrontmatter)
-    .replace(/<\/p>/g, "\n") // Try to preserve paragraph spacing
-    .replace(/<[^>]+>/g, "") // Remove HTML tags
+    .replace(/<\/p>/g, "\n")
+    .replace(/<[^>]+>/g, "")
     .trim();
-
-  // console.log('--------');
-  // console.log(markdownContent);
-  // console.log('--------');
-  // console.log(contentWithoutFrontmatter);
-  // console.log('--------');
-  // console.log(md.render(contentWithoutFrontmatter));
-  // console.log('--------');
-  // console.log(plainTextContent);
-  // console.log('--------');
 
   return plainTextContent;
 }
 
-function truncateContent(content, limit, link) {
-  if(link) {
+function truncateContent(content: string, limit: number, link?: string): string {
+  if (link) {
     if (content.length + link.length + 7 > limit) {
       return content.slice(0, limit - (7 + link.length)) + "...\n\n➡️ " + link;
     } else {
@@ -88,12 +83,12 @@ function truncateContent(content, limit, link) {
   return content;
 }
 
-function computeBackref(textbundlePath) {
+function computeBackref(textbundlePath: string): string {
   const { date, slug } = extractFrontmatter(textbundlePath);
 
-  const d = new Date(date);
+  const d = new Date(date!);
 
-  if(textbundlePath.includes("micro")) {
+  if (textbundlePath.includes("micro")) {
     const category = "micro"
 
     const year = `${d.getFullYear()}`
@@ -114,7 +109,7 @@ function computeBackref(textbundlePath) {
   }
 }
 
-function findFirstImage(textbundlePath) {
+function findFirstImage(textbundlePath: string): string | null {
   const assetsPath = path.join(textbundlePath, "assets");
 
   if (!fs.existsSync(assetsPath) || !fs.statSync(assetsPath).isDirectory()) {
@@ -127,19 +122,19 @@ function findFirstImage(textbundlePath) {
   return firstImage ? path.join(assetsPath, firstImage) : null;
 }
 
-function isImage(filename) {
+function isImage(filename: string): boolean {
   const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".webp"];
   return imageExtensions.includes(path.extname(filename).toLowerCase());
 }
 
-function preparePostContent(textbundlePath, md) {
+function preparePostContent(textbundlePath: string, md: any): string {
   const plainTextContent = getTextbundlePlainText(textbundlePath, md);
   const { title, summary } = extractFrontmatter(textbundlePath);
 
   return title ? `${title}\n\n${summary}` : plainTextContent;
 }
 
-module.exports = {
+export {
   getTextbundlePlainText,
   truncateContent,
   computeBackref,
@@ -147,4 +142,4 @@ module.exports = {
   findFirstImage,
   isImage,
   preparePostContent,
-}
+};

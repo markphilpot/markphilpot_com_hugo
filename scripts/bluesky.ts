@@ -1,21 +1,19 @@
-require("dotenv").config();
+import "dotenv/config";
+import fs from "fs";
+import { AtpAgent } from "@atproto/api";
+import { findFirstImage } from "./common.js";
 
-const fs = require("fs");
-const { AtpAgent } = require("@atproto/api");
-
-const { findFirstImage } = require("./common");
-
-const BLUESKY_USERNAME = process.env.BLUESKY_USERNAME;
-const BLUESKY_PASSWORD = process.env.BLUESKY_PASSWORD;
+const BLUESKY_USERNAME = process.env.BLUESKY_USERNAME!;
+const BLUESKY_PASSWORD = process.env.BLUESKY_PASSWORD!;
 const BLUESKY_CHAR_LIMIT = 300;
 
 const agent = new AtpAgent({ service: "https://bsky.social" });
 
-function getCharLimit() {
+function getCharLimit(): number {
   return BLUESKY_CHAR_LIMIT;
 }
 
-async function post(textbundlePath, content, preview) {
+async function post(textbundlePath: string, content: string, preview: boolean = false): Promise<void> {
   try {
     if (preview) {
       console.log('\n--- Bluesky Post ---');
@@ -32,7 +30,7 @@ async function post(textbundlePath, content, preview) {
 
     // Find and upload image if it exists
     const imagePath = findFirstImage(textbundlePath);
-    let imageBlob = null;
+    let imageBlob: any = null;
 
     if (imagePath) {
       imageBlob = await uploadImage(imagePath);
@@ -53,13 +51,13 @@ async function post(textbundlePath, content, preview) {
     await agent.post(postRecord);
 
     console.log("Bluesky post created successfully.");
-  } catch (error) {
+  } catch (error: any) {
     console.error("Bluesky error:", error.message);
     throw error;
   }
 }
 
-async function uploadImage(imagePath) {
+async function uploadImage(imagePath: string): Promise<any> {
   const imageBuffer = fs.readFileSync(imagePath);
 
   const uploadResponse = await agent.uploadBlob(imageBuffer, {
@@ -69,7 +67,4 @@ async function uploadImage(imagePath) {
   return uploadResponse.data.blob;
 }
 
-module.exports = {
-  post,
-  getCharLimit,
-}
+export { post, getCharLimit };

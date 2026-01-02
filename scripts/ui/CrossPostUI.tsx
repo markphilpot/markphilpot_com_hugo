@@ -1,15 +1,48 @@
-const React = require('react');
-const { useState, useEffect } = React;
-const { Box, Text, useInput, useApp } = require('ink');
-const TextInput = require('ink-text-input').default;
-const { truncateContent } = require('../common');
-const mastodon = require('../mastodon');
-const bluesky = require('../bluesky');
+import React, { useState, useEffect } from 'react';
+import { Box, Text, useInput, useApp } from 'ink';
+import TextInput from 'ink-text-input';
+import { truncateContent } from '../common.js';
+import * as mastodon from '../mastodon.js';
+import * as bluesky from '../bluesky.js';
 
-const CrossPostUI = ({ textbundlePath, initialContent, backlink, onSubmit, onCancel }) => {
+interface PostData {
+  content: string;
+  platforms: {
+    mastodon: boolean;
+    bluesky: boolean;
+  };
+  includeBacklink: boolean;
+}
+
+interface CrossPostUIProps {
+  textbundlePath: string;
+  initialContent: string;
+  backlink: string;
+  onSubmit: (postData: PostData) => Promise<void>;
+  onCancel: () => void;
+}
+
+type FocusedField = 'text' | 'backlink' | 'mastodon' | 'bluesky' | 'submit' | 'cancel';
+
+interface UIState {
+  postText: string;
+  includeBacklink: boolean;
+  platforms: {
+    mastodon: boolean;
+    bluesky: boolean;
+  };
+  focusedField: FocusedField;
+  isEditing: boolean;
+  charLimits: {
+    mastodon: number;
+    bluesky: number;
+  };
+}
+
+const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialContent, backlink, onSubmit, onCancel }) => {
   const { exit } = useApp();
 
-  const [state, setState] = useState({
+  const [state, setState] = useState<UIState>({
     postText: initialContent,
     includeBacklink: true,
     platforms: {
@@ -35,10 +68,10 @@ const CrossPostUI = ({ textbundlePath, initialContent, backlink, onSubmit, onCan
   }, []);
 
   // Handle keyboard input
-  useInput((input, key) => {
+  useInput((input: string, key: any) => {
     // Tab navigation when not editing
     if (key.tab && !state.isEditing) {
-      const fields = ['text', 'backlink', 'mastodon', 'bluesky', 'submit', 'cancel'];
+      const fields: FocusedField[] = ['text', 'backlink', 'mastodon', 'bluesky', 'submit', 'cancel'];
       const currentIndex = fields.indexOf(state.focusedField);
       const nextIndex = (currentIndex + 1) % fields.length;
       setState(prev => ({ ...prev, focusedField: fields[nextIndex] }));
@@ -137,7 +170,7 @@ const CrossPostUI = ({ textbundlePath, initialContent, backlink, onSubmit, onCan
           {state.isEditing && state.focusedField === 'text' ? (
             <TextInput
               value={state.postText}
-              onChange={value => setState(prev => ({ ...prev, postText: value }))}
+              onChange={(value: string) => setState(prev => ({ ...prev, postText: value }))}
               onSubmit={() => setState(prev => ({ ...prev, isEditing: false }))}
             />
           ) : (
@@ -229,4 +262,4 @@ const CrossPostUI = ({ textbundlePath, initialContent, backlink, onSubmit, onCan
   );
 };
 
-module.exports = CrossPostUI;
+export default CrossPostUI;

@@ -1,19 +1,17 @@
-require("dotenv").config();
+import "dotenv/config";
+import fs from "fs";
+import { createRestAPIClient } from "masto";
+import { findFirstImage } from "./common.js";
 
-const fs = require("fs");
-const { createRestAPIClient } = require("masto");
-
-const { findFirstImage } = require("./common");
-
-const MASTODON_ACCESS_TOKEN = process.env.MASTODON_ACCESS_TOKEN;
-const MASTODON_API_URL = process.env.MASTODON_API_URL;
+const MASTODON_ACCESS_TOKEN = process.env.MASTODON_ACCESS_TOKEN!;
+const MASTODON_API_URL = process.env.MASTODON_API_URL!;
 
 const masto = createRestAPIClient({
   url: MASTODON_API_URL,
   accessToken: MASTODON_ACCESS_TOKEN,
 });
 
-async function post(textbundlePath, content, preview) {
+async function post(textbundlePath: string, content: string, preview: boolean = false): Promise<void> {
   try {
     if (preview) {
       console.log('\n--- Mastodon Post ---');
@@ -24,7 +22,7 @@ async function post(textbundlePath, content, preview) {
 
     // Find and upload image if it exists
     const imagePath = findFirstImage(textbundlePath);
-    let mediaId = null;
+    let mediaId: string | null = null;
 
     if (imagePath) {
       mediaId = await uploadMedia(imagePath);
@@ -35,25 +33,22 @@ async function post(textbundlePath, content, preview) {
     await masto.v1.statuses.create(params);
 
     console.log("Mastodon post created successfully.");
-  } catch (error) {
+  } catch (error: any) {
     console.error("Mastodon error:", error.message);
     throw error;
   }
 }
 
-async function getCharLimit() {
+async function getCharLimit(): Promise<number> {
   const instance = await masto.v1.instance.fetch();
   return instance.configuration.statuses.maxCharacters;
 }
 
-async function uploadMedia(imagePath) {
+async function uploadMedia(imagePath: string): Promise<string> {
   const mediaResponse = await masto.v2.media.create({
     file: new Blob([fs.readFileSync(imagePath)]),
   });
   return mediaResponse.id;
 }
 
-module.exports = {
-  post,
-  getCharLimit,
-}
+export { post, getCharLimit };

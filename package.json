@@ -2,9 +2,12 @@
   "name": "markphilpot_com_hugo",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "xpost": "node scripts/xpost.js"
+    "xpost": "tsx scripts/xpost.ts",
+    "build": "tsc",
+    "type-check": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +22,13 @@
     "react": "^19.2.3",
     "yargs": "^17.7.2"
   },
-  "packageManager": "pnpm@8.14.3+sha512.c3ed80eb583be3e2b7ef31eb96b8b9cfaa0503e5d44ec717514120b5187b2f933736e9038c51a5a23ad582790ba41d4ab784618c89fa7e2365f6665685d612ee"
+  "packageManager": "pnpm@8.14.3+sha512.c3ed80eb583be3e2b7ef31eb96b8b9cfaa0503e5d44ec717514120b5187b2f933736e9038c51a5a23ad582790ba41d4ab784618c89fa7e2365f6665685d612ee",
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.2.7",
+    "@types/yargs": "^17.0.35",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
 }

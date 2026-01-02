@@ -1,18 +1,26 @@
-require("dotenv").config();
+import "dotenv/config";
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+import React from 'react';
+import { render } from 'ink';
+import MarkdownIt from 'markdown-it';
+import * as mastodon from './mastodon.js';
+import * as bluesky from './bluesky.js';
+import { computeBackref, preparePostContent, truncateContent } from './common.js';
+import CrossPostUI from './ui/CrossPostUI.js';
 
-const yargs = require('yargs');
-const React = require('react');
-const { render } = require('ink');
-const MarkdownIt = require('markdown-it');
-
-const mastodon = require('./mastodon');
-const bluesky = require('./bluesky');
-const { computeBackref, preparePostContent, truncateContent } = require('./common');
-const CrossPostUI = require('./ui/CrossPostUI');
+interface Arguments {
+  file: string;
+  mastodon?: boolean;
+  bluesky?: boolean;
+  link?: boolean;
+  preview?: boolean;
+  'no-tui'?: boolean;
+}
 
 const md = new MarkdownIt();
 
-const argv = yargs
+const argv = await yargs(hideBin(process.argv))
   .scriptName("xpost")
   .option("f", {
     alias: 'file',
@@ -48,9 +56,9 @@ const argv = yargs
   .help('h')
   .alias('h', 'help')
   .version(false)
-  .argv;
+  .parseAsync() as unknown as Arguments;
 
-async function main() {
+async function main(): Promise<void> {
   const textbundlePath = argv.file;
 
   // Legacy CLI mode (backward compatibility)
@@ -61,13 +69,13 @@ async function main() {
     if (argv.mastodon) {
       const mastodonLimit = await mastodon.getCharLimit();
       const truncated = truncateContent(content, mastodonLimit, link);
-      await mastodon.post(textbundlePath, truncated, argv.preview);
+      await mastodon.post(textbundlePath, truncated, argv.preview ?? false);
     }
 
     if (argv.bluesky) {
       const blueskyLimit = bluesky.getCharLimit();
       const truncated = truncateContent(content, blueskyLimit, link);
-      await bluesky.post(textbundlePath, truncated, argv.preview);
+      await bluesky.post(textbundlePath, truncated, argv.preview ?? false);
     }
 
     return;
@@ -98,7 +106,7 @@ async function main() {
             const truncated = truncateContent(content, blueskyLimit, link);
             await bluesky.post(textbundlePath, truncated, false);
           }
-        } catch (error) {
+        } catch (error: any) {
           console.error("Error posting:", error.message);
           process.exit(1);
         }
@@ -113,9 +121,7 @@ async function main() {
   await waitUntilExit();
 }
 
-main().catch(error => {
+main().catch((error: any) => {
   console.error("Fatal error:", error);
   process.exit(1);
 });
-
-
