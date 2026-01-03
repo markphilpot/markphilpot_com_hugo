@@ -10,6 +10,3 @@ I've taken some time over the holiday break get my last 2025 update of [anilime]
 - A whole host of screen refactoring, mostly due to the new iOS 26 primitives, including support for the iPad's new window management
 
 Overall, a worth while update.  I don't collect any analytics in the app and I've never bothered to dive too deeply into the store analytics that Apple provides.  I have no idea how many people still use the app -- it's mainly an app for me that I happen to share.  That being said, I do want to invest in it a bit more in 2026.  I'm not exactly sure what that will look like, but I have a few ideas.
-
-
-#draft
