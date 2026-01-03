@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Text, useInput, useApp } from 'ink';
-import TextInput from 'ink-text-input';
+import { spawnSync } from 'child_process';
+import { writeFileSync, readFileSync, unlinkSync } from 'fs';
+import { tmpdir } from 'os';
+import { join } from 'path';
 import { truncateContent } from '../common.js';
 import * as mastodon from '../mastodon.js';
 import * as bluesky from '../bluesky.js';
@@ -32,7 +35,6 @@ interface UIState {
     bluesky: boolean;
   };
   focusedField: FocusedField;
-  isEditing: boolean;
   charLimits: {
     mastodon: number;
     bluesky: number;
@@ -50,7 +52,6 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
       bluesky: true,
     },
     focusedField: 'text',
-    isEditing: false,
     charLimits: {
       mastodon: 500,
       bluesky: 300,
@@ -67,10 +68,46 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
     });
   }, []);
 
+  // Launch external editor
+  const launchEditor = (currentText: string): string => {
+    // Get editor from environment or default to nvim
+    const editor = process.env.EDITOR || 'nvim';
+
+    // Create temp file with current content
+    const tempFile = join(tmpdir(), `xpost-${Date.now()}.txt`);
+    writeFileSync(tempFile, currentText, 'utf-8');
+
+    try {
+      // Spawn editor synchronously with inherited stdio
+      // This will block and give full terminal control to the editor
+      const result = spawnSync(editor, [tempFile], {
+        stdio: 'inherit',
+        shell: true
+      });
+
+      // Check if editor exited successfully
+      if (result.status === 0) {
+        // Read modified content
+        const modifiedText = readFileSync(tempFile, 'utf-8');
+        return modifiedText;
+      }
+
+      // If editor failed, return original text
+      return currentText;
+    } finally {
+      // Clean up temp file
+      try {
+        unlinkSync(tempFile);
+      } catch (e) {
+        // Ignore cleanup errors
+      }
+    }
+  };
+
   // Handle keyboard input
   useInput((input: string, key: any) => {
-    // Tab navigation when not editing
-    if (key.tab && !state.isEditing) {
+    // Tab navigation
+    if (key.tab) {
       const fields: FocusedField[] = ['text', 'backlink', 'mastodon', 'bluesky', 'submit', 'cancel'];
       const currentIndex = fields.indexOf(state.focusedField);
 
@@ -84,9 +121,10 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
     }
 
     // Enter or Space key behavior
-    if ((key.return || input === ' ') && !state.isEditing) {
+    if (key.return || input === ' ') {
       if (state.focusedField === 'text') {
-        setState(prev => ({ ...prev, isEditing: true }));
+        const editedText = launchEditor(state.postText);
+        setState(prev => ({ ...prev, postText: editedText }));
       } else if (state.focusedField === 'backlink') {
         setState(prev => ({
           ...prev,
@@ -111,14 +149,10 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
       return;
     }
 
-    // Escape key - exit text editing or cancel
+    // Escape key - cancel
     if (key.escape) {
-      if (state.isEditing) {
-        setState(prev => ({ ...prev, isEditing: false }));
-      } else {
-        onCancel();
-        exit();
-      }
+      onCancel();
+      exit();
       return;
     }
   });
@@ -159,7 +193,7 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
       {/* Instructions */}
       <Box marginBottom={1}>
         <Text dimColor>
-          Tab: Next | Shift+Tab: Previous | Enter/Space: Select/Edit | Esc: Cancel/Exit Edit
+          Tab: Next | Shift+Tab: Previous | Enter/Space: Select/Edit | Esc: Cancel
         </Text>
       </Box>
 
@@ -173,15 +207,7 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
         </Text>
       </Box>
       <Box marginBottom={1} marginLeft={6}>
-        {state.isEditing && state.focusedField === 'text' ? (
-          <TextInput
-            value={state.postText}
-            onChange={(value: string) => setState(prev => ({ ...prev, postText: value }))}
-            onSubmit={() => setState(prev => ({ ...prev, isEditing: false }))}
-          />
-        ) : (
-          <Text>{state.postText}</Text>
-        )}
+        <Text>{state.postText}</Text>
       </Box>
 
       {/* Backlink Toggle */}
