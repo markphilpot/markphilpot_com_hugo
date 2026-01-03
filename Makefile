@@ -40,3 +40,6 @@ last3:
 
 xpost-last:
 	pnpm xpost -l -m -f `git show --name-only --pretty=format: | grep "\.textbundle/text.md$$" | sed "s/.\{8\}$$//"` last
+
+xpost-last-preview:
+	pnpm xpost -p -l -m -f `git show --name-only --pretty=format: | grep "\.textbundle/text.md$$" | sed "s/.\{8\}$$//"` last
