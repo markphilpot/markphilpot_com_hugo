@@ -83,8 +83,8 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
       return;
     }
 
-    // Enter key behavior
-    if (key.return && !state.isEditing) {
+    // Enter or Space key behavior
+    if ((key.return || input === ' ') && !state.isEditing) {
       if (state.focusedField === 'text') {
         setState(prev => ({ ...prev, isEditing: true }));
       } else if (state.focusedField === 'backlink') {
@@ -159,29 +159,29 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
       {/* Instructions */}
       <Box marginBottom={1}>
         <Text dimColor>
-          Tab: Next | Shift+Tab: Previous | Enter: Select/Edit | Esc: Cancel/Exit Edit
+          Tab: Next | Shift+Tab: Previous | Enter/Space: Select/Edit | Esc: Cancel/Exit Edit
         </Text>
       </Box>
 
       {/* Post Text Editor */}
-      <Box flexDirection="column" marginBottom={1}>
+      <Box>
         <Text>
           {state.focusedField === 'text' ? '> ' : '  '}
           <Text color={state.focusedField === 'text' ? 'green' : undefined}>
             Post Text:
           </Text>
         </Text>
-        <Box marginLeft={2}>
-          {state.isEditing && state.focusedField === 'text' ? (
-            <TextInput
-              value={state.postText}
-              onChange={(value: string) => setState(prev => ({ ...prev, postText: value }))}
-              onSubmit={() => setState(prev => ({ ...prev, isEditing: false }))}
-            />
-          ) : (
-            <Text>{state.postText}</Text>
-          )}
-        </Box>
+      </Box>
+      <Box marginBottom={1} marginLeft={6}>
+        {state.isEditing && state.focusedField === 'text' ? (
+          <TextInput
+            value={state.postText}
+            onChange={(value: string) => setState(prev => ({ ...prev, postText: value }))}
+            onSubmit={() => setState(prev => ({ ...prev, isEditing: false }))}
+          />
+        ) : (
+          <Text>{state.postText}</Text>
+        )}
       </Box>
 
       {/* Backlink Toggle */}
@@ -222,7 +222,9 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
         {state.platforms.mastodon && (
           <Box flexDirection="column" marginTop={1}>
             <Text color="blue" bold>Mastodon:</Text>
-            <Text>{mastodonPreview}</Text>
+            <Box marginTop={1} marginBottom={1}>
+              <Text>{mastodonPreview}</Text>
+            </Box>
             <Text dimColor>
               Characters: {mastodonPreview.length}/{state.charLimits.mastodon}
             </Text>
@@ -232,7 +234,9 @@ const CrossPostUI: React.FC<CrossPostUIProps> = ({ textbundlePath, initialConten
         {state.platforms.bluesky && (
           <Box flexDirection="column" marginTop={1}>
             <Text color="cyan" bold>Bluesky:</Text>
-            <Text>{blueskyPreview}</Text>
+            <Box marginTop={1} marginBottom={1}>
+              <Text>{blueskyPreview}</Text>
+            </Box>
             <Text dimColor>
               Characters: {blueskyPreview.length}/{state.charLimits.bluesky}
             </Text>
