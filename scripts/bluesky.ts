@@ -1,6 +1,6 @@
 import "dotenv/config";
 import fs from "fs";
-import { AtpAgent } from "@atproto/api";
+import { AtpAgent, RichText } from "@atproto/api";
 import { findFirstImage } from "./common.js";
 
 const BLUESKY_USERNAME = process.env.BLUESKY_USERNAME!;
@@ -36,9 +36,14 @@ async function post(textbundlePath: string, content: string, preview: boolean = 
       imageBlob = await uploadImage(imagePath);
     }
 
+    // Create RichText instance and detect facets (for clickable links)
+    const rt = new RichText({ text: content });
+    await rt.detectFacets(agent);
+
     // Create post
     const postRecord = {
-      text: content,
+      text: rt.text,
+      facets: rt.facets,
       embed: imageBlob ? {
         $type: "app.bsky.embed.images",
         images: [{
