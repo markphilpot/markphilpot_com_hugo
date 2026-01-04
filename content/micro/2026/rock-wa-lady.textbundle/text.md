@@ -10,5 +10,3 @@ showReadingTime: false
 The music in shows like this (Bocchi the Rock, Ya Boy Kongming, etc) really elevate them far beyond the original source material. These are made to be anime, and the fact that they gained a successful audience as a manga speaks to the quality of the writing and characters. Loved the conceit and the CG for the performances was excellent.
 
 8/10
-
-#draft
