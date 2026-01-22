@@ -13,7 +13,7 @@ function getCharLimit(): number {
   return BLUESKY_CHAR_LIMIT;
 }
 
-async function post(textbundlePath: string, content: string, preview: boolean = false): Promise<void> {
+async function post(textbundlePath: string, content: string, preview: boolean = false, backlinkUrl?: string): Promise<void> {
   try {
     if (preview) {
       console.log('\n--- Bluesky Post ---');
@@ -39,6 +39,32 @@ async function post(textbundlePath: string, content: string, preview: boolean = 
     // Create RichText instance and detect facets (for clickable links)
     const rt = new RichText({ text: content });
     await rt.detectFacets(agent);
+
+    // If there's a backlink URL, manually add a facet for the display text
+    if (backlinkUrl) {
+      const linkPattern = /➡️\s+([^\n]+)$/;
+      const match = content.match(linkPattern);
+
+      if (match) {
+        const displayText = match[1];
+        const linkStart = match.index! + match[0].indexOf(displayText);
+
+        // Add the link facet
+        const linkFacet = {
+          index: {
+            byteStart: new TextEncoder().encode(content.slice(0, linkStart)).length,
+            byteEnd: new TextEncoder().encode(content.slice(0, linkStart + displayText.length)).length,
+          },
+          features: [{
+            $type: 'app.bsky.richtext.facet#link',
+            uri: backlinkUrl,
+          }],
+        };
+
+        // Add to existing facets or create new array
+        rt.facets = rt.facets ? [...rt.facets, linkFacet] : [linkFacet];
+      }
+    }
 
     // Create post
     const postRecord = {

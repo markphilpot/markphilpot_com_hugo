@@ -69,12 +69,13 @@ function getTextbundlePlainText(textbundlePath: string, md: any): string {
   return plainTextContent;
 }
 
-function truncateContent(content: string, limit: number, link?: string): string {
+function truncateContent(content: string, limit: number, link?: string, linkDisplayText?: string): string {
   if (link) {
-    if (content.length + link.length + 7 > limit) {
-      return content.slice(0, limit - (7 + link.length)) + "...\n\n➡️ " + link;
+    const displayText = linkDisplayText || link;
+    if (content.length + displayText.length + 7 > limit) {
+      return content.slice(0, limit - (7 + displayText.length)) + "...\n\n➡️ " + displayText;
     } else {
-      return `${content}\n\n➡️ ${link}`;
+      return `${content}\n\n➡️ ${displayText}`;
     }
   } else if (content.length > limit) {
     return content.slice(0, limit - 3) + "...";

@@ -64,6 +64,7 @@ async function main(): Promise<void> {
   // Legacy CLI mode (backward compatibility)
   if (argv['no-tui'] || argv.preview) {
     const link = argv.link ? computeBackref(textbundlePath) : undefined;
+    const linkDisplayText = link ? new URL(link).hostname : undefined;
     const content = preparePostContent(textbundlePath, md);
 
     if (argv.mastodon) {
@@ -74,8 +75,8 @@ async function main(): Promise<void> {
 
     if (argv.bluesky) {
       const blueskyLimit = bluesky.getCharLimit();
-      const truncated = truncateContent(content, blueskyLimit, link);
-      await bluesky.post(textbundlePath, truncated, argv.preview ?? false);
+      const truncated = truncateContent(content, blueskyLimit, link, linkDisplayText);
+      await bluesky.post(textbundlePath, truncated, argv.preview ?? false, link);
     }
 
     return;
@@ -93,6 +94,7 @@ async function main(): Promise<void> {
       onSubmit: async (postData) => {
         const { content, platforms, includeBacklink } = postData;
         const link = includeBacklink ? backlink : undefined;
+        const linkDisplayText = link ? new URL(link).hostname : undefined;
 
         try {
           if (platforms.mastodon) {
@@ -103,8 +105,8 @@ async function main(): Promise<void> {
 
           if (platforms.bluesky) {
             const blueskyLimit = bluesky.getCharLimit();
-            const truncated = truncateContent(content, blueskyLimit, link);
-            await bluesky.post(textbundlePath, truncated, false);
+            const truncated = truncateContent(content, blueskyLimit, link, linkDisplayText);
+            await bluesky.post(textbundlePath, truncated, false, link);
           }
         } catch (error: any) {
           console.error("Error posting:", error.message);
