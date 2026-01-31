@@ -101,8 +101,8 @@
     integrity="{{ $twelementsLib.Data.Integrity }}"></script>
 {{ end }}
 
-{{/* youtubeLite */}}
-{{ if .Page.HasShortcode "youtubeLite" }}
+{{/* youtubeLite -- Always include for micro post support */}}
+{{/*  {{ if .Page.HasShortcode "youtubeLite" }}  */}}
   {{ $youtubeLiteCSS := resources.Get "lib/lite-youtube-embed/lite-yt-embed.css" }}
   {{ $youtubeLiteCSS = $youtubeLiteCSS | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
   <link
@@ -116,7 +116,7 @@
     type="text/javascript"
     src="{{ $youtubeLiteLib.RelPermalink }}"
     integrity="{{ $youtubeLiteLib.Data.Integrity }}"></script>
-{{ end }}
+{{/*  {{ end }}  */}}
 
 {{/* Repo cards */}}
 {{ $repoCards := slice "codeberg" "forgejo" "gitea" "github" "hugging-face" }}
