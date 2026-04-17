@@ -7,13 +7,17 @@
   "scripts": {
     "xpost": "tsx scripts/xpost.ts",
     "build": "tsc",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@atproto/api": "^0.13.35",
+    "@netlify/blobs": "^10.7.4",
+    "@netlify/functions": "^5.2.0",
     "dotenv": "^16.6.1",
     "ink": "^6.6.0",
     "ink-text-input": "^6.0.0",
@@ -29,6 +33,7 @@
     "@types/react": "^19.2.7",
     "@types/yargs": "^17.0.35",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.4"
   }
 }

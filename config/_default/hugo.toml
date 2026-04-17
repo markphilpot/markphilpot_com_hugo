@@ -45,8 +45,16 @@ enableEmoji = true
   filename = 'sitemap.xml'
   priority = 0.5
 
+[outputFormats]
+  [outputFormats.APFeed]
+    mediaType = "application/json"
+    baseName = "ap-feed"
+    isPlainText = true
+    rel = "alternate"
+    notAlternative = true
+
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON", "APFeed"]
 
 [related]
   threshold = 0

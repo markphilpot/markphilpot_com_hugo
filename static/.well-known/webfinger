@@ -1,0 +1,10 @@
+{
+  "subject": "acct:self@markphilpot.com",
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://markphilpot.com/ap/actor"
+    }
+  ]
+}

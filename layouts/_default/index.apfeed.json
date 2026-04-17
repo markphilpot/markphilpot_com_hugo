@@ -1,0 +1,14 @@
+{{- $index := slice -}}
+{{- range .Site.Pages -}}
+  {{- if and .Date .IsPage (or (eq .Type "blog") (eq .Type "micro")) -}}
+    {{- $index = $index | append (dict
+      "url" .Permalink
+      "date" (.Date.Format "2006-01-02T15:04:05Z07:00")
+      "title" .Title
+      "summary" (.Params.summary | default "")
+      "content" .Content
+      "section" .Type
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $index | jsonify -}}
