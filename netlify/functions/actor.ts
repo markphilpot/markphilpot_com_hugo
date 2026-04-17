@@ -22,6 +22,11 @@ export default async (_req: Request): Promise<Response> => {
     inbox: 'https://markphilpot.com/ap/inbox',
     outbox: 'https://markphilpot.com/ap/outbox',
     followers: 'https://markphilpot.com/ap/followers',
+    icon: {
+      type: 'Image',
+      mediaType: 'image/png',
+      url: 'https://markphilpot.com/apple-touch-icon.png',
+    },
     publicKey: {
       id: `${ACTOR_URL}#main-key`,
       owner: ACTOR_URL,
