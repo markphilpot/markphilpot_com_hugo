@@ -22,6 +22,7 @@ export default async (_req: Request): Promise<Response> => {
     inbox: 'https://markphilpot.com/ap/inbox',
     outbox: 'https://markphilpot.com/ap/outbox',
     followers: 'https://markphilpot.com/ap/followers',
+    manuallyApprovesFollowers: false,
     icon: {
       type: 'Image',
       mediaType: 'image/png',
