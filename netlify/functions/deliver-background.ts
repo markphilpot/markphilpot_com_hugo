@@ -11,14 +11,15 @@ export default async (req: Request): Promise<Response> => {
     return new Response('', { status: 202 })
   }
 
-  const deliverSecret = process.env.AP_DELIVER_SECRET
-  if (deliverSecret) {
-    const providedSecret = req.headers.get('x-deliver-secret')
-    if (providedSecret !== deliverSecret) {
-      console.warn('Deliver endpoint: invalid or missing secret — ignoring request')
-      return new Response('', { status: 202 })
-    }
-  }
+  // Netlify doesn't allow setting of headers... skip this check for now
+  // const deliverSecret = process.env.AP_DELIVER_SECRET
+  // if (deliverSecret) {
+  //   const providedSecret = req.headers.get('x-deliver-secret')
+  //   if (providedSecret !== deliverSecret) {
+  //     console.warn('Deliver endpoint: invalid or missing secret — ignoring request (')
+  //     return new Response('', { status: 202 })
+  //   }
+  // }
 
   let posts, delivered: string[]
   try {
