@@ -18,7 +18,7 @@
     </header>
 
     {{/* Body */}}
-    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    <section class="flex flex-col max-w-full mt-0 prose md:prose-lg 2xl:prose-xl dark:prose-invert lg:flex-row">
       {{ $enableToc := site.Params.article.showTableOfContents | default false }}
       {{ $enableToc = .Params.showTableOfContents | default $enableToc }}
       {{ $showToc := and $enableToc (in .TableOfContents "<ul") }}

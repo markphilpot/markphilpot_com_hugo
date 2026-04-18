@@ -87,7 +87,7 @@
   <div class="{{ $cardContentClasses }}">
     <header class="items-center text-start text-xl font-semibold">
       {{ if and (not .Title) (.Params.showMicroContent | default (.Site.Params.list.showMicroContent | default false)) }}
-      <div class="py-1 max-w-fit prose dark:prose-invert">
+      <div class="py-1 max-w-fit prose md:prose-lg 2xl:prose-xl dark:prose-invert">
         <div class="min-w-0 min-h-0 max-w-fit mt-8 mb-8">
           <div class="article-content max-w-prose m-auto">
             {{ .Content }}
