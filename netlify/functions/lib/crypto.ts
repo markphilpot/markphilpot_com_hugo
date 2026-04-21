@@ -5,21 +5,34 @@ const KEY_ID = 'https://markphilpot.com/ap/actor#main-key'
 export function signRequest(
   method: string,
   url: string,
-  body: string,
+  body: string | null,
   privateKeyPem: string,
 ): Record<string, string> {
   const parsed = new URL(url)
   const date = new Date().toUTCString()
-  const digest = 'SHA-256=' + crypto.createHash('sha256').update(body).digest('base64')
   const target = `${method.toLowerCase()} ${parsed.pathname}`
 
-  const signingString = [
+  const signingParts: string[] = [
     `(request-target): ${target}`,
     `host: ${parsed.host}`,
     `date: ${date}`,
-    `digest: ${digest}`,
-  ].join('\n')
+  ]
+  const signedHeaderNames = ['(request-target)', 'host', 'date']
 
+  const result: Record<string, string> = {
+    Date: date,
+    Host: parsed.host,
+  }
+
+  if (body !== null) {
+    const digest = 'SHA-256=' + crypto.createHash('sha256').update(body).digest('base64')
+    signingParts.push(`digest: ${digest}`)
+    signedHeaderNames.push('digest')
+    result['Digest'] = digest
+    result['Content-Type'] = 'application/activity+json'
+  }
+
+  const signingString = signingParts.join('\n')
   const privateKey = crypto.createPrivateKey(privateKeyPem)
   const signature = crypto
     .sign('sha256', Buffer.from(signingString), {
@@ -28,20 +41,14 @@ export function signRequest(
     })
     .toString('base64')
 
-  const signatureHeader = [
+  result['Signature'] = [
     `keyId="${KEY_ID}"`,
     `algorithm="rsa-sha256"`,
-    `headers="(request-target) host date digest"`,
+    `headers="${signedHeaderNames.join(' ')}"`,
     `signature="${signature}"`,
   ].join(',')
 
-  return {
-    Date: date,
-    Digest: digest,
-    Signature: signatureHeader,
-    'Content-Type': 'application/activity+json',
-    Host: parsed.host,
-  }
+  return result
 }
 
 /**
@@ -95,11 +102,13 @@ export function verifySignatureWithKey(
 
 /**
  * Verifies an HTTP Signature by fetching the actor's public key from the keyId URL.
+ * Signs the outbound fetch with our private key to support instances with authorized fetch enabled.
  */
 export async function verifySignature(
   method: string,
   path: string,
   headers: Record<string, string>,
+  privateKeyPem: string,
 ): Promise<boolean> {
   const signatureHeader = headers['signature']
   if (!signatureHeader) return false
@@ -111,7 +120,10 @@ export async function verifySignature(
   try {
     const actorUrl = keyId.split('#')[0]
     console.log('verifySignature: fetching actor', actorUrl, 'for path', path)
-    const res = await fetch(actorUrl, { headers: { Accept: 'application/activity+json' } })
+    const signedGetHeaders = signRequest('GET', actorUrl, null, privateKeyPem)
+    const res = await fetch(actorUrl, {
+      headers: { ...signedGetHeaders, Accept: 'application/activity+json' },
+    })
     if (!res.ok) {
       console.warn('verifySignature: actor fetch failed', res.status, actorUrl)
       return false

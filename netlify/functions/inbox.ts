@@ -23,7 +23,7 @@ export default async (req: Request): Promise<Response> => {
   req.headers.forEach((value, key) => { headers[key.toLowerCase()] = value })
 
   const url = new URL(req.url)
-  const valid = await verifySignature('POST', url.pathname, headers)
+  const valid = await verifySignature('POST', url.pathname, headers, privateKeyPem)
   if (!valid) {
     console.warn('inbox: invalid signature from', headers['host'] ?? '?', 'sig:', headers['signature']?.slice(0, 80))
     return new Response('Invalid signature', { status: 401 })
