@@ -110,13 +110,23 @@ export async function verifySignature(
 
   try {
     const actorUrl = keyId.split('#')[0]
+    console.log('verifySignature: fetching actor', actorUrl, 'for path', path)
     const res = await fetch(actorUrl, { headers: { Accept: 'application/activity+json' } })
-    if (!res.ok) return false
+    if (!res.ok) {
+      console.warn('verifySignature: actor fetch failed', res.status, actorUrl)
+      return false
+    }
     const actor = (await res.json()) as { publicKey?: { publicKeyPem?: string } }
     const publicKeyPem = actor.publicKey?.publicKeyPem
-    if (!publicKeyPem) return false
-    return verifySignatureWithKey(method, path, headers, publicKeyPem)
-  } catch {
+    if (!publicKeyPem) {
+      console.warn('verifySignature: no publicKeyPem in actor', actorUrl)
+      return false
+    }
+    const result = verifySignatureWithKey(method, path, headers, publicKeyPem)
+    console.log('verifySignature: result', result, 'method', method, 'path', path)
+    return result
+  } catch (err) {
+    console.error('verifySignature: exception', err)
     return false
   }
 }
