@@ -7,6 +7,8 @@ import type { FollowerRecord } from './lib/types.js'
 const ACTOR_URL = 'https://markphilpot.com/ap/actor'
 
 export default async (req: Request): Promise<Response> => {
+  console.log('inbox:', req.method, req.url)
+
   if (req.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 })
   }
@@ -23,6 +25,7 @@ export default async (req: Request): Promise<Response> => {
   const url = new URL(req.url)
   const valid = await verifySignature('POST', url.pathname, headers)
   if (!valid) {
+    console.warn('inbox: invalid signature from', headers['host'] ?? '?', 'sig:', headers['signature']?.slice(0, 80))
     return new Response('Invalid signature', { status: 401 })
   }
 
@@ -32,6 +35,8 @@ export default async (req: Request): Promise<Response> => {
   } catch {
     return new Response('Invalid JSON', { status: 400 })
   }
+
+  console.log('inbox: activity type', body.type)
 
   if (body.type === 'Follow') {
     return handleFollow(body, privateKeyPem)
