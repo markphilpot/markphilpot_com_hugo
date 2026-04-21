@@ -85,13 +85,17 @@ async function handleFollow(
     type: 'Accept',
     id: `https://markphilpot.com/ap/activities/${randomUUID()}`,
     actor: ACTOR_URL,
+    to: [actorId],
     object: activity,
   }
   const acceptBody = JSON.stringify(accept)
   const signedHeaders = signRequest('POST', record.inboxUrl, acceptBody, privateKeyPem)
 
   try {
-    await fetch(record.inboxUrl, { method: 'POST', headers: signedHeaders, body: acceptBody })
+    const acceptRes = await fetch(record.inboxUrl, { method: 'POST', headers: signedHeaders, body: acceptBody })
+    if (!acceptRes.ok) {
+      console.error('Accept rejected by', record.inboxUrl, acceptRes.status, await acceptRes.text().catch(() => ''))
+    }
   } catch (err) {
     // Log but don't fail — follower is stored; Accept delivery is best-effort
     console.error('Failed to send Accept to', record.inboxUrl, err)
