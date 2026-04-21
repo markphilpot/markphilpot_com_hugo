@@ -5,11 +5,12 @@ import { formatNote } from './lib/activitypub.js'
 import { signRequest } from './lib/crypto.js'
 
 export default async (req: Request): Promise<Response> => {
-  const privateKeyPem = process.env.AP_PRIVATE_KEY_PEM
-  if (!privateKeyPem) {
+  const privateKeyB64 = process.env.AP_PRIVATE_KEY_PEM
+  if (!privateKeyB64) {
     console.error('AP_PRIVATE_KEY_PEM not configured — skipping delivery')
     return new Response('', { status: 202 })
   }
+  const privateKeyPem = Buffer.from(privateKeyB64, 'base64').toString('utf8')
 
   // Netlify doesn't allow setting of headers... skip this check for now
   // const deliverSecret = process.env.AP_DELIVER_SECRET

@@ -3,10 +3,11 @@ import type { Config } from '@netlify/functions'
 const ACTOR_URL = 'https://markphilpot.com/ap/actor'
 
 export default async (_req: Request): Promise<Response> => {
-  const publicKeyPem = process.env.AP_PUBLIC_KEY_PEM
-  if (!publicKeyPem) {
+  const publicKeyB64 = process.env.AP_PUBLIC_KEY_PEM
+  if (!publicKeyB64) {
     return new Response('AP_PUBLIC_KEY_PEM not configured', { status: 500 })
   }
+  const publicKeyPem = Buffer.from(publicKeyB64, 'base64').toString('utf8')
 
   const actor = {
     '@context': [

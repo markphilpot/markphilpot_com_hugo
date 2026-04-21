@@ -13,10 +13,11 @@ export default async (req: Request): Promise<Response> => {
     return new Response('Method Not Allowed', { status: 405 })
   }
 
-  const privateKeyPem = process.env.AP_PRIVATE_KEY_PEM
-  if (!privateKeyPem) {
+  const privateKeyB64 = process.env.AP_PRIVATE_KEY_PEM
+  if (!privateKeyB64) {
     return new Response('AP_PRIVATE_KEY_PEM not configured', { status: 500 })
   }
+  const privateKeyPem = Buffer.from(privateKeyB64, 'base64').toString('utf8')
 
   // Collect headers as lowercase Record for signature verification
   const headers: Record<string, string> = {}
