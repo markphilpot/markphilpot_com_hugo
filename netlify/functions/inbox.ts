@@ -7,8 +7,6 @@ import type { FollowerRecord } from './lib/types.js'
 const ACTOR_URL = 'https://markphilpot.com/ap/actor'
 
 export default async (req: Request): Promise<Response> => {
-  console.log('inbox:', req.method, req.url)
-
   if (req.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 })
   }
@@ -36,8 +34,6 @@ export default async (req: Request): Promise<Response> => {
   } catch {
     return new Response('Invalid JSON', { status: 400 })
   }
-
-  console.log('inbox: activity type', body.type)
 
   if (body.type === 'Follow') {
     return handleFollow(body, privateKeyPem)
@@ -104,9 +100,7 @@ async function handleFollow(
   const signedHeaders = signRequest('POST', record.inboxUrl, acceptBody, privateKeyPem)
 
   try {
-    console.log('handleFollow: sending Accept to', record.inboxUrl)
     const acceptRes = await fetch(record.inboxUrl, { method: 'POST', headers: signedHeaders, body: acceptBody })
-    console.log('handleFollow: Accept response', acceptRes.status)
     if (!acceptRes.ok) {
       console.error('Accept rejected by', record.inboxUrl, acceptRes.status, await acceptRes.text().catch(() => ''))
     }
