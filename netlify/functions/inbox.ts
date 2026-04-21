@@ -98,7 +98,9 @@ async function handleFollow(
   const signedHeaders = signRequest('POST', record.inboxUrl, acceptBody, privateKeyPem)
 
   try {
+    console.log('handleFollow: sending Accept to', record.inboxUrl)
     const acceptRes = await fetch(record.inboxUrl, { method: 'POST', headers: signedHeaders, body: acceptBody })
+    console.log('handleFollow: Accept response', acceptRes.status)
     if (!acceptRes.ok) {
       console.error('Accept rejected by', record.inboxUrl, acceptRes.status, await acceptRes.text().catch(() => ''))
     }
