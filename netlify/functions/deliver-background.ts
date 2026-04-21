@@ -5,7 +5,7 @@ import { formatNote } from './lib/activitypub.js'
 import { signRequest } from './lib/crypto.js'
 
 export default async (req: Request): Promise<Response> => {
-  const privateKeyPem = (process.env.AP_PRIVATE_KEY_PEM ?? '').replace(/\\n/g, '\n')
+  const privateKeyPem = process.env.AP_PRIVATE_KEY_PEM
   if (!privateKeyPem) {
     console.error('AP_PRIVATE_KEY_PEM not configured — skipping delivery')
     return new Response('', { status: 202 })
