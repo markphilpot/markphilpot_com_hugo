@@ -13,7 +13,7 @@ export default async (req: Request): Promise<Response> => {
     return new Response('Method Not Allowed', { status: 405 })
   }
 
-  const privateKeyPem = process.env.AP_PRIVATE_KEY_PEM
+  const privateKeyPem = (process.env.AP_PRIVATE_KEY_PEM ?? '').replace(/\\n/g, '\n')
   if (!privateKeyPem) {
     return new Response('AP_PRIVATE_KEY_PEM not configured', { status: 500 })
   }
