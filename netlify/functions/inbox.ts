@@ -63,13 +63,19 @@ async function handleFollow(
   const actorId = typeof activity.actor === 'string' ? activity.actor : null
   if (!actorId) return new Response('Missing actor', { status: 400 })
 
-  // Fetch the follower's actor document to get their inbox URL
+  // Fetch the follower's actor document to get their inbox URL.
+  // Sign the request to support instances with authorized fetch enabled.
   let followerActor: { inbox: string; endpoints?: { sharedInbox?: string } }
   try {
-    const res = await fetch(actorId, { headers: { Accept: 'application/activity+json' } })
-    if (!res.ok) return new Response('Could not fetch actor', { status: 400 })
+    const signedGetHeaders = signRequest('GET', actorId, null, privateKeyPem)
+    const res = await fetch(actorId, { headers: { ...signedGetHeaders, Accept: 'application/activity+json' } })
+    if (!res.ok) {
+      console.error('handleFollow: could not fetch actor', actorId, res.status)
+      return new Response('Could not fetch actor', { status: 400 })
+    }
     followerActor = await res.json()
-  } catch {
+  } catch (err) {
+    console.error('handleFollow: exception fetching actor', actorId, err)
     return new Response('Could not fetch actor', { status: 400 })
   }
 
