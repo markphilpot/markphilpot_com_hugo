@@ -17,7 +17,7 @@
 
 {{ if not (or $featured $featuredURL) }}
   {{ $images := .Resources.ByType "image" }}
-  {{ range slice "**/*background*" "**/*feature*" "**/*cover*" "**/*thumbnail*" "**/*hero*" }}
+  {{ range slice "*background*" "*feature*" "*cover*" "*thumbnail*" }}
     {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
   {{ end }}
 {{ end }}

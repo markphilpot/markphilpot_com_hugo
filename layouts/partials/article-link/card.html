@@ -1,28 +1,16 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/partials/article-link/card.html):
+
+  2026-05-17: Improve image matching patterns — use globstar patterns for images in subdirs;
+              images in subdirectories (e.g. textbundle assets) are found correctly.
+  2026-05-17: Comment out empty bottom padding div (visual cleanup).
+*/}}
 {{/* Used by
-  1. list.html and term.html (when the cardView option is not enabled)
-  2. Recent articles template (when the cardView option is not enabled)
+  1. list.html and term.html (when the cardView option is enabled)
+  2. Recent articles template (when the cardView option is enabled)
   3. Shortcode list.html
 */}}
-{{ $constrainItemsWidth := site.Params.list.constrainItemsWidth | default false }}
 {{ $disableImageOptimization := site.Store.Get "disableImageOptimization" }}
-
-{{ $cardClasses := "flex flex-col md:flex-row relative" }}
-{{ $imgWrapperClasses := "" }}
-{{ $cardContentClasses := "" }}
-
-{{ if site.Params.list.showCards }}
-  {{ $cardClasses = printf "%s overflow-hidden rounded-md border-2 border-neutral-200 dark:border-neutral-700" $cardClasses }}
-  {{ $imgWrapperClasses = "" }}
-  {{ $cardContentClasses = printf "%s p-4" $cardContentClasses }}
-{{ else }}
-  {{ $cardClasses = $cardClasses }}
-  {{ $imgWrapperClasses = printf "%s thumbnail-shadow md:mr-7" $imgWrapperClasses }}
-  {{ $cardContentClasses = printf "%s mt-3 md:mt-0" $cardContentClasses }}
-{{ end }}
-
-{{ if $constrainItemsWidth }}
-  {{ $cardClasses = printf "%s max-w-prose" $cardClasses }}
-{{ end }}
 
 {{ $page := .Page }}
 {{ $featured := "" }}
@@ -45,7 +33,8 @@
     {{/* page resources */}}
     {{ if not (or $featured $featuredURL) }}
       {{ $images := .Resources.ByType "image" }}
-      {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+      {{/* OVERRIDE: improved image matching — add globstar prefix + hero pattern */}}
+      {{ range slice "**/*feature*" "**/*cover*" "**/*thumbnail*" "**/*hero*" }}
         {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
       {{ end }}
     {{ end }}
@@ -73,19 +62,25 @@
 {{ end }}
 
 
-<article class="{{ $cardClasses }}">
+<article
+  class="relative min-h-full min-w-full overflow-hidden rounded border border-2 border-neutral-200 shadow-2xl dark:border-neutral-700">
   {{ with $featuredURL }}
-    <div class="flex-none relative overflow-hidden {{ $imgWrapperClasses }} thumbnail">
+    <div class="flex-none relative overflow-hidden thumbnail_card">
       <img
         src="{{ . }}"
-        alt="{{ $.Params.featuredImageAlt | default ($.Title | emojify) }}"
+        alt="{{ $page.Title | plainify }}"
         loading="lazy"
         decoding="async"
         class="not-prose absolute inset-0 w-full h-full object-cover">
     </div>
   {{ end }}
-  <div class="{{ $cardContentClasses }}">
-    <header class="items-center text-start text-xl font-semibold">
+  {{ if and .Draft .Site.Params.article.showDraftLabel }}
+    <span class="absolute top-0 right-0 m-2">
+      {{ partial "badge.html" (i18n "article.draft" | emojify) }}
+    </span>
+  {{ end }}
+  <div class="px-6 py-4">
+    <header>
       <a
         {{ with $page.Params.externalUrl }}
           href="{{ . }}" target="_blank" rel="external"
@@ -103,19 +98,14 @@
           {{ end }}
         </h2>
       </a>
-      {{ if and .Draft .Site.Params.article.showDraftLabel }}
-        <div class="ms-2">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</div>
-      {{ end }}
-      {{ if templates.Exists "partials/extend-article-link.html" }}
-        {{ partial "extend-article-link.html" . }}
-      {{ end }}
     </header>
     <div class="text-sm text-neutral-500 dark:text-neutral-400">
       {{ partial "article-meta/basic.html" . }}
     </div>
     {{ if .Params.showSummary | default (.Site.Params.list.showSummary | default false) }}
-      <div class="prose dark:prose-invert max-w-fit py-1">{{ .Summary | plainify }}</div>
+      <div class="prose dark:prose-invert py-1">{{ .Summary | plainify }}</div>
     {{ end }}
   </div>
-  <div class="px-6 pt-4 pb-2"></div>
+  {{/* OVERRIDE: commented out empty padding div */}}
+<!--  <div class="px-6 pt-4 pb-2"></div>-->
 </article>

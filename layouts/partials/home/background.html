@@ -1,3 +1,11 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/partials/home/background.html):
+
+  2026-05-17: Remove | default .Site.Title fallback from author name display.
+  2026-05-17: Change headline h2 size from text-xl to text-base.
+  2026-05-17: Move recent-articles section to after the background blur JS block
+              so the blur script initializes before content renders.
+*/}}
 {{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
 <article class="prose dark:prose-invert max-w-full">
   <div class="relative">
@@ -64,10 +72,12 @@
             {{ end }}
           {{ end }}
           <h1 class="mb-2 text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
-            {{ .Site.Params.Author.name | default .Site.Title }}
+            {{/* OVERRIDE: removed | default .Site.Title fallback */}}
+            {{ .Site.Params.Author.name }}
           </h1>
           {{ with .Site.Params.Author.headline }}
-            <h2 class="mt-0 mb-0 text-xl text-neutral-800 dark:text-neutral-300">
+            {{/* OVERRIDE: changed text-xl to text-base */}}
+            <h2 class="mt-0 mb-0 text-base text-neutral-800 dark:text-neutral-300">
               {{ . | markdownify }}
             </h2>
           {{ end }}
@@ -96,9 +106,8 @@
     </div>
   </div>
 </article>
-<section>
-  {{ partial "recent-articles/main.html" . }}
-</section>
+
+{{/* OVERRIDE START: recent-articles moved to after the blur JS block */}}
 {{ if .Site.Params.homepage.layoutBackgroundBlur | default false }}
   <div
     id="background-blur"
@@ -113,3 +122,8 @@
     data-image-id="background-image"
     {{ if $homepageImage }}data-image-url="{{ $homepageImage.RelPermalink }}"{{ end }}></script>
 {{ end }}
+
+<section>
+  {{ partial "recent-articles/main.html" . }}
+</section>
+{{/* OVERRIDE END */}}

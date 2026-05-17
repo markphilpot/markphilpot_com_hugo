@@ -1,3 +1,11 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/_default/single.html):
+
+  2026-05-17: Center article header (text-center mx-auto) for visual alignment.
+  2026-05-17: Add flex flex-col items-center to meta div for centered layout.
+  2026-05-17: Add md:prose-lg 2xl:prose-xl for responsive prose type sizing.
+  2026-05-17: Center content div (mx-auto) and footer (mx-auto).
+*/}}
 {{ define "main" }}
   {{ .Scratch.Set "scope" "single" }}
   <article>
@@ -14,14 +22,16 @@
     {{ end }}
 
     {{/* Header */}}
-    <header id="single_header" class="mt-5 max-w-prose">
+    {{/* OVERRIDE: added text-center mx-auto */}}
+    <header id="single_header" class="mt-5 max-w-prose text-center mx-auto">
       {{ if .Params.showBreadcrumbs | default (site.Params.article.showBreadcrumbs | default false) }}
         {{ partial "breadcrumbs.html" . }}
       {{ end }}
       <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
         {{ .Title | emojify }}
       </h1>
-      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      {{/* OVERRIDE: added flex flex-col items-center */}}
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden flex flex-col items-center">
         {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
       </div>
       {{ if not (.Params.showAuthorBottom | default (site.Params.article.showAuthorBottom | default false)) }}
@@ -30,7 +40,8 @@
     </header>
 
     {{/* Body */}}
-    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    {{/* OVERRIDE: added md:prose-lg 2xl:prose-xl for responsive type sizing */}}
+    <section class="flex flex-col max-w-full mt-0 prose md:prose-lg 2xl:prose-xl dark:prose-invert lg:flex-row">
       {{ $enableToc := site.Params.article.showTableOfContents | default false }}
       {{ $enableToc = .Params.showTableOfContents | default $enableToc }}
       {{ $showToc := and $enableToc (in .TableOfContents "<ul") }}
@@ -46,7 +57,8 @@
       {{ end }}
 
 
-      <div class="min-w-0 min-h-0 max-w-fit">
+      {{/* OVERRIDE: added mx-auto */}}
+      <div class="min-w-0 min-h-0 max-w-fit mx-auto">
         {{ partial "series/series.html" . }}
         <div class="article-content max-w-prose mb-20">
           {{ .Content }}
@@ -90,7 +102,8 @@
     </section>
 
     {{/* Footer */}}
-    <footer class="pt-8 max-w-prose print:hidden">
+    {{/* OVERRIDE: added mx-auto */}}
+    <footer class="pt-8 max-w-prose print:hidden mx-auto">
       {{ partial "article-pagination.html" . }}
       {{ if .Params.showComments | default (site.Params.article.showComments | default false) }}
         {{ if templates.Exists "partials/comments.html" }}

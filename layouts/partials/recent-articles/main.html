@@ -1,15 +1,27 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/partials/recent-articles/main.html):
+
+  2026-05-17: Remove "Recent Articles" heading text (leave empty h2 for spacing).
+  2026-05-17: Add contentView option that renders recent-articles/content.html
+              when homepage.contentView is enabled.
+*/}}
 {{ $recentArticles := 5 }}
 {{ $showMoreLinkDest := "/posts/" }}
 {{ if .Site.Params.homepage.showRecent | default false }}
   {{ if index .Site.Params.homepage "showRecentItems" }}
     {{ $recentArticles = .Site.Params.homepage.showRecentItems }}
   {{ end }}
-  <h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "shortcode.recent_articles" | emojify }}</h2>
+  {{/* OVERRIDE: heading text removed, empty h2 kept for spacing */}}
+<!--  <h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "shortcode.recent_articles" | emojify }}</h2>-->
+<h2 class="mt-8 text-2xl font-extrabold mb-10"></h2>
 
   {{ if and .Site.Params.homepage.cardView (not .Site.Params.homepage.cardViewScreenWidth) | default false }}
     {{ partial "recent-articles/cardview.html" . }}
   {{ else if and .Site.Params.homepage.cardView .Site.Params.homepage.cardViewScreenWidth | default false }}
     {{ partial "recent-articles/cardview-fullwidth.html" . }}
+  {{/* OVERRIDE: added contentView option */}}
+  {{ else if and .Site.Params.homepage.contentView .Site.Params.homepage.contentView | default false }}
+    {{ partial "recent-articles/content.html" . }}
   {{ else }}
     {{ partial "recent-articles/list.html" . }}
   {{ end }}

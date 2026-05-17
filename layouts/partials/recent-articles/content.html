@@ -1,3 +1,10 @@
+{{/*
+  NEW FILE (no upstream equivalent in themes/blowfish/layouts/partials/recent-articles/):
+
+  2026-05-17: Content view for the homepage recent articles section. Used when
+              homepage.contentView is enabled. Renders recent articles using
+              the simple article-link partial with full inline content.
+*/}}
 {{ $recentArticles := 5 }}
 {{ $recentArticles = .Site.Params.homepage.showRecentItems }}
 

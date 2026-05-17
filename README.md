@@ -60,8 +60,23 @@ change with a date and one-line rationale:
 
 | Project path | Upstream path | Changes |
 |---|---|---|
-| `layouts/partials/article-link/simple.html` | `themes/blowfish/layouts/partials/article-link/simple.html` | Date moved above content for micro posts |
-| `layouts/_default/_markup/render-image.html` | `themes/blowfish/layouts/_default/_markup/render-image.html` | `mt-5` added to image wrapper div for prose spacing |
+| `layouts/_default/_markup/render-image.html` | `themes/blowfish/layouts/_default/_markup/render-image.html` | `not-prose` + `height: auto` on images; `<div>` replaces `<figure>`; caption hidden; `mt-5` wrapper spacing |
+| `layouts/_default/list.html` | `themes/blowfish/layouts/_default/list.html` | Responsive prose sizes (`md:prose-lg 2xl:prose-xl`); centered `max-w-fit` wrapper; larger year headings |
+| `layouts/_default/rss.xml` | `themes/blowfish/layouts/_default/rss.xml` | `xmlns:content` namespace; `content:encoded` full content; description fallback; improved image matching |
+| `layouts/_default/single.html` | `themes/blowfish/layouts/_default/single.html` | Centered header/footer; responsive prose sizes; centered content div |
+| `layouts/partials/article-link/card-related.html` | `themes/blowfish/layouts/partials/article-link/card-related.html` | Improved image matching (`**/*` prefix + hero pattern) |
+| `layouts/partials/article-link/card.html` | `themes/blowfish/layouts/partials/article-link/card.html` | Improved image matching; commented out empty padding div |
+| `layouts/partials/article-link/simple.html` | `themes/blowfish/layouts/partials/article-link/simple.html` | Micro post inline content; date moved above content; title-conditional classes; improved image matching |
+| `layouts/partials/article-meta/basic-center.html` | *(new — no upstream equivalent)* | Centered metadata partial for micro post list view |
+| `layouts/partials/hero/background.html` | `themes/blowfish/layouts/partials/hero/background.html` | Improved image matching (`**/*` prefix + hero pattern) |
+| `layouts/partials/hero/basic.html` | `themes/blowfish/layouts/partials/hero/basic.html` | Improved image matching (`**/*` prefix + hero pattern) |
+| `layouts/partials/hero/big.html` | `themes/blowfish/layouts/partials/hero/big.html` | Improved image matching (`**/*` prefix + hero pattern) |
+| `layouts/partials/hero/thumbAndBackground.html` | `themes/blowfish/layouts/partials/hero/thumbAndBackground.html` | Improved image matching in both background and featured sections |
+| `layouts/partials/home/background.html` | `themes/blowfish/layouts/partials/home/background.html` | Author name without site title fallback; smaller headline; recent-articles moved after blur JS |
+| `layouts/partials/recent-articles/content.html` | *(new — no upstream equivalent)* | Homepage content view rendering recent articles via `simple.html` |
+| `layouts/partials/recent-articles/main.html` | `themes/blowfish/layouts/partials/recent-articles/main.html` | Heading text removed; `contentView` option added |
+| `layouts/partials/term-link/card.html` | `themes/blowfish/layouts/partials/term-link/card.html` | Improved image matching (`**/*` prefix + hero pattern) |
+| `layouts/partials/vendor.html` | `themes/blowfish/layouts/partials/vendor.html` | Mermaid also triggered by store; youtubeLite always included |
 
 # Blog Development
 

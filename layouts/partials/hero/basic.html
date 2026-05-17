@@ -1,3 +1,9 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/partials/hero/basic.html):
+
+  2026-05-17: Improve image matching patterns — use globstar patterns for images in subdirs;
+              images in subdirectories (e.g. textbundle assets) are found correctly.
+*/}}
 {{ $disableImageOptimization := site.Store.Get "disableImageOptimization" }}
 
 {{ $useDefault := false }}
@@ -17,7 +23,8 @@
 
 {{ if not (or $featured $featuredURL) }}
   {{ $images := .Resources.ByType "image" }}
-  {{ range slice "*background*" "*feature*" "*cover*" "*thumbnail*" }}
+  {{/* OVERRIDE: improved image matching — add globstar prefix + hero pattern */}}
+  {{ range slice "**/*background*" "**/*feature*" "**/*cover*" "**/*thumbnail*" "**/*hero*" }}
     {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
   {{ end }}
 {{ end }}

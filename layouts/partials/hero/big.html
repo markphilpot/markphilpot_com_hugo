@@ -1,3 +1,9 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/partials/hero/big.html):
+
+  2026-05-17: Improve image matching patterns — use globstar patterns for images in subdirs;
+              images in subdirectories (e.g. textbundle assets) are found correctly.
+*/}}
 {{ $disableImageOptimization := site.Store.Get "disableImageOptimization" }}
 
 {{ $useDefault := false }}
@@ -17,7 +23,8 @@
 
 {{ if not (or $featured $featuredURL) }}
   {{ $images := .Resources.ByType "image" }}
-  {{ range slice "*background*" "*feature*" "*cover*" "*thumbnail*" }}
+  {{/* OVERRIDE: improved image matching — add globstar prefix + hero pattern */}}
+  {{ range slice "**/*background*" "**/*feature*" "**/*cover*" "**/*thumbnail*" "**/*hero*" }}
     {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
   {{ end }}
 {{ end }}
@@ -44,20 +51,33 @@
   {{ end }}
 {{ end }}
 
+{{ $caption := "" }}
+{{ if .Params.featureimagecaption }}
+  {{- $caption = .Params.featureimagecaption -}}
+{{ end }}
+
+{{- $alt := .Page.Title -}}
+{{- with .Page.Params.alt }}{{ $alt = . }}{{ end -}}
+
 {{ with $featuredURL }}
   {{ $style := "" }}
   {{ $defaultPosition := cond $useDefault site.Params.imagePosition false }}
   {{ with $.Params.imagePosition | default $defaultPosition }}
     {{ $style = printf "object-position: %s;" . }}
   {{ end }}
-  <div class="overflow-hidden h-36 md:h-56 lg:h-72">
+  <figure>
     <img
       src="{{ . }}"
-      alt="{{ with $.Params.featureimagealt }}{{ . }}{{ else }}{{ with $.Title }}Featured image for {{ . }}{{ else }}Featured image{{ end }}{{ end }}"
+      alt="{{ $alt }}"
       loading="eager"
       decoding="async"
       fetchpriority="high"
-      class="w-full h-full nozoom object-cover"
+      class="w-full rounded-lg single_hero_round nozoom"
       {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
-  </div>
+    {{ if $caption }}
+      <figcaption class="text-sm text-neutral-700 dark:text-neutral-400 hover:underline text-center">
+        {{ $caption | markdownify }}
+      </figcaption>
+    {{ end }}
+  </figure>
 {{ end }}

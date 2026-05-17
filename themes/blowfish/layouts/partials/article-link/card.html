@@ -26,7 +26,7 @@
     {{/* page resources */}}
     {{ if not (or $featured $featuredURL) }}
       {{ $images := .Resources.ByType "image" }}
-      {{ range slice "**/*feature*" "**/*cover*" "**/*thumbnail*" "**/*hero*" }}
+      {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
         {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
       {{ end }}
     {{ end }}
@@ -98,5 +98,5 @@
       <div class="prose dark:prose-invert py-1">{{ .Summary | plainify }}</div>
     {{ end }}
   </div>
-<!--  <div class="px-6 pt-4 pb-2"></div>-->
+  <div class="px-6 pt-4 pb-2"></div>
 </article>

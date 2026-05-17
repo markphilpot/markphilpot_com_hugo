@@ -1,3 +1,9 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/partials/term-link/card.html):
+
+  2026-05-17: Improve image matching patterns — use globstar patterns for images in subdirs;
+              images in subdirectories (e.g. textbundle assets) are found correctly.
+*/}}
 {{ $disableImageOptimization := .Page.Site.Params.disableImageOptimization | default false }}
 
 {{ $featured := "" }}
@@ -12,7 +18,8 @@
 
 {{ if not $featured }}
   {{ $images := .Page.Resources.ByType "image" }}
-  {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+  {{/* OVERRIDE: improved image matching — add globstar prefix + hero pattern */}}
+  {{ range slice "**/*feature*" "**/*cover*" "**/*thumbnail*" "**/*hero*" }}
     {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
   {{ end }}
 {{ end }}

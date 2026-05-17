@@ -1,3 +1,10 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/_default/list.html):
+
+  2026-05-17: Add md:prose-lg 2xl:prose-xl to prose section for responsive type sizing.
+  2026-05-17: Wrap non-cardView list in max-w-fit centered div for layout consistency.
+  2026-05-17: Increase year heading size to lg:text-4xl and add mb-6 spacing.
+*/}}
 {{ define "main" }}
   {{ .Scratch.Set "scope" "list" }}
   {{ $enableToc := .Params.showTableOfContents | default (site.Params.list.showTableOfContents | default false) }}
@@ -15,7 +22,7 @@
 
   {{/* Header */}}
   <header>
-    {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
+    {{ if .Params.showBreadcrumbs | default (site.Params.showBreadcrumbs | default false) }}
       {{ partial "breadcrumbs.html" . }}
     {{ end }}
     <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
@@ -43,7 +50,8 @@
   {{/* Description (markdown content) */}}
   {{ $tocMargin := cond $showToc "mt-12" "mt-0" }}
   {{ $topClass := cond (hasPrefix site.Params.header.layout "fixed") "lg:top-[140px]" "lg:top-10" }}
-  <section class="{{ $tocMargin }} prose flex max-w-full flex-col dark:prose-invert lg:flex-row">
+  {{/* OVERRIDE: added md:prose-lg 2xl:prose-xl for responsive type sizing */}}
+  <section class="{{ $tocMargin }} prose md:prose-lg 2xl:prose-xl flex max-w-full flex-col dark:prose-invert lg:flex-row">
     {{ if $showToc }}
       <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
         <div class="toc ps-5 lg:sticky {{ $topClass }}">
@@ -69,12 +77,18 @@
         {{ if not $orderByWeight }}
           {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
             {{ if $groupByYear }}
-              <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
+              {{/* OVERRIDE START: centered wrapper + larger heading for year groups */}}
+              <div class="mx-auto max-w-fit">
+              <h2 class="mt-12 mb-6 text-2xl lg:text-4xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
                 {{ .Key }}
               </h2>
+              {{/* OVERRIDE END */}}
             {{ end }}
             {{ range .Pages }}
               {{ partial "article-link/simple.html" . }}
+            {{ end }}
+            {{ if $groupByYear }}
+              </div>
             {{ end }}
           {{ end }}
         {{ else }}

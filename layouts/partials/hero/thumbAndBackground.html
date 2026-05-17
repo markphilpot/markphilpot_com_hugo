@@ -1,3 +1,9 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/partials/hero/thumbAndBackground.html):
+
+  2026-05-17: Improve image matching patterns in both background and featured sections —
+              use globstar prefix, reorder (background first), add hero pattern.
+*/}}
 {{ $disableImageOptimization := site.Store.Get "disableImageOptimization" }}
 
 {{/* === Background === */}}
@@ -18,7 +24,8 @@
 {{ end }}
 
 {{ if not (or $background $backgroundURL) }}
-  {{ range slice "*cover*" "*thumbnail*" "*feature*" }}
+  {{/* OVERRIDE: improved image matching — globstar prefix, reorder, add hero pattern */}}
+  {{ range slice "**/*background*" "**/*feature*" "**/*cover*" "**/*thumbnail*" "**/*hero*" }}
     {{ if not $background }}{{ $background = $images.GetMatch . }}{{ end }}
   {{ end }}
 {{ end }}
@@ -51,7 +58,8 @@
 
 {{ if not (or $featured $featuredURL) }}
   {{ $images := $.Resources.ByType "image" }}
-  {{ range slice "*feature*" "*cover*" "*thumbnail*" "*background*" }}
+  {{/* OVERRIDE: improved image matching — globstar prefix, reorder, add hero pattern */}}
+  {{ range slice "**/*background*" "**/*feature*" "**/*cover*" "**/*thumbnail*" "**/*hero*" }}
     {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
   {{ end }}
 {{ end }}

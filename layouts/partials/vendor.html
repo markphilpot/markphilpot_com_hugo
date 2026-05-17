@@ -1,9 +1,18 @@
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/partials/vendor.html):
+
+  2026-05-17: Extend mermaid check to include .Store.Get "hasMermaid" for programmatic use
+              (e.g. mermaid in content processed outside of shortcode context).
+  2026-05-17: Always include youtubeLite CSS/JS unconditionally for micro post support
+              (micro posts can't use HasShortcode detection reliably).
+*/}}
 {{/* jQuery */}}
 {{ $jqueryLib := resources.Get "lib/jquery/jquery.slim.min.js" | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
 <script src="{{ $jqueryLib.RelPermalink }}" integrity="{{ $jqueryLib.Data.Integrity }}"></script>
 
 {{/* Mermaid */}}
-{{ if .Page.HasShortcode "mermaid" }}
+{{/* OVERRIDE: added .Store.Get "hasMermaid" check for programmatic use */}}
+{{ if or (.Page.HasShortcode "mermaid") (.Store.Get "hasMermaid") }}
   {{ $mermaidLib := resources.Get "lib/mermaid/mermaid.min.js" }}
   {{ $mermaidConfig := resources.Get "js/mermaid.js" }}
   {{ $mermaidConfig := $mermaidConfig | resources.Minify }}
@@ -101,8 +110,9 @@
     integrity="{{ $twelementsLib.Data.Integrity }}"></script>
 {{ end }}
 
-{{/* youtubeLite */}}
-{{ if .Page.HasShortcode "youtubeLite" }}
+{{/* youtubeLite -- always include for micro post support */}}
+{{/* OVERRIDE: removed conditional check; always include so micro posts can use lite-youtube */}}
+{{/*  {{ if .Page.HasShortcode "youtubeLite" }}  */}}
   {{ $youtubeLiteCSS := resources.Get "lib/lite-youtube-embed/lite-yt-embed.css" }}
   {{ $youtubeLiteCSS = $youtubeLiteCSS | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
   <link
@@ -116,7 +126,7 @@
     type="text/javascript"
     src="{{ $youtubeLiteLib.RelPermalink }}"
     integrity="{{ $youtubeLiteLib.Data.Integrity }}"></script>
-{{ end }}
+{{/*  {{ end }}  */}}
 
 {{/* Repo cards */}}
 {{ $repoCards := slice "codeberg" "forgejo" "gitea" "github" "hugging-face" }}

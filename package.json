@@ -9,7 +9,9 @@
     "build": "tsc",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "css:build": "NODE_ENV=production npx @tailwindcss/cli -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css",
+    "css:watch": "NODE_ENV=development npx @tailwindcss/cli -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -28,10 +30,15 @@
   },
   "packageManager": "pnpm@8.14.3+sha512.c3ed80eb583be3e2b7ef31eb96b8b9cfaa0503e5d44ec717514120b5187b2f933736e9038c51a5a23ad582790ba41d4ab784618c89fa7e2365f6665685d612ee",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "@tailwindcss/forms": "^0.5.19",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
     "@types/yargs": "^17.0.35",
+    "tailwind-scrollbar": "^4.0.2",
+    "tailwindcss": "^4.2.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vitest": "^4.1.4"

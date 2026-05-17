@@ -3,13 +3,12 @@
   {{- $src := .src -}}
   {{- $alt := .alt -}}
   <img
-    class="my-0 rounded-md not-prose"
+    class="my-0 rounded-md"
     loading="lazy"
     decoding="async"
     fetchpriority="low"
     alt="{{ $alt }}"
     src="{{ $src }}"
-    style="height: auto;"
     {{ with $imgObj -}}
       {{ with $imgObj.Width }}width="{{ . }}"{{ end }}
       {{ with $imgObj.Height }}height="{{ . }}"{{ end }}
@@ -51,12 +50,11 @@
 
 
   <img
-    class="my-0 rounded-md not-prose"
+    class="my-0 rounded-md"
     loading="lazy"
     decoding="async"
     fetchpriority="auto"
     alt="{{ $alt }}"
-    style="height: auto;"
     {{ with $imgObj.Width }}width="{{ . }}"{{ end }}
     {{ with $imgObj.Height }}height="{{ . }}"{{ end }}
     src="{{ $img800.RelPermalink }}"
@@ -84,7 +82,7 @@
 {{- end -}}
 
 
-<div title="{{ $caption }}"
+<figure
   {{- range $k, $v := .Attributes -}}
     {{- if $v -}}
       {{- printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr -}}
@@ -112,5 +110,5 @@
     {{- template "RenderImageSimple" (dict "imgObj" "" "src" $urlStr "alt" $altText) -}}
   {{- end -}}
 
-<!--  {{- template "RenderImageCaption" (dict "caption" $caption) -}}-->
-</div>
+  {{- template "RenderImageCaption" (dict "caption" $caption) -}}
+</figure>

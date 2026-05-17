@@ -1,7 +1,10 @@
-.PHONY: public clean clean-hugo all serve start last
+.PHONY: public css clean clean-hugo all serve start last
 
-public: bin/hugo-x64
+public: css bin/hugo-x64
 	./bin/hugo-x64
+
+css:
+	pnpm css:build
 
 bin/hugo-x64:
 	wget -P ./bin https://transfer-markphilpot.s3.amazonaws.com/hugo-x64
@@ -21,7 +24,7 @@ clean-hugo:
 all:
 	./bin/hugo
 
-serve:
+serve: css
 	./bin/hugo serve -D
 
 start:
