@@ -31,7 +31,7 @@
   "packageManager": "pnpm@8.14.3+sha512.c3ed80eb583be3e2b7ef31eb96b8b9cfaa0503e5d44ec717514120b5187b2f933736e9038c51a5a23ad582790ba41d4ab784618c89fa7e2365f6665685d612ee",
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.2",
-    "@tailwindcss/forms": "^0.5.19",
+    "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/typography": "^0.5.19",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.0.3",
