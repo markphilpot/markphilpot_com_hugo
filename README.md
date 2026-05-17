@@ -23,6 +23,46 @@ mv hugo hugo-x64
 
 These are saved to an s3 bucket for ease of use (See Makefile). Reminder to set Read permissions on the files in S3 to World.
 
+# Theme Overrides
+
+Theme files are never edited directly. Instead, files from `themes/blowfish/layouts/` are copied
+into the corresponding path under `layouts/` and modified there. Hugo's lookup order picks up the
+project-level file first, leaving the upstream theme file untouched.
+
+## Conventions
+
+Every override file follows the same pattern:
+
+**1. Header block** — placed at the very top (after any existing file-level comment), listing each
+change with a date and one-line rationale:
+
+```
+{{/*
+  OVERRIDES (from themes/blowfish/layouts/path/to/file.html):
+
+  YYYY-MM-DD: Short description of what changed and why.
+  YYYY-MM-DD: Another change.
+*/}}
+```
+
+**2. Inline markers** — bracket the actual changed lines:
+
+- Structural reorderings → `{{/* OVERRIDE START: description */}}` … `{{/* OVERRIDE END */}}`
+- Single-attribute/line changes → `{{/* OVERRIDE: description */}}` on the same line
+
+## Upgrading the theme
+
+1. For each file under `layouts/` that overrides a theme file, diff it against the new upstream version.
+2. Use the header block as your checklist — re-apply each listed change to the new upstream base.
+3. Update the header block dates/descriptions to reflect the new state.
+
+## Current overrides
+
+| Project path | Upstream path | Changes |
+|---|---|---|
+| `layouts/partials/article-link/simple.html` | `themes/blowfish/layouts/partials/article-link/simple.html` | Date moved above content for micro posts |
+| `layouts/_default/_markup/render-image.html` | `themes/blowfish/layouts/_default/_markup/render-image.html` | `mt-5` added to image wrapper div for prose spacing |
+
 # Blog Development
 
 ```bash
