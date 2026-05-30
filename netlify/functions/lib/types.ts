@@ -34,3 +34,11 @@ export type MastodonTokenRecord = {
   clientId: string
   createdAt: string
 }
+
+export type MediaUploadRecord = {
+  id: string
+  filename: string
+  mimeType: string
+  description: string | null
+  uploadedAt: string
+}

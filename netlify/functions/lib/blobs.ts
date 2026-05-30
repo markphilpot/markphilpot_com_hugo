@@ -1,5 +1,5 @@
 import { getStore } from '@netlify/blobs'
-import type { FollowerRecord, MastodonAppRecord, MastodonCodeRecord, MastodonTokenRecord } from './types.js'
+import type { FollowerRecord, MastodonAppRecord, MastodonCodeRecord, MastodonTokenRecord, MediaUploadRecord } from './types.js'
 
 function followersStore() {
   return getStore('ap-followers')
@@ -83,4 +83,31 @@ export async function setMastodonToken(record: MastodonTokenRecord): Promise<voi
 
 export async function verifyToken(token: string): Promise<MastodonTokenRecord | null> {
   return mastodonTokensStore().get(token, { type: 'json' })
+}
+
+function mediaStore() {
+  return getStore('media-uploads')
+}
+
+export async function setMediaUpload(id: string, meta: MediaUploadRecord): Promise<void> {
+  await mediaStore().setJSON(id, meta)
+}
+
+export async function getMediaUpload(id: string): Promise<MediaUploadRecord | null> {
+  return mediaStore().get(id, { type: 'json' })
+}
+
+export async function setMediaBytes(id: string, data: ArrayBuffer): Promise<void> {
+  await mediaStore().set(`${id}-bytes`, Buffer.from(data))
+}
+
+export async function getMediaBytes(id: string): Promise<ArrayBuffer | null> {
+  return mediaStore().get(`${id}-bytes`, { type: 'arrayBuffer' })
+}
+
+export async function deleteMediaUpload(id: string): Promise<void> {
+  await Promise.allSettled([
+    mediaStore().delete(id),
+    mediaStore().delete(`${id}-bytes`),
+  ])
 }

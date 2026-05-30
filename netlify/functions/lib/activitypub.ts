@@ -1,9 +1,17 @@
 import { randomUUID } from 'node:crypto'
 import type { FeedPost } from './types.js'
+import { parseImgSrcs } from './images.js'
 
 const ACTOR_URL = 'https://markphilpot.com/ap/actor'
 const FOLLOWERS_URL = 'https://markphilpot.com/ap/followers'
 const PUBLIC = 'https://www.w3.org/ns/activitystreams#Public'
+
+type ApAttachment = {
+  type: 'Document'
+  mediaType: string
+  url: string
+  name: null
+}
 
 export type CreateNote = {
   '@context': string[]
@@ -22,11 +30,28 @@ export type CreateNote = {
     published: string
     to: string[]
     cc: string[]
+    attachment?: ApAttachment[]
   }
 }
 
 export function formatNote(post: FeedPost): CreateNote {
-  const content = post.section === 'blog' ? blogContent(post) : post.content
+  let content: string
+  let attachment: ApAttachment[] | undefined
+
+  if (post.section === 'blog') {
+    content = blogContent(post)
+  } else {
+    const { content: stripped, images } = parseImgSrcs(post.content)
+    content = stripped
+    if (images.length > 0) {
+      attachment = images.map((img) => ({
+        type: 'Document' as const,
+        mediaType: guessMimeType(img.src),
+        url: resolveUrl(img.src, post.url),
+        name: null,
+      }))
+    }
+  }
 
   return {
     '@context': [
@@ -48,8 +73,26 @@ export function formatNote(post: FeedPost): CreateNote {
       published: post.date,
       to: [PUBLIC],
       cc: [FOLLOWERS_URL],
+      ...(attachment ? { attachment } : {}),
     },
   }
+}
+
+function resolveUrl(src: string, base: string): string {
+  if (src.startsWith('http://') || src.startsWith('https://')) return src
+  return base.endsWith('/') ? `${base}${src}` : `${base}/${src}`
+}
+
+function guessMimeType(filename: string): string {
+  const ext = filename.split('.').pop()?.toLowerCase() ?? ''
+  const map: Record<string, string> = {
+    jpg: 'image/jpeg',
+    jpeg: 'image/jpeg',
+    png: 'image/png',
+    gif: 'image/gif',
+    webp: 'image/webp',
+  }
+  return map[ext] ?? 'image/jpeg'
 }
 
 function blogContent(post: FeedPost): string {

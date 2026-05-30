@@ -1,4 +1,5 @@
 import type { FeedPost } from './types.js'
+import { parseImgSrcs } from './images.js'
 
 export type MastodonAccount = {
   id: string
@@ -26,8 +27,8 @@ export type MastodonAccount = {
 export type MastodonMediaAttachment = {
   id: string
   type: 'image'
-  url: string
-  preview_url: string
+  url: string | null
+  preview_url: string | null
   description: string | null
   meta: Record<string, unknown>
 }
@@ -89,24 +90,12 @@ function extractImages(
   html: string,
   domain: string,
 ): { content: string; attachments: MastodonMediaAttachment[] } {
-  const attachments: MastodonMediaAttachment[] = []
-  const imgRegex = /<img\b([^>]*)>/gi
-  let match
-  let idx = 0
-  while ((match = imgRegex.exec(html)) !== null) {
-    const attrs = match[1]
-    const srcMatch = attrs.match(/\bsrc="([^"]+)"/)
-    const zoomMatch = attrs.match(/\bdata-zoom-src="([^"]+)"/)
-    if (srcMatch) {
-      const previewUrl = makeAbsolute(srcMatch[1], domain)
-      const url = zoomMatch ? makeAbsolute(zoomMatch[1], domain) : previewUrl
-      attachments.push({ id: String(idx++), type: 'image', url, preview_url: previewUrl, description: null, meta: {} })
-    }
-  }
-  const content = html
-    .replace(/<img\b[^>]*>/gi, '')
-    .replace(/<div[^>]*>\s*<\/div>/gi, '')
-    .trim()
+  const { content, images } = parseImgSrcs(html)
+  const attachments = images.map((img, idx) => {
+    const previewUrl = makeAbsolute(img.src, domain)
+    const url = img.zoomSrc ? makeAbsolute(img.zoomSrc, domain) : previewUrl
+    return { id: String(idx), type: 'image' as const, url, preview_url: previewUrl, description: null, meta: {} }
+  })
   return { content, attachments }
 }
 
