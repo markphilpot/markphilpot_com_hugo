@@ -27,13 +27,27 @@ export default async (req: Request): Promise<Response> => {
 
   const { client_id: clientId, client_secret: clientSecret, code, grant_type: grantType } = body
 
-  if (grantType !== 'authorization_code') {
+  if (grantType !== 'authorization_code' && grantType !== 'client_credentials') {
     return jsonError('unsupported_grant_type', 400)
   }
 
   const app = await getMastodonApp(clientId)
   if (!app || app.clientSecret !== clientSecret) {
     return jsonError('invalid_client', 401)
+  }
+
+  if (grantType === 'client_credentials') {
+    const token = randomUUID()
+    await setMastodonToken({ token, clientId, createdAt: new Date().toISOString() })
+    return new Response(
+      JSON.stringify({
+        access_token: token,
+        token_type: 'Bearer',
+        scope: 'read write',
+        created_at: Math.floor(Date.now() / 1000),
+      }),
+      { headers: { 'Content-Type': 'application/json' } },
+    )
   }
 
   const codeRecord = await getMastodonCode(code)
