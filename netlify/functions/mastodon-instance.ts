@@ -27,37 +27,53 @@ export default async (req: Request): Promise<Response> => {
     fields: [],
   }
 
-  const instance = {
-    uri: domain,
-    domain,
-    title: 'Mark Philpot',
-    description: 'Personal blog',
-    short_description: 'Personal blog',
-    email: '',
-    version: '4.0.0',
-    urls: { streaming_api: `wss://${domain}` },
-    stats: { user_count: 1, status_count: 0, domain_count: 1 },
-    languages: ['en'],
-    registrations: false,
-    approval_required: false,
-    invites_enabled: false,
-    contact_account: account,
-    rules: [],
-    thumbnail: { url: '' },
-    usage: { users: { active_month: 1 } },
-    configuration: {
-      statuses: { max_characters: 500, max_media_attachments: 0, characters_reserved_per_url: 23 },
-      media_attachments: {
-        supported_mime_types: [],
-        image_size_limit: 0,
-        image_matrix_limit: 0,
-        video_size_limit: 0,
-        video_frame_rate_limit: 0,
-        video_matrix_limit: 0,
-      },
-      polls: { max_options: 0, max_characters_per_option: 0, min_expiration: 300, max_expiration: 2629746 },
+  const isV2 = new URL(req.url).pathname === '/api/v2/instance'
+
+  const configuration = {
+    statuses: { max_characters: 500, max_media_attachments: 4, characters_reserved_per_url: 23 },
+    media_attachments: {
+      supported_mime_types: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+      image_size_limit: 16777216,
+      image_matrix_limit: 33177600,
+      video_size_limit: 0,
+      video_frame_rate_limit: 0,
+      video_matrix_limit: 0,
     },
+    polls: { max_options: 4, max_characters_per_option: 50, min_expiration: 300, max_expiration: 2629746 },
   }
+
+  const instance = isV2
+    ? {
+        domain,
+        title: 'Mark Philpot',
+        version: '4.3.0',
+        description: 'Personal blog',
+        usage: { users: { active_month: 1 } },
+        thumbnail: { url: '' },
+        languages: ['en'],
+        configuration,
+        registrations: { enabled: false, approval_required: false, message: null },
+        contact: { email: '', account },
+        rules: [],
+      }
+    : {
+        uri: domain,
+        title: 'Mark Philpot',
+        description: 'Personal blog',
+        short_description: 'Personal blog',
+        email: '',
+        version: '4.3.0',
+        urls: { streaming_api: `wss://${domain}` },
+        stats: { user_count: 1, status_count: 0, domain_count: 1 },
+        languages: ['en'],
+        registrations: false,
+        approval_required: false,
+        invites_enabled: false,
+        contact_account: account,
+        rules: [],
+        thumbnail: '',
+        configuration,
+      }
 
   return new Response(JSON.stringify(instance), {
     headers: { 'Content-Type': 'application/json' },
