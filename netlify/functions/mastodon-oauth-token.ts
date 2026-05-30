@@ -27,6 +27,8 @@ export default async (req: Request): Promise<Response> => {
 
   const { client_id: clientId, client_secret: clientSecret, code, grant_type: grantType } = body
 
+  console.log('oauth-token: grant_type=%s client_id=%s content-type=%s body=%s', grantType, clientId, contentType, JSON.stringify(body))
+
   if (grantType !== 'authorization_code' && grantType !== 'client_credentials') {
     return jsonError('unsupported_grant_type', 400)
   }
