@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import type { Config } from '@netlify/functions'
 import { getMastodonApp, getMastodonCode, deleteMastodonCode, setMastodonToken } from './lib/blobs.js'
+import { parseBody } from './lib/parse.js'
 
 const CODE_TTL_MS = 5 * 60 * 1000
 
@@ -16,18 +17,10 @@ export default async (req: Request): Promise<Response> => {
     return new Response('Method Not Allowed', { status: 405 })
   }
 
-  let body: Record<string, string>
-  const contentType = req.headers.get('content-type') ?? ''
-  if (contentType.includes('application/json')) {
-    body = await req.json() as Record<string, string>
-  } else {
-    const text = await req.text()
-    body = Object.fromEntries(new URLSearchParams(text))
-  }
-
+  const body = await parseBody(req)
   const { client_id: clientId, client_secret: clientSecret, code, grant_type: grantType } = body
 
-  console.log('oauth-token: grant_type=%s client_id=%s content-type=%s body=%s', grantType, clientId, contentType, JSON.stringify(body))
+  console.log('oauth-token: grant_type=%s client_id=%s', grantType, clientId)
 
   if (grantType !== 'authorization_code' && grantType !== 'client_credentials') {
     return jsonError('unsupported_grant_type', 400)

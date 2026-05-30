@@ -1,21 +1,14 @@
 import { randomUUID } from 'node:crypto'
 import type { Config } from '@netlify/functions'
 import { setMastodonApp } from './lib/blobs.js'
+import { parseBody } from './lib/parse.js'
 
 export default async (req: Request): Promise<Response> => {
   if (req.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 })
   }
 
-  let body: Record<string, string>
-  const contentType = req.headers.get('content-type') ?? ''
-  if (contentType.includes('application/json')) {
-    body = await req.json() as Record<string, string>
-  } else {
-    const text = await req.text()
-    body = Object.fromEntries(new URLSearchParams(text))
-  }
-
+  const body = await parseBody(req)
   const clientName = body['client_name'] ?? 'unknown'
   const redirectUri = body['redirect_uris'] ?? ''
   const clientId = randomUUID()

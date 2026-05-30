@@ -3,6 +3,7 @@ import { verifyToken } from './lib/blobs.js'
 import { createFile } from './lib/github.js'
 import { feedPostToStatus } from './lib/mastodon.js'
 import type { FeedPost } from './lib/types.js'
+import { parseBody } from './lib/parse.js'
 
 export default async (req: Request): Promise<Response> => {
   if (req.method !== 'POST') {
@@ -26,15 +27,8 @@ export default async (req: Request): Promise<Response> => {
     return new Response('Server configuration error', { status: 500 })
   }
 
-  let statusText: string
-  const contentType = req.headers.get('content-type') ?? ''
-  if (contentType.includes('application/json')) {
-    const body = await req.json() as { status?: string }
-    statusText = body.status ?? ''
-  } else {
-    const text = await req.text()
-    statusText = new URLSearchParams(text).get('status') ?? ''
-  }
+  const body = await parseBody(req)
+  const statusText = body['status'] ?? ''
 
   if (!statusText.trim()) {
     return new Response(
