@@ -1,7 +1,7 @@
 import type { Config } from '@netlify/functions'
 
 export default async (req: Request): Promise<Response> => {
-  // console.log('mastodon-instance: method=%s path=%s', req.method, new URL(req.url).pathname)
+  console.log('mastodon-instance: method=%s path=%s', req.method, new URL(req.url).pathname)
   const domain = process.env.AP_MASTODON_DOMAIN ?? 'markphilpot.com'
 
   const account = {
