@@ -31,4 +31,20 @@ describe('parseFeedEntries', () => {
   it('returns an empty array for empty input', () => {
     expect(parseFeedEntries([])).toEqual([])
   })
+
+  it('keeps micro-client entries', () => {
+    const raw = [
+      {
+        url: 'https://markphilpot.com/micro-client/2026/2026-05-29t10-00-00/',
+        date: '2026-05-29T10:00:00Z',
+        title: '',
+        summary: '',
+        content: '<p>Hello</p>',
+        section: 'micro-client',
+      },
+    ]
+    const result = parseFeedEntries(raw)
+    expect(result).toHaveLength(1)
+    expect(result[0].section).toBe('micro-client')
+  })
 })

@@ -8,3 +8,10 @@ node_modules/
 .env
 .vscode/
 dist/
+.keys/
+
+# Local Netlify folder
+.netlify
+
+# Generated CSS (rebuilt by pnpm css:build)
+assets/css/compiled/

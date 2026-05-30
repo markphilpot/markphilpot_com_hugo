@@ -1,5 +1,5 @@
 import { getStore } from '@netlify/blobs'
-import type { FollowerRecord } from './types.js'
+import type { FollowerRecord, MastodonAppRecord, MastodonCodeRecord, MastodonTokenRecord } from './types.js'
 
 function followersStore() {
   return getStore('ap-followers')
@@ -43,4 +43,44 @@ export async function getDelivered(): Promise<string[]> {
 
 export async function setDelivered(urls: string[]): Promise<void> {
   await stateStore().setJSON('delivered', urls)
+}
+
+function mastodonAppsStore() {
+  return getStore('mastodon-apps')
+}
+
+function mastodonCodesStore() {
+  return getStore('mastodon-codes')
+}
+
+function mastodonTokensStore() {
+  return getStore('mastodon-tokens')
+}
+
+export async function setMastodonApp(record: MastodonAppRecord): Promise<void> {
+  await mastodonAppsStore().setJSON(record.clientId, record)
+}
+
+export async function getMastodonApp(clientId: string): Promise<MastodonAppRecord | null> {
+  return mastodonAppsStore().get(clientId, { type: 'json' })
+}
+
+export async function setMastodonCode(record: MastodonCodeRecord): Promise<void> {
+  await mastodonCodesStore().setJSON(record.code, record)
+}
+
+export async function getMastodonCode(code: string): Promise<MastodonCodeRecord | null> {
+  return mastodonCodesStore().get(code, { type: 'json' })
+}
+
+export async function deleteMastodonCode(code: string): Promise<void> {
+  await mastodonCodesStore().delete(code)
+}
+
+export async function setMastodonToken(record: MastodonTokenRecord): Promise<void> {
+  await mastodonTokensStore().setJSON(record.token, record)
+}
+
+export async function verifyToken(token: string): Promise<MastodonTokenRecord | null> {
+  return mastodonTokensStore().get(token, { type: 'json' })
 }

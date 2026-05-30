@@ -1,0 +1,4 @@
+---
+date: '{{ .Date }}'
+showReadingTime: false
+---
