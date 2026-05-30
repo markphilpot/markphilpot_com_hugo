@@ -14,7 +14,7 @@ export default async (req: Request): Promise<Response> => {
   const clientId = randomUUID()
   const clientSecret = randomUUID()
 
-  // console.log('mastodon-apps: registering app name=%s redirect=%s', clientName, redirectUri)
+  console.log('mastodon-apps: registering app name=%s redirect=%s content-type=%s', clientName, redirectUri, req.headers.get('content-type'))
 
   await setMastodonApp({
     clientId,

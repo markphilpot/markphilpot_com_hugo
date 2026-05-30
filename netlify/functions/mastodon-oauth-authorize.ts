@@ -52,6 +52,9 @@ export default async (req: Request): Promise<Response> => {
     const clientId = url.searchParams.get('client_id') ?? ''
     const redirectUri = url.searchParams.get('redirect_uri') ?? ''
     const state = url.searchParams.get('state') ?? ''
+    const scope = url.searchParams.get('scope') ?? ''
+    const responseType = url.searchParams.get('response_type') ?? ''
+    console.log('oauth-authorize GET: client_id=%s redirect_uri=%s scope=%s response_type=%s state=%s', clientId, redirectUri, scope, responseType, state)
     return new Response(renderForm({ clientId, redirectUri, state }), {
       headers: { 'Content-Type': 'text/html' },
     })
@@ -64,6 +67,7 @@ export default async (req: Request): Promise<Response> => {
 
     const expected = process.env.AP_MASTODON_PASSWORD
     if (!expected || password !== expected) {
+      console.log('oauth-authorize POST: bad password for client_id=%s', clientId)
       return new Response(
         renderForm({ clientId: clientId ?? '', redirectUri: redirectUri ?? '', state: state ?? '', error: 'Invalid password' }),
         { status: 401, headers: { 'Content-Type': 'text/html' } },
@@ -72,6 +76,7 @@ export default async (req: Request): Promise<Response> => {
 
     const app = await getMastodonApp(clientId)
     if (!app) {
+      console.log('oauth-authorize POST: unknown client_id=%s', clientId)
       return new Response('Unknown client_id', { status: 400 })
     }
 
@@ -87,6 +92,7 @@ export default async (req: Request): Promise<Response> => {
     redirect.searchParams.set('code', code)
     if (state) redirect.searchParams.set('state', state)
 
+    console.log('oauth-authorize POST: issuing code for client_id=%s redirect=%s', clientId, redirect.toString())
     return new Response(null, {
       status: 302,
       headers: { Location: redirect.toString() },
