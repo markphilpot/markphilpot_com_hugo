@@ -23,6 +23,15 @@ export type MastodonAccount = {
   fields: unknown[]
 }
 
+export type MastodonMediaAttachment = {
+  id: string
+  type: 'image'
+  url: string
+  preview_url: string
+  description: string | null
+  meta: Record<string, unknown>
+}
+
 export type MastodonStatus = {
   id: string
   created_at: string
@@ -30,7 +39,7 @@ export type MastodonStatus = {
   url: string
   account: MastodonAccount
   visibility: 'public'
-  media_attachments: unknown[]
+  media_attachments: MastodonMediaAttachment[]
   replies_count: number
   reblogs_count: number
   favourites_count: number
@@ -67,6 +76,36 @@ function staticAccount(domain: string): MastodonAccount {
   }
 }
 
+function makeAbsolute(url: string, domain: string): string {
+  if (url.startsWith('http://') || url.startsWith('https://')) return url
+  return `https://${domain}${url.startsWith('/') ? '' : '/'}${url}`
+}
+
+function extractImages(
+  html: string,
+  domain: string,
+): { content: string; attachments: MastodonMediaAttachment[] } {
+  const attachments: MastodonMediaAttachment[] = []
+  const imgRegex = /<img\b([^>]*)>/gi
+  let match
+  let idx = 0
+  while ((match = imgRegex.exec(html)) !== null) {
+    const attrs = match[1]
+    const srcMatch = attrs.match(/\bsrc="([^"]+)"/)
+    const zoomMatch = attrs.match(/\bdata-zoom-src="([^"]+)"/)
+    if (srcMatch) {
+      const previewUrl = makeAbsolute(srcMatch[1], domain)
+      const url = zoomMatch ? makeAbsolute(zoomMatch[1], domain) : previewUrl
+      attachments.push({ id: String(idx++), type: 'image', url, preview_url: previewUrl, description: null, meta: {} })
+    }
+  }
+  const content = html
+    .replace(/<img\b[^>]*>/gi, '')
+    .replace(/<div[^>]*>\s*<\/div>/gi, '')
+    .trim()
+  return { content, attachments }
+}
+
 function blogContent(post: FeedPost): string {
   const parts: string[] = []
   if (post.summary) parts.push(`<p>${escapeHtml(post.summary)}</p>`)
@@ -86,7 +125,16 @@ export function feedPostToStatus(
   post: FeedPost,
   domain = process.env.AP_MASTODON_DOMAIN ?? 'markphilpot.com',
 ): MastodonStatus {
-  const content = post.section === 'blog' ? blogContent(post) : post.content
+  let content: string
+  let media_attachments: MastodonMediaAttachment[]
+  if (post.section === 'blog') {
+    content = blogContent(post)
+    media_attachments = []
+  } else {
+    const extracted = extractImages(post.content, domain)
+    content = extracted.content
+    media_attachments = extracted.attachments
+  }
   return {
     id: String(new Date(post.date).getTime()),
     created_at: post.date,
@@ -94,7 +142,7 @@ export function feedPostToStatus(
     url: post.url,
     account: staticAccount(domain),
     visibility: 'public',
-    media_attachments: [],
+    media_attachments,
     replies_count: 0,
     reblogs_count: 0,
     favourites_count: 0,
