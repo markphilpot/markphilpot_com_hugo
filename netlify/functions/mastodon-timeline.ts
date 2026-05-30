@@ -24,7 +24,19 @@ export default async (req: Request): Promise<Response> => {
   const limitParam = parseInt(url.searchParams.get('limit') ?? '', 10)
   const limit = isNaN(limitParam) ? DEFAULT_LIMIT : Math.min(limitParam, MAX_LIMIT)
 
-  const posts = await fetchFeed(`https://${domain}`)
+  let posts
+  try {
+    posts = await fetchFeed(`https://${domain}`)
+  } catch (err) {
+    const cause = err instanceof Error ? (err as NodeJS.ErrnoException).cause : undefined
+    console.error('mastodon-timeline: fetchFeed failed', err, 'cause:', cause)
+    return new Response(JSON.stringify([]), {
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
+
+  console.log('mastodon-timeline: fetched %d posts', posts.length)
+
   const statuses = posts
     .map((p) => feedPostToStatus(p, domain))
     .sort((a, b) => (BigInt(b.id) > BigInt(a.id) ? 1 : -1))
