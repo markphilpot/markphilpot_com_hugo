@@ -4,6 +4,8 @@ import { setMastodonApp } from './lib/blobs.js'
 import { parseBody } from './lib/parse.js'
 
 export default async (req: Request): Promise<Response> => {
+  console.log('mastodon-apps: method=%s content-type=%s', req.method, req.headers.get('content-type'))
+
   if (req.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 })
   }
@@ -14,7 +16,7 @@ export default async (req: Request): Promise<Response> => {
   const clientId = randomUUID()
   const clientSecret = randomUUID()
 
-  console.log('mastodon-apps: registering app name=%s redirect=%s content-type=%s', clientName, redirectUri, req.headers.get('content-type'))
+  console.log('mastodon-apps: registering name=%s redirect=%s', clientName, redirectUri)
 
   await setMastodonApp({
     clientId,
