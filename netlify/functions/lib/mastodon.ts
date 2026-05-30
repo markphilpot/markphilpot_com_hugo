@@ -34,12 +34,16 @@ export type MastodonMediaAttachment = {
 
 export type MastodonStatus = {
   id: string
+  uri: string
   created_at: string
   content: string
   url: string
   account: MastodonAccount
   visibility: 'public'
   media_attachments: MastodonMediaAttachment[]
+  mentions: unknown[]
+  tags: unknown[]
+  emojis: unknown[]
   replies_count: number
   reblogs_count: number
   favourites_count: number
@@ -137,12 +141,16 @@ export function feedPostToStatus(
   }
   return {
     id: String(new Date(post.date).getTime()),
+    uri: post.url,
     created_at: post.date,
     content,
     url: post.url,
     account: staticAccount(domain),
     visibility: 'public',
     media_attachments,
+    mentions: [],
+    tags: [],
+    emojis: [],
     replies_count: 0,
     reblogs_count: 0,
     favourites_count: 0,
