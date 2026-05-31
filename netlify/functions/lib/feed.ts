@@ -11,14 +11,14 @@ type RawEntry = {
 
 export function parseFeedEntries(entries: RawEntry[]): FeedPost[] {
   return entries
-    .filter((e) => e.url && e.date && (e.section === 'blog' || e.section === 'micro' || e.section === 'micro-client'))
+    .filter((e) => e.url && e.date && (e.section === 'blog' || e.section === 'micro' || e.section === 'micro-client' || e.section === 'direct'))
     .map((e) => ({
       url: e.url,
       date: e.date,
       title: e.title ?? '',
       summary: e.summary ?? '',
       content: e.content ?? '',
-      section: e.section as 'blog' | 'micro' | 'micro-client',
+      section: e.section as 'blog' | 'micro' | 'micro-client' | 'direct',
     }))
 }
 

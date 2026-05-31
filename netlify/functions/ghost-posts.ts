@@ -179,7 +179,7 @@ async function handleCreate(req: Request): Promise<Response> {
   const now = new Date()
   const year = now.getUTCFullYear()
   const title = post.title?.trim() || undefined
-  const dateSlug = now.toISOString().split('.')[0].toLowerCase().replace(/:/g, '-')
+  const dateSlug = now.toISOString().split('.')[0].replace(/:/g, '-')
   const slug = post.slug?.trim() || (title ? slugify(title) : dateSlug)
   const ghostId = randomUUID()
   const bundlePath = `content/direct/${year}/${slug}`

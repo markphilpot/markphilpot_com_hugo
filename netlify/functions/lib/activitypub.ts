@@ -38,7 +38,7 @@ export function formatNote(post: FeedPost): CreateNote {
   let content: string
   let attachment: ApAttachment[] | undefined
 
-  if (post.section === 'blog') {
+  if (post.section === 'blog' || (post.section === 'direct' && post.title)) {
     content = blogContent(post)
   } else {
     const { content: stripped, images } = parseImgSrcs(post.content)

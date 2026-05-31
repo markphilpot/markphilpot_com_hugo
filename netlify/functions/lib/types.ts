@@ -11,7 +11,7 @@ export type FeedPost = {
   title: string
   summary: string
   content: string
-  section: 'blog' | 'micro' | 'micro-client'
+  section: 'blog' | 'micro' | 'micro-client' | 'direct'
 }
 
 export type MastodonAppRecord = {
