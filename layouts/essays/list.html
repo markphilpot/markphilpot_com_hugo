@@ -1,0 +1,20 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "list" }}
+
+  {{- $essays := where (where .Site.RegularPages "Section" "in" (slice "blog" "direct")) "Title" "!=" "" -}}
+
+  <section class="space-y-10 w-full">
+    {{ range ($essays.GroupByDate "2006") }}
+      <div class="mx-auto max-w-fit">
+        <h2 class="mt-12 mb-6 text-2xl lg:text-4xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
+          {{ .Key }}
+        </h2>
+        {{ range .Pages }}
+          {{ partial "article-link/simple.html" . }}
+        {{ end }}
+      </div>
+    {{ end }}
+  </section>
+
+  {{ partial "pagination.html" . }}
+{{ end }}

@@ -1,0 +1,4 @@
+---
+skipTitle: true
+groupByYear: true
+---
