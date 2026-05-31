@@ -44,7 +44,7 @@ function slugify(s: string): string {
 }
 
 function buildFrontmatter(opts: {
-  title: string
+  title: string | undefined
   isoDate: string
   tags: string[]
   slug: string
@@ -52,18 +52,16 @@ function buildFrontmatter(opts: {
   ghostId: string
   featureFilename?: string
 }): string {
-  const lines = [
-    '---',
-    `title: ${JSON.stringify(opts.title)}`,
+  const lines = ['---']
+  if (opts.title) lines.push(`title: ${JSON.stringify(opts.title)}`)
+  lines.push(
     `date: '${opts.isoDate}'`,
     `tags: [${opts.tags.join(', ')}]`,
     `slug: ${opts.slug}`,
     `draft: ${opts.draft}`,
     `ghostId: ${opts.ghostId}`,
-  ]
-  if (opts.featureFilename) {
-    lines.push(`featureimage: ${opts.featureFilename}`)
-  }
+  )
+  if (opts.featureFilename) lines.push(`featureimage: ${opts.featureFilename}`)
   lines.push('---')
   return lines.join('\n')
 }
@@ -114,7 +112,7 @@ async function processPost(opts: {
   // Build Hugo page bundle content
   const isoDate = opts.publishDate.toISOString().split('.')[0]
   const frontmatter = buildFrontmatter({
-    title: opts.post.title ?? '',
+    title: opts.post.title?.trim() || undefined,
     isoDate,
     tags,
     slug: opts.slug,
@@ -130,7 +128,7 @@ async function processPost(opts: {
 
 function ghostPostResponse(opts: {
   ghostId: string
-  title: string
+  title: string | undefined
   slug: string
   status: string
   now: Date
@@ -161,9 +159,9 @@ async function handleCreate(req: Request): Promise<Response> {
   const body = (await req.json()) as { posts?: GhostPostInput[] }
   const post = body.posts?.[0]
 
-  if (!post?.title) {
+  if (!post) {
     return new Response(
-      JSON.stringify({ errors: [{ message: 'title is required' }] }),
+      JSON.stringify({ errors: [{ message: 'posts array is required' }] }),
       { status: 422, headers: { 'Content-Type': 'application/json' } },
     )
   }
@@ -180,14 +178,16 @@ async function handleCreate(req: Request): Promise<Response> {
 
   const now = new Date()
   const year = now.getUTCFullYear()
-  const slug = (post.slug?.trim() ? post.slug.trim() : slugify(post.title))
+  const title = post.title?.trim() || undefined
+  const dateSlug = now.toISOString().split('.')[0].toLowerCase().replace(/:/g, '-')
+  const slug = post.slug?.trim() || (title ? slugify(title) : dateSlug)
   const ghostId = randomUUID()
   const bundlePath = `content/direct/${year}/${slug}`
   const indexPath = `${bundlePath}/index.md`
 
-  const { mdContent, binaryFiles } = await processPost({ post, ghostId, bundlePath, publishDate: now, slug })
+  const { mdContent, binaryFiles } = await processPost({ post: { ...post, title }, ghostId, bundlePath, publishDate: now, slug })
 
-  const commitMessage = `direct: ${post.title.slice(0, 60)}`
+  const commitMessage = title ? `direct: ${title.slice(0, 60)}` : `direct: ${dateSlug}`
 
   try {
     await createCommit({
@@ -214,7 +214,7 @@ async function handleCreate(req: Request): Promise<Response> {
   await setGhostPost(record)
 
   return new Response(
-    JSON.stringify(ghostPostResponse({ ghostId, title: post.title, slug, status: post.status ?? 'published', now, domain, year })),
+    JSON.stringify(ghostPostResponse({ ghostId, title, slug, status: post.status ?? 'published', now, domain, year })),
     { status: 201, headers: { 'Content-Type': 'application/json' } },
   )
 }
