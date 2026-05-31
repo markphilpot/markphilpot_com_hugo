@@ -7,9 +7,18 @@ css:
 	pnpm css:build
 
 bin/hugo-x64:
-	wget -P ./bin https://transfer-markphilpot.s3.amazonaws.com/hugo-x64
-	chmod +x bin/hugo-x64
-	ln -s bin/hugo-x64 bin/hugo
+	@mkdir -p bin
+	@if [ -n "$$NETLIFY_CACHE_DIR" ] && [ -f "$$NETLIFY_CACHE_DIR/hugo-x64" ]; then \
+		echo "Restoring hugo-x64 from Netlify cache"; \
+		cp "$$NETLIFY_CACHE_DIR/hugo-x64" bin/hugo-x64; \
+	else \
+		wget -P ./bin https://transfer-markphilpot.s3.amazonaws.com/hugo-x64; \
+		if [ -n "$$NETLIFY_CACHE_DIR" ]; then \
+			cp bin/hugo-x64 "$$NETLIFY_CACHE_DIR/hugo-x64"; \
+		fi; \
+	fi
+	@chmod +x bin/hugo-x64
+	@[ -L bin/hugo ] || ln -s hugo-x64 bin/hugo
 
 bin/hugo:
 	wget -P ./bin https://transfer-markphilpot.s3.amazonaws.com/hugo
