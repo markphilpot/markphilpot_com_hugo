@@ -24,8 +24,7 @@ export default async (req: Request): Promise<Response> => {
   }
 
   const id = randomUUID()
-  const originalExt = file.name.split('.').pop()?.toLowerCase() ?? 'jpg'
-  const filename = `${id}.${originalExt}`
+  const filename = file.name.trim() || `${id}.${file.name.split('.').pop()?.toLowerCase() ?? 'jpg'}`
 
   const meta: MediaUploadRecord = {
     id,
