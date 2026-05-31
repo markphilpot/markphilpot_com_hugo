@@ -49,4 +49,5 @@ export type GhostPostRecord = {
   year: number
   path: string        // e.g. "content/direct/2026/my-post/index.md"
   createdAt: string   // ISO timestamp — year is derived from this on create, stays fixed on update
+  title?: string
 }

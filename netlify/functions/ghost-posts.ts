@@ -210,6 +210,7 @@ async function handleCreate(req: Request): Promise<Response> {
     year,
     path: indexPath,
     createdAt: now.toISOString(),
+    title: title ?? '',
   }
   await setGhostPost(record)
 
@@ -293,6 +294,35 @@ async function handleUpdate(req: Request, ghostId: string): Promise<Response> {
   )
 }
 
+async function handleGet(ghostId: string): Promise<Response> {
+  const record = await getGhostPost(ghostId)
+  if (!record) {
+    return new Response(JSON.stringify({ errors: [{ message: 'Post not found' }] }), {
+      status: 404,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
+
+  const domain = process.env.AP_MASTODON_DOMAIN ?? 'markphilpot.com'
+  const iso = record.createdAt
+  return new Response(
+    JSON.stringify({
+      posts: [{
+        id: record.ghostId,
+        uuid: record.ghostId,
+        title: record.title ?? '',
+        slug: record.slug,
+        status: 'published',
+        created_at: iso,
+        updated_at: iso,
+        published_at: iso,
+        url: `https://${domain}/direct/${record.year}/${record.slug}/`,
+      }],
+    }),
+    { status: 200, headers: { 'Content-Type': 'application/json' } },
+  )
+}
+
 // ---- Main handler ----
 
 export default async (req: Request): Promise<Response> => {
@@ -301,7 +331,13 @@ export default async (req: Request): Promise<Response> => {
   }
 
   const url = new URL(req.url)
-  const postIdMatch = url.pathname.match(/^\/ghost\/api\/(?:v4\/)?admin\/posts\/([^/]+)\/?$/)
+  // Normalize consecutive slashes Ulysses sometimes sends (e.g. /admin//posts/)
+  const pathname = url.pathname.replace(/\/+/g, '/')
+  const postIdMatch = pathname.match(/^\/ghost\/api\/(?:v4\/)?admin\/posts\/([^/]+)\/?$/)
+
+  if (req.method === 'GET' && postIdMatch) {
+    return handleGet(postIdMatch[1])
+  }
 
   if (req.method === 'POST' && !postIdMatch) {
     return handleCreate(req)
