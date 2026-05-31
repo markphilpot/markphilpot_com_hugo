@@ -42,3 +42,11 @@ export type MediaUploadRecord = {
   description: string | null
   uploadedAt: string
 }
+
+export type GhostPostRecord = {
+  ghostId: string
+  slug: string
+  year: number
+  path: string        // e.g. "content/direct/2026/my-post/index.md"
+  createdAt: string   // ISO timestamp — year is derived from this on create, stays fixed on update
+}
