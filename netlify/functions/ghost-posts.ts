@@ -99,9 +99,10 @@ async function processPost(opts: {
     allIds.map(async (id) => {
       const [meta, bytes] = await Promise.all([getMediaUpload(id), getMediaBytes(id)])
       if (!meta || !bytes) return
-      idToFilename.set(id, meta.filename)
-      binaryFiles.push({ path: `${opts.bundlePath}/${meta.filename}`, data: bytes })
-      if (id === featureId) featureFilename = meta.filename
+      const assetPath = `assets/${meta.filename}`
+      idToFilename.set(id, assetPath)
+      binaryFiles.push({ path: `${opts.bundlePath}/${assetPath}`, data: bytes })
+      if (id === featureId) featureFilename = assetPath
     }),
   )
 
