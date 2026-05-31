@@ -44,8 +44,12 @@ export function validateGhostJWT(authHeader: string): boolean {
     console.log('ghost-auth: alg/kid mismatch — alg:', header['alg'], 'kid:', header['kid'], 'expected id:', id)
     return false
   }
-  if (payload['aud'] !== '/admin/') {
-    console.log('ghost-auth: aud mismatch — got:', JSON.stringify(payload['aud']), 'expected: "/admin/"')
+  const aud = payload['aud']
+  const audValid = Array.isArray(aud)
+    ? aud.some((a) => typeof a === 'string' && a.endsWith('/admin/'))
+    : aud === '/admin/'
+  if (!audValid) {
+    console.log('ghost-auth: aud mismatch — got:', JSON.stringify(aud))
     return false
   }
   if (typeof payload['exp'] !== 'number' || payload['exp'] < Math.floor(Date.now() / 1000)) {

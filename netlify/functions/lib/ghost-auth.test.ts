@@ -8,7 +8,7 @@ const TEST_SECRET = 'aabbccddeeff00112233aabbccddeeff00112233aabbccddeeff0011223
 function makeJWT(overrides: {
   kid?: string
   alg?: string
-  aud?: string
+  aud?: string | string[]
   exp?: number
 } = {}): string {
   const now = Math.floor(Date.now() / 1000)
@@ -50,6 +50,15 @@ describe('validateGhostJWT', () => {
 
   it('returns false when aud is not "/admin/"', () => {
     expect(validateGhostJWT(`Ghost ${makeJWT({ aud: '/content/' })}`)).toBe(false)
+  })
+
+  it('returns true when aud is an array containing a versioned /admin/ path (Ulysses format)', () => {
+    const aud = ['/v3/admin/', '/v4/admin/', '/v5/admin/']
+    expect(validateGhostJWT(`Ghost ${makeJWT({ aud })}`)).toBe(true)
+  })
+
+  it('returns false when aud array contains no /admin/ paths', () => {
+    expect(validateGhostJWT(`Ghost ${makeJWT({ aud: ['/content/', '/public/'] })}`)).toBe(false)
   })
 
   it('returns false when signature is tampered', () => {
