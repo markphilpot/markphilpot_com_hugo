@@ -49,5 +49,5 @@ export default async (req: Request): Promise<Response> => {
 }
 
 export const config: Config = {
-  path: '/ghost/api/admin/images/upload/',
+  path: ['/ghost/api/v4/admin/images/upload/', '/ghost/api/admin/images/upload/'],
 }

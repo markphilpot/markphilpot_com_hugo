@@ -30,5 +30,5 @@ export default async (req: Request): Promise<Response> => {
 }
 
 export const config: Config = {
-  path: '/ghost/api/admin/site/',
+  path: ['/ghost/api/v4/admin/site/', '/ghost/api/admin/site/'],
 }

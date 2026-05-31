@@ -301,7 +301,7 @@ export default async (req: Request): Promise<Response> => {
   }
 
   const url = new URL(req.url)
-  const postIdMatch = url.pathname.match(/^\/ghost\/api\/admin\/posts\/([^/]+)\/?$/)
+  const postIdMatch = url.pathname.match(/^\/ghost\/api\/(?:v4\/)?admin\/posts\/([^/]+)\/?$/)
 
   if (req.method === 'POST' && !postIdMatch) {
     return handleCreate(req)
@@ -315,5 +315,10 @@ export default async (req: Request): Promise<Response> => {
 }
 
 export const config: Config = {
-  path: ['/ghost/api/admin/posts/', '/ghost/api/admin/posts/*'],
+  path: [
+    '/ghost/api/v4/admin/posts/',
+    '/ghost/api/v4/admin/posts/*',
+    '/ghost/api/admin/posts/',
+    '/ghost/api/admin/posts/*',
+  ],
 }
