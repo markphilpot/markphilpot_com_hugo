@@ -3,6 +3,12 @@
   publish = "public"
   functions = "netlify/functions"
 
+[[plugins]]
+  package = "netlify-plugin-cache"
+
+  [plugins.inputs]
+  paths = ["bin"]
+
 [[headers]]
   for = "/.well-known/webfinger"
   [headers.values]
