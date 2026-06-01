@@ -64,9 +64,6 @@ devDependencies:
   '@types/yargs':
     specifier: ^17.0.35
     version: 17.0.35
-  netlify-plugin-cache:
-    specifier: ^1.0.3
-    version: 1.0.3
   tailwind-scrollbar:
     specifier: ^4.0.2
     version: 4.0.2(react@19.2.3)(tailwindcss@4.3.0)
@@ -2037,10 +2034,6 @@ packages:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-    dev: true
-
-  /netlify-plugin-cache@1.0.3:
-    resolution: {integrity: sha512-CTOwNWrTOP59T6y6unxQNnp1WX702v2R/faR5peSH94ebrYfyY4zT5IsRcIiHKq57jXeyCrhy0GLuTN8ktzuQg==}
     dev: true
 
   /no-case@3.0.4:
