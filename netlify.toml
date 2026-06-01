@@ -7,7 +7,7 @@
   package = "netlify-plugin-cache"
 
   [plugins.inputs]
-  paths = ["bin"]
+  paths = ["bin/hugo-x64"]
 
 [[headers]]
   for = "/.well-known/webfinger"
