@@ -80,6 +80,7 @@ export function formatNote(post: FeedPost): CreateNote {
 
 function resolveUrl(src: string, base: string): string {
   if (src.startsWith('http://') || src.startsWith('https://')) return src
+  if (src.startsWith('/')) return new URL(base).origin + src
   return base.endsWith('/') ? `${base}${src}` : `${base}/${src}`
 }
 

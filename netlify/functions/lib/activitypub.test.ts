@@ -117,6 +117,19 @@ describe('formatNote — with images', () => {
     expect(note.object.attachment![0].url).toBe('https://markphilpot.com/micro-client/2026/slug/photo.png')
   })
 
+  it('resolves root-relative image src using origin only', () => {
+    const post: FeedPost = {
+      url: 'https://markphilpot.com/micro/202605291506/',
+      date: '2026-05-29T15:06:40Z',
+      title: '',
+      summary: '',
+      content: '<p>text</p><img src="/micro/202605291506/assets/background.jpg">',
+      section: 'micro',
+    }
+    const note = formatNote(post)
+    expect(note.object.attachment![0].url).toBe('https://markphilpot.com/micro/202605291506/assets/background.jpg')
+  })
+
   it('detects mediaType from file extension', () => {
     const mkPost = (filename: string): FeedPost => ({
       url: 'https://markphilpot.com/micro-client/2026/slug/',
