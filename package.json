@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "xpost": "tsx scripts/xpost.ts",
+    "favicon": "tsx scripts/gen-favicon.ts",
     "build": "tsc",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
